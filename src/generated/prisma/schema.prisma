@@ -1,0 +1,84 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+// model User {
+//   id       Int    @id @default(autoincrement())
+//   publicId String @unique @default(uuid())
+
+//   email          String     @unique
+//   firstName      String
+//   lastName       String
+//   password       String
+//   image          String?
+//   status         UserStatus @default(PENDING)
+//   role           UserRoles  @default(USUARIO)
+//   createdAt      DateTime   @default(now())
+//   updatedAt      DateTime   @updatedAt
+//   isSuperAdmin   Boolean    @default(false)
+//   isCollaborator Boolean    @default(false)
+// }
+
+model User {
+  id             Int        @id @default(autoincrement())
+  publicId       String     @unique @default(uuid())
+  email          String     @unique
+  firstName      String
+  lastName       String
+  image          String?
+  status         UserStatus @default(PENDING)
+  role           UserRoles  @default(USUARIO)
+  isSuperAdmin   Boolean    @default(false)
+  isCollaborator Boolean    @default(false)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  accounts Account[]
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+  BLOCKED
+}
+
+enum UserRoles {
+  PROFESSOR
+  DESENVOLVEDOR
+  ADMINISTRADOR
+  USUARIO
+}
+
+enum AuthProvider {
+  CREDENTIALS
+  GOOGLE
+}
+
+model Account {
+  id                Int          @id @default(autoincrement())
+  userId            Int
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider          AuthProvider
+  providerAccountId String
+  password          String?
+  accessToken       String?
+  refreshToken      String?
+  expiresAt         DateTime?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  @@unique([provider, providerAccountId])
+}
+
+model AccountVerificationToken {
+  id        String   @id @default(uuid())
+  userId    String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
