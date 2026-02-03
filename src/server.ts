@@ -4,6 +4,9 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
+import swaggerUi from 'swagger-ui-express';
+import { openApiDoc } from './docs/swagger.js';
+
 import { CLIENT_DOMAIN, IS_PRODUCTION, PORT } from '@/config/env.js';
 import { mailer } from './modules/smtp/smtp.service.js';
 import AuthRoutes from './modules/auth/auth.controller.js';
@@ -15,9 +18,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: IS_PRODUCTION ? `https://${CLIENT_DOMAIN}`: 'http://localhost:3000',
+  origin: IS_PRODUCTION ? `https://${CLIENT_DOMAIN}` : 'http://localhost:3000',
   credentials: true,
 }));
+
+if(!IS_PRODUCTION){
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDoc));
+}
 
 app.get('/email', async (req, res) => {
   const token = '1234';

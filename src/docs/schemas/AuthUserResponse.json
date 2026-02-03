@@ -1,0 +1,74 @@
+{
+    "AuthUserResponse": {
+        "type": "object",
+        "required": [
+            "publicId",
+            "email",
+            "firstName",
+            "lastName",
+            "role",
+            "status",
+            "isSuperAdmin",
+            "isCollaborator",
+            "createdAt",
+            "updatedAt"
+        ],
+        "properties": {
+            "publicId": {
+                "type": "string",
+                "example": "usr_8f92k2"
+            },
+            "email": {
+                "type": "string",
+                "format": "email",
+                "example": "user@email.com"
+            },
+            "firstName": {
+                "type": "string",
+                "example": "João"
+            },
+            "lastName": {
+                "type": "string",
+                "example": "Silva"
+            },
+            "image": {
+                "type": "string",
+                "nullable": true,
+                "example": "https://avatar.com/img.png"
+            },
+            "status": {
+                "type": "string",
+                "enum": [
+                    "ACTIVE",
+                    "INACTIVE",
+                    "PENDING",
+                    "BLOCKED"
+                ]
+            },
+            "role": {
+                "type": "string",
+                "enum": [
+                    "PROFESSOR",
+                    "DESENVOLVEDOR",
+                    "USUARIO"
+                ]
+            },
+            "isSuperAdmin": {
+                "type": "boolean",
+                "example": false
+            },
+            "isCollaborator": {
+                "type": "boolean",
+                "example": false
+            },
+            "createdAt": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+            }
+        }
+    }
+}

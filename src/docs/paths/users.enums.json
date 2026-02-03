@@ -1,0 +1,64 @@
+{
+    "/users/enums/roles": {
+        "get": {
+            "tags": [
+                "Users"
+            ],
+            "summary": "Listar roles de usuários",
+            "description": "Retorna todos os papéis possíveis de usuários. Disponível apenas fora de produção.",
+            "responses": {
+                "200": {
+                    "description": "Lista de roles",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRoleEnum"
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Acesso não autorizado em produção",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Error"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/users/enums/status": {
+        "get": {
+            "tags": [
+                "Users"
+            ],
+            "summary": "Listar status de usuários",
+            "description": "Retorna todos os status possíveis de usuários. Disponível apenas fora de produção.",
+            "responses": {
+                "200": {
+                    "description": "Lista de status",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserStatusEnum"
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Acesso não autorizado em produção",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Error"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
