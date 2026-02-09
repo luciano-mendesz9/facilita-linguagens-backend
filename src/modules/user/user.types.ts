@@ -4,3 +4,4 @@ export type CreateUserProps = {
     lastName: string; 
     hashPassword: string;
 }
+

@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+//import { Prisma } from "@prisma/client";
 import { CreateUserProps } from "./user.types.js";
 import { prisma } from "@/lib/prisma.js";
 
@@ -72,7 +72,7 @@ class UserService {
         }
     }
 
-    async updateUserByPublicId(userId: string, data: Prisma.UserUpdateInput) {
+    async updateUserByPublicId(userId: string, data: any /*Prisma.UserUpdateInput*/) {
 
         try {
             const update = await prisma.user.update({

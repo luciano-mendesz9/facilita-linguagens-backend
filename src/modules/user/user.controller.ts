@@ -4,6 +4,7 @@ import { adminMiddleware, AuthRequest } from "@/middleware/adminMiddleware.js";
 import { authMiddleware } from "@/middleware/authMiddleware.js";
 import { Response, Router } from "express";
 import UserService from "./user.service.js";
+import UserPermissions from "@/config/permissions.js";
 
 const UserRoutes = Router();
 const userService = new UserService();
@@ -14,6 +15,14 @@ UserRoutes.get('/enums/roles', (req, res) => {
     }
 
     return res.status(200).json(ENUM_USER_ROLES);
+});
+
+UserRoutes.get('/enums/permissions', (req, res) => {
+    if (IS_PRODUCTION) {
+        return res.status(400).json({ error: 'Unauthorized' });
+    }
+
+    return res.status(200).json(UserPermissions);
 });
 
 UserRoutes.get('/enums/status', (req, res) => {

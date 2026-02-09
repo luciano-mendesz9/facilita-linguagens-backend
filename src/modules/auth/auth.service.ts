@@ -13,6 +13,33 @@ export type UserSocialAuthType = { image?: string, firstName: string, lastName: 
 class AuthService {
     private userService: UserService = new UserService();
 
+    async hasPermission(userPublicId: string, key: string): Promise<boolean> {
+        try {
+            const user = await prisma.user.findUnique({
+                where: { publicId: userPublicId },
+                include: {
+                    permissions: {
+                        include: {
+                            permission: true
+                        }
+                    }
+                }
+            })
+
+            if (!user) {
+                throw new Error('Usuário não encontrado');
+            }
+
+            return user.permissions.some(
+                p => p.permission.key === key
+            );
+
+        } catch (error) {
+            console.error('Erro ao verificar permissão do usuário:', error);
+            return false;
+        }
+    }
+
     async signUp(data: SignUpProps) {
         try {
             const hashPassword = await bcrypt.hash(data.password, 10);

@@ -11,6 +11,8 @@ import { CLIENT_DOMAIN, IS_PRODUCTION, PORT } from '@/config/env.js';
 import { mailer } from './modules/smtp/smtp.service.js';
 import AuthRoutes from './modules/auth/auth.controller.js';
 import UserRoutes from './modules/user/user.controller.js';
+import { prisma } from './lib/prisma.js';
+import UserPermissions from './config/permissions.js';
 
 const app = express();
 
@@ -22,7 +24,7 @@ app.use(cors({
   credentials: true,
 }));
 
-if(!IS_PRODUCTION){
+if (!IS_PRODUCTION) {
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDoc));
 }
 
@@ -159,6 +161,20 @@ app.use('/auth', AuthRoutes);
 // Rotas Users
 app.use('/users', UserRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT} -> http://localhost:${PORT}\n`);
+app.listen(PORT, async () => {
+  console.log('Sincronizando permissões...');
+
+  for (const key of Object.values(UserPermissions)) {
+    await prisma.permission.upsert({
+      where: { key },
+      update: {},
+      create: { key },
+    });
+  }
+
+  console.log('Permissões sincronizadas com sucesso!');
+  console.log(
+    `Server is running on port ${PORT} -> http://localhost:${PORT}\n`
+  );
 });
+

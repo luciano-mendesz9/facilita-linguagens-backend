@@ -191,6 +191,16 @@ exports.Prisma.AdminActivityLogScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PermissionScalarFieldEnum = {
+  id: 'id',
+  key: 'key'
+};
+
+exports.Prisma.UserPermissionScalarFieldEnum = {
+  userId: 'userId',
+  permissionId: 'permissionId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -227,7 +237,9 @@ exports.Prisma.ModelName = {
   TextContent: 'TextContent',
   Image: 'Image',
   TextualGenre: 'TextualGenre',
-  AdminActivityLog: 'AdminActivityLog'
+  AdminActivityLog: 'AdminActivityLog',
+  Permission: 'Permission',
+  UserPermission: 'UserPermission'
 };
 
 /**
