@@ -27,6 +27,26 @@ class UserService {
         }
     }
 
+    async getAdmins({ publicUserId }: { publicUserId?: string }) {
+        try {
+            const admins = await prisma.user.findMany({
+                where: {
+                    publicId: publicUserId || undefined,
+                    isCollaborator: true,
+                },
+                omit: {
+                    id: true,
+                    updatedAt: true,
+                    createdAt: true,
+                }
+            });
+            return admins;
+        } catch (error) {
+            console.error("Erro ao buscar admin via Id:", error);
+            return null;
+        }
+    }
+
     async createUser(data: CreateUserProps) {
         try {
             const newUser = await prisma.user.create({

@@ -1,8 +1,12 @@
 import { ENUM_USER_ROLES, ENUM_USER_STATUS } from "@/config/enums-db.js";
 import { IS_PRODUCTION } from "@/config/env.js";
-import { Router } from "express";
+import { adminMiddleware, AuthRequest } from "@/middleware/adminMiddleware.js";
+import { authMiddleware } from "@/middleware/authMiddleware.js";
+import { Response, Router } from "express";
+import UserService from "./user.service.js";
 
 const UserRoutes = Router();
+const userService = new UserService();
 
 UserRoutes.get('/enums/roles', (req, res) => {
     if (IS_PRODUCTION) {
@@ -19,5 +23,22 @@ UserRoutes.get('/enums/status', (req, res) => {
 
     return res.status(200).json(ENUM_USER_STATUS);
 })
+
+UserRoutes.get('/admins', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+
+        const adminId = req.query.id as string | undefined;
+        const admins = await userService.getAdmins({ publicUserId: adminId });
+
+        if (!admins) {
+            return res.status(404).json({ error: 'Admins not found' });
+        };
+
+        return res.status(200).json(adminId ? admins[0] : admins);
+    } catch (error) {
+        console.error('Error fetching admins:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 export default UserRoutes;

@@ -69,10 +69,10 @@ export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
 
 
 export const UserRoles: {
+  USUARIO: 'USUARIO',
   PROFESSOR: 'PROFESSOR',
   DESENVOLVEDOR: 'DESENVOLVEDOR',
-  ADMINISTRADOR: 'ADMINISTRADOR',
-  USUARIO: 'USUARIO'
+  ADMINISTRADOR: 'ADMINISTRADOR'
 };
 
 export type UserRoles = (typeof UserRoles)[keyof typeof UserRoles]
@@ -345,8 +345,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 7.2.0
-   * Query Engine version: 0c8ef2ce45c83248ab3df073180d5eda9e8be7a3
+   * Prisma Client JS version: 7.3.0
+   * Query Engine version: 9d6ad21cbbceab97458517b147a6a09ff43aa735
    */
   export type PrismaVersion = {
     client: string
@@ -9460,21 +9460,21 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     action: string | null
-    createAt: Date | null
+    createdAt: Date | null
   }
 
   export type AdminActivityLogMaxAggregateOutputType = {
     id: number | null
     userId: number | null
     action: string | null
-    createAt: Date | null
+    createdAt: Date | null
   }
 
   export type AdminActivityLogCountAggregateOutputType = {
     id: number
     userId: number
     action: number
-    createAt: number
+    createdAt: number
     _all: number
   }
 
@@ -9493,21 +9493,21 @@ export namespace Prisma {
     id?: true
     userId?: true
     action?: true
-    createAt?: true
+    createdAt?: true
   }
 
   export type AdminActivityLogMaxAggregateInputType = {
     id?: true
     userId?: true
     action?: true
-    createAt?: true
+    createdAt?: true
   }
 
   export type AdminActivityLogCountAggregateInputType = {
     id?: true
     userId?: true
     action?: true
-    createAt?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -9601,7 +9601,7 @@ export namespace Prisma {
     id: number
     userId: number
     action: string
-    createAt: Date
+    createdAt: Date
     _count: AdminActivityLogCountAggregateOutputType | null
     _avg: AdminActivityLogAvgAggregateOutputType | null
     _sum: AdminActivityLogSumAggregateOutputType | null
@@ -9627,7 +9627,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     action?: boolean
-    createAt?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminActivityLog"]>
 
@@ -9635,7 +9635,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     action?: boolean
-    createAt?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminActivityLog"]>
 
@@ -9643,7 +9643,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     action?: boolean
-    createAt?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminActivityLog"]>
 
@@ -9651,10 +9651,10 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     action?: boolean
-    createAt?: boolean
+    createdAt?: boolean
   }
 
-  export type AdminActivityLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "action" | "createAt", ExtArgs["result"]["adminActivityLog"]>
+  export type AdminActivityLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "action" | "createdAt", ExtArgs["result"]["adminActivityLog"]>
   export type AdminActivityLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -9674,7 +9674,7 @@ export namespace Prisma {
       id: number
       userId: number
       action: string
-      createAt: Date
+      createdAt: Date
     }, ExtArgs["result"]["adminActivityLog"]>
     composites: {}
   }
@@ -10102,7 +10102,7 @@ export namespace Prisma {
     readonly id: FieldRef<"AdminActivityLog", 'Int'>
     readonly userId: FieldRef<"AdminActivityLog", 'Int'>
     readonly action: FieldRef<"AdminActivityLog", 'String'>
-    readonly createAt: FieldRef<"AdminActivityLog", 'DateTime'>
+    readonly createdAt: FieldRef<"AdminActivityLog", 'DateTime'>
   }
     
 
@@ -10618,7 +10618,7 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     action: 'action',
-    createAt: 'createAt'
+    createdAt: 'createdAt'
   };
 
   export type AdminActivityLogScalarFieldEnum = (typeof AdminActivityLogScalarFieldEnum)[keyof typeof AdminActivityLogScalarFieldEnum]
@@ -11170,7 +11170,7 @@ export namespace Prisma {
     id?: IntFilter<"AdminActivityLog"> | number
     userId?: IntFilter<"AdminActivityLog"> | number
     action?: StringFilter<"AdminActivityLog"> | string
-    createAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
+    createdAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -11178,7 +11178,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     action?: SortOrder
-    createAt?: SortOrder
+    createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -11189,7 +11189,7 @@ export namespace Prisma {
     NOT?: AdminActivityLogWhereInput | AdminActivityLogWhereInput[]
     userId?: IntFilter<"AdminActivityLog"> | number
     action?: StringFilter<"AdminActivityLog"> | string
-    createAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
+    createdAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -11197,7 +11197,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     action?: SortOrder
-    createAt?: SortOrder
+    createdAt?: SortOrder
     _count?: AdminActivityLogCountOrderByAggregateInput
     _avg?: AdminActivityLogAvgOrderByAggregateInput
     _max?: AdminActivityLogMaxOrderByAggregateInput
@@ -11212,7 +11212,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"AdminActivityLog"> | number
     userId?: IntWithAggregatesFilter<"AdminActivityLog"> | number
     action?: StringWithAggregatesFilter<"AdminActivityLog"> | string
-    createAt?: DateTimeWithAggregatesFilter<"AdminActivityLog"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"AdminActivityLog"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -11690,7 +11690,7 @@ export namespace Prisma {
 
   export type AdminActivityLogCreateInput = {
     action: string
-    createAt?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutActivityLogsInput
   }
 
@@ -11698,12 +11698,12 @@ export namespace Prisma {
     id?: number
     userId: number
     action: string
-    createAt?: Date | string
+    createdAt?: Date | string
   }
 
   export type AdminActivityLogUpdateInput = {
     action?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutActivityLogsNestedInput
   }
 
@@ -11711,26 +11711,26 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     action?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminActivityLogCreateManyInput = {
     id?: number
     userId: number
     action: string
-    createAt?: Date | string
+    createdAt?: Date | string
   }
 
   export type AdminActivityLogUpdateManyMutationInput = {
     action?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminActivityLogUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     action?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -12263,7 +12263,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     action?: SortOrder
-    createAt?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type AdminActivityLogAvgOrderByAggregateInput = {
@@ -12275,14 +12275,14 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     action?: SortOrder
-    createAt?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type AdminActivityLogMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     action?: SortOrder
-    createAt?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type AdminActivityLogSumOrderByAggregateInput = {
@@ -12859,13 +12859,13 @@ export namespace Prisma {
 
   export type AdminActivityLogCreateWithoutUserInput = {
     action: string
-    createAt?: Date | string
+    createdAt?: Date | string
   }
 
   export type AdminActivityLogUncheckedCreateWithoutUserInput = {
     id?: number
     action: string
-    createAt?: Date | string
+    createdAt?: Date | string
   }
 
   export type AdminActivityLogCreateOrConnectWithoutUserInput = {
@@ -12932,7 +12932,7 @@ export namespace Prisma {
     id?: IntFilter<"AdminActivityLog"> | number
     userId?: IntFilter<"AdminActivityLog"> | number
     action?: StringFilter<"AdminActivityLog"> | string
-    createAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
+    createdAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -13429,7 +13429,7 @@ export namespace Prisma {
   export type AdminActivityLogCreateManyUserInput = {
     id?: number
     action: string
-    createAt?: Date | string
+    createdAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -13469,19 +13469,19 @@ export namespace Prisma {
 
   export type AdminActivityLogUpdateWithoutUserInput = {
     action?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminActivityLogUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     action?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminActivityLogUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     action?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ImageCreateManyTextInfoInput = {

@@ -33,10 +33,10 @@ enum UserStatus {
 }
 
 enum UserRoles {
+  USUARIO
   PROFESSOR
   DESENVOLVEDOR
   ADMINISTRADOR
-  USUARIO
 }
 
 enum AuthProvider {
@@ -112,5 +112,5 @@ model AdminActivityLog {
   userId   Int
   user     User     @relation(fields: [userId], references: [id])
   action   String
-  createAt DateTime @default(now())
+  createdAt DateTime @default(now())
 }
