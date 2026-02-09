@@ -28,6 +28,31 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  * 
  */
 export type AccountVerificationToken = $Result.DefaultSelection<Prisma.$AccountVerificationTokenPayload>
+/**
+ * Model TextInfo
+ * 
+ */
+export type TextInfo = $Result.DefaultSelection<Prisma.$TextInfoPayload>
+/**
+ * Model TextContent
+ * 
+ */
+export type TextContent = $Result.DefaultSelection<Prisma.$TextContentPayload>
+/**
+ * Model Image
+ * 
+ */
+export type Image = $Result.DefaultSelection<Prisma.$ImagePayload>
+/**
+ * Model TextualGenre
+ * 
+ */
+export type TextualGenre = $Result.DefaultSelection<Prisma.$TextualGenrePayload>
+/**
+ * Model AdminActivityLog
+ * 
+ */
+export type AdminActivityLog = $Result.DefaultSelection<Prisma.$AdminActivityLogPayload>
 
 /**
  * Enums
@@ -220,6 +245,56 @@ export class PrismaClient<
     * ```
     */
   get accountVerificationToken(): Prisma.AccountVerificationTokenDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.textInfo`: Exposes CRUD operations for the **TextInfo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TextInfos
+    * const textInfos = await prisma.textInfo.findMany()
+    * ```
+    */
+  get textInfo(): Prisma.TextInfoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.textContent`: Exposes CRUD operations for the **TextContent** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TextContents
+    * const textContents = await prisma.textContent.findMany()
+    * ```
+    */
+  get textContent(): Prisma.TextContentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.image`: Exposes CRUD operations for the **Image** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Images
+    * const images = await prisma.image.findMany()
+    * ```
+    */
+  get image(): Prisma.ImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.textualGenre`: Exposes CRUD operations for the **TextualGenre** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TextualGenres
+    * const textualGenres = await prisma.textualGenre.findMany()
+    * ```
+    */
+  get textualGenre(): Prisma.TextualGenreDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.adminActivityLog`: Exposes CRUD operations for the **AdminActivityLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AdminActivityLogs
+    * const adminActivityLogs = await prisma.adminActivityLog.findMany()
+    * ```
+    */
+  get adminActivityLog(): Prisma.AdminActivityLogDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -656,7 +731,12 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Account: 'Account',
-    AccountVerificationToken: 'AccountVerificationToken'
+    AccountVerificationToken: 'AccountVerificationToken',
+    TextInfo: 'TextInfo',
+    TextContent: 'TextContent',
+    Image: 'Image',
+    TextualGenre: 'TextualGenre',
+    AdminActivityLog: 'AdminActivityLog'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -672,7 +752,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "accountVerificationToken"
+      modelProps: "user" | "account" | "accountVerificationToken" | "textInfo" | "textContent" | "image" | "textualGenre" | "adminActivityLog"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -898,6 +978,376 @@ export namespace Prisma {
           }
         }
       }
+      TextInfo: {
+        payload: Prisma.$TextInfoPayload<ExtArgs>
+        fields: Prisma.TextInfoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TextInfoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TextInfoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>
+          }
+          findFirst: {
+            args: Prisma.TextInfoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TextInfoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>
+          }
+          findMany: {
+            args: Prisma.TextInfoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>[]
+          }
+          create: {
+            args: Prisma.TextInfoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>
+          }
+          createMany: {
+            args: Prisma.TextInfoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TextInfoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>[]
+          }
+          delete: {
+            args: Prisma.TextInfoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>
+          }
+          update: {
+            args: Prisma.TextInfoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>
+          }
+          deleteMany: {
+            args: Prisma.TextInfoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TextInfoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TextInfoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>[]
+          }
+          upsert: {
+            args: Prisma.TextInfoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextInfoPayload>
+          }
+          aggregate: {
+            args: Prisma.TextInfoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTextInfo>
+          }
+          groupBy: {
+            args: Prisma.TextInfoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TextInfoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TextInfoCountArgs<ExtArgs>
+            result: $Utils.Optional<TextInfoCountAggregateOutputType> | number
+          }
+        }
+      }
+      TextContent: {
+        payload: Prisma.$TextContentPayload<ExtArgs>
+        fields: Prisma.TextContentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TextContentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TextContentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>
+          }
+          findFirst: {
+            args: Prisma.TextContentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TextContentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>
+          }
+          findMany: {
+            args: Prisma.TextContentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>[]
+          }
+          create: {
+            args: Prisma.TextContentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>
+          }
+          createMany: {
+            args: Prisma.TextContentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TextContentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>[]
+          }
+          delete: {
+            args: Prisma.TextContentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>
+          }
+          update: {
+            args: Prisma.TextContentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>
+          }
+          deleteMany: {
+            args: Prisma.TextContentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TextContentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TextContentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>[]
+          }
+          upsert: {
+            args: Prisma.TextContentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextContentPayload>
+          }
+          aggregate: {
+            args: Prisma.TextContentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTextContent>
+          }
+          groupBy: {
+            args: Prisma.TextContentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TextContentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TextContentCountArgs<ExtArgs>
+            result: $Utils.Optional<TextContentCountAggregateOutputType> | number
+          }
+        }
+      }
+      Image: {
+        payload: Prisma.$ImagePayload<ExtArgs>
+        fields: Prisma.ImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          findFirst: {
+            args: Prisma.ImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          findMany: {
+            args: Prisma.ImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          create: {
+            args: Prisma.ImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          createMany: {
+            args: Prisma.ImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          delete: {
+            args: Prisma.ImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          update: {
+            args: Prisma.ImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          aggregate: {
+            args: Prisma.ImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImage>
+          }
+          groupBy: {
+            args: Prisma.ImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ImageCountArgs<ExtArgs>
+            result: $Utils.Optional<ImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      TextualGenre: {
+        payload: Prisma.$TextualGenrePayload<ExtArgs>
+        fields: Prisma.TextualGenreFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TextualGenreFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TextualGenreFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>
+          }
+          findFirst: {
+            args: Prisma.TextualGenreFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TextualGenreFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>
+          }
+          findMany: {
+            args: Prisma.TextualGenreFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>[]
+          }
+          create: {
+            args: Prisma.TextualGenreCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>
+          }
+          createMany: {
+            args: Prisma.TextualGenreCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TextualGenreCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>[]
+          }
+          delete: {
+            args: Prisma.TextualGenreDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>
+          }
+          update: {
+            args: Prisma.TextualGenreUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>
+          }
+          deleteMany: {
+            args: Prisma.TextualGenreDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TextualGenreUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TextualGenreUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>[]
+          }
+          upsert: {
+            args: Prisma.TextualGenreUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TextualGenrePayload>
+          }
+          aggregate: {
+            args: Prisma.TextualGenreAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTextualGenre>
+          }
+          groupBy: {
+            args: Prisma.TextualGenreGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TextualGenreGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TextualGenreCountArgs<ExtArgs>
+            result: $Utils.Optional<TextualGenreCountAggregateOutputType> | number
+          }
+        }
+      }
+      AdminActivityLog: {
+        payload: Prisma.$AdminActivityLogPayload<ExtArgs>
+        fields: Prisma.AdminActivityLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AdminActivityLogFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AdminActivityLogFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+          }
+          findFirst: {
+            args: Prisma.AdminActivityLogFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AdminActivityLogFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+          }
+          findMany: {
+            args: Prisma.AdminActivityLogFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>[]
+          }
+          create: {
+            args: Prisma.AdminActivityLogCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+          }
+          createMany: {
+            args: Prisma.AdminActivityLogCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AdminActivityLogCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>[]
+          }
+          delete: {
+            args: Prisma.AdminActivityLogDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+          }
+          update: {
+            args: Prisma.AdminActivityLogUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.AdminActivityLogDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AdminActivityLogUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AdminActivityLogUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>[]
+          }
+          upsert: {
+            args: Prisma.AdminActivityLogUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+          }
+          aggregate: {
+            args: Prisma.AdminActivityLogAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAdminActivityLog>
+          }
+          groupBy: {
+            args: Prisma.AdminActivityLogGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AdminActivityLogGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AdminActivityLogCountArgs<ExtArgs>
+            result: $Utils.Optional<AdminActivityLogCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1009,6 +1459,11 @@ export namespace Prisma {
     user?: UserOmit
     account?: AccountOmit
     accountVerificationToken?: AccountVerificationTokenOmit
+    textInfo?: TextInfoOmit
+    textContent?: TextContentOmit
+    image?: ImageOmit
+    textualGenre?: TextualGenreOmit
+    adminActivityLog?: AdminActivityLogOmit
   }
 
   /* Types for Logging */
@@ -1090,10 +1545,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     accounts: number
+    activityLogs: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    activityLogs?: boolean | UserCountOutputTypeCountActivityLogsArgs
   }
 
   // Custom InputTypes
@@ -1112,6 +1569,75 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AccountWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountActivityLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminActivityLogWhereInput
+  }
+
+
+  /**
+   * Count Type TextInfoCountOutputType
+   */
+
+  export type TextInfoCountOutputType = {
+    images: number
+  }
+
+  export type TextInfoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | TextInfoCountOutputTypeCountImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TextInfoCountOutputType without action
+   */
+  export type TextInfoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfoCountOutputType
+     */
+    select?: TextInfoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TextInfoCountOutputType without action
+   */
+  export type TextInfoCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+
+  /**
+   * Count Type TextualGenreCountOutputType
+   */
+
+  export type TextualGenreCountOutputType = {
+    texts: number
+  }
+
+  export type TextualGenreCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    texts?: boolean | TextualGenreCountOutputTypeCountTextsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TextualGenreCountOutputType without action
+   */
+  export type TextualGenreCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenreCountOutputType
+     */
+    select?: TextualGenreCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TextualGenreCountOutputType without action
+   */
+  export type TextualGenreCountOutputTypeCountTextsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TextInfoWhereInput
   }
 
 
@@ -1374,6 +1900,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    activityLogs?: boolean | User$activityLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1425,6 +1952,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicId" | "email" | "firstName" | "lastName" | "image" | "status" | "role" | "isSuperAdmin" | "isCollaborator" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    activityLogs?: boolean | User$activityLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1434,6 +1962,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
+      activityLogs: Prisma.$AdminActivityLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1843,6 +2372,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    activityLogs<T extends User$activityLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$activityLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2291,6 +2821,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.activityLogs
+   */
+  export type User$activityLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    where?: AdminActivityLogWhereInput
+    orderBy?: AdminActivityLogOrderByWithRelationInput | AdminActivityLogOrderByWithRelationInput[]
+    cursor?: AdminActivityLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminActivityLogScalarFieldEnum | AdminActivityLogScalarFieldEnum[]
   }
 
   /**
@@ -4452,6 +5006,5516 @@ export namespace Prisma {
 
 
   /**
+   * Model TextInfo
+   */
+
+  export type AggregateTextInfo = {
+    _count: TextInfoCountAggregateOutputType | null
+    _avg: TextInfoAvgAggregateOutputType | null
+    _sum: TextInfoSumAggregateOutputType | null
+    _min: TextInfoMinAggregateOutputType | null
+    _max: TextInfoMaxAggregateOutputType | null
+  }
+
+  export type TextInfoAvgAggregateOutputType = {
+    id: number | null
+    genreId: number | null
+  }
+
+  export type TextInfoSumAggregateOutputType = {
+    id: number | null
+    genreId: number | null
+  }
+
+  export type TextInfoMinAggregateOutputType = {
+    id: number | null
+    publicId: string | null
+    title: string | null
+    isImageOnly: boolean | null
+    authorName: string | null
+    referenceUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    genreId: number | null
+  }
+
+  export type TextInfoMaxAggregateOutputType = {
+    id: number | null
+    publicId: string | null
+    title: string | null
+    isImageOnly: boolean | null
+    authorName: string | null
+    referenceUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    genreId: number | null
+  }
+
+  export type TextInfoCountAggregateOutputType = {
+    id: number
+    publicId: number
+    title: number
+    isImageOnly: number
+    authorName: number
+    referenceUrl: number
+    createdAt: number
+    updatedAt: number
+    genreId: number
+    _all: number
+  }
+
+
+  export type TextInfoAvgAggregateInputType = {
+    id?: true
+    genreId?: true
+  }
+
+  export type TextInfoSumAggregateInputType = {
+    id?: true
+    genreId?: true
+  }
+
+  export type TextInfoMinAggregateInputType = {
+    id?: true
+    publicId?: true
+    title?: true
+    isImageOnly?: true
+    authorName?: true
+    referenceUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    genreId?: true
+  }
+
+  export type TextInfoMaxAggregateInputType = {
+    id?: true
+    publicId?: true
+    title?: true
+    isImageOnly?: true
+    authorName?: true
+    referenceUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    genreId?: true
+  }
+
+  export type TextInfoCountAggregateInputType = {
+    id?: true
+    publicId?: true
+    title?: true
+    isImageOnly?: true
+    authorName?: true
+    referenceUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    genreId?: true
+    _all?: true
+  }
+
+  export type TextInfoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TextInfo to aggregate.
+     */
+    where?: TextInfoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextInfos to fetch.
+     */
+    orderBy?: TextInfoOrderByWithRelationInput | TextInfoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TextInfoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextInfos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextInfos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TextInfos
+    **/
+    _count?: true | TextInfoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TextInfoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TextInfoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TextInfoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TextInfoMaxAggregateInputType
+  }
+
+  export type GetTextInfoAggregateType<T extends TextInfoAggregateArgs> = {
+        [P in keyof T & keyof AggregateTextInfo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTextInfo[P]>
+      : GetScalarType<T[P], AggregateTextInfo[P]>
+  }
+
+
+
+
+  export type TextInfoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TextInfoWhereInput
+    orderBy?: TextInfoOrderByWithAggregationInput | TextInfoOrderByWithAggregationInput[]
+    by: TextInfoScalarFieldEnum[] | TextInfoScalarFieldEnum
+    having?: TextInfoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TextInfoCountAggregateInputType | true
+    _avg?: TextInfoAvgAggregateInputType
+    _sum?: TextInfoSumAggregateInputType
+    _min?: TextInfoMinAggregateInputType
+    _max?: TextInfoMaxAggregateInputType
+  }
+
+  export type TextInfoGroupByOutputType = {
+    id: number
+    publicId: string
+    title: string
+    isImageOnly: boolean
+    authorName: string
+    referenceUrl: string | null
+    createdAt: Date
+    updatedAt: Date
+    genreId: number
+    _count: TextInfoCountAggregateOutputType | null
+    _avg: TextInfoAvgAggregateOutputType | null
+    _sum: TextInfoSumAggregateOutputType | null
+    _min: TextInfoMinAggregateOutputType | null
+    _max: TextInfoMaxAggregateOutputType | null
+  }
+
+  type GetTextInfoGroupByPayload<T extends TextInfoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TextInfoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TextInfoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TextInfoGroupByOutputType[P]>
+            : GetScalarType<T[P], TextInfoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TextInfoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    publicId?: boolean
+    title?: boolean
+    isImageOnly?: boolean
+    authorName?: boolean
+    referenceUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    genreId?: boolean
+    content?: boolean | TextInfo$contentArgs<ExtArgs>
+    images?: boolean | TextInfo$imagesArgs<ExtArgs>
+    genre?: boolean | TextualGenreDefaultArgs<ExtArgs>
+    _count?: boolean | TextInfoCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["textInfo"]>
+
+  export type TextInfoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    publicId?: boolean
+    title?: boolean
+    isImageOnly?: boolean
+    authorName?: boolean
+    referenceUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    genreId?: boolean
+    genre?: boolean | TextualGenreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["textInfo"]>
+
+  export type TextInfoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    publicId?: boolean
+    title?: boolean
+    isImageOnly?: boolean
+    authorName?: boolean
+    referenceUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    genreId?: boolean
+    genre?: boolean | TextualGenreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["textInfo"]>
+
+  export type TextInfoSelectScalar = {
+    id?: boolean
+    publicId?: boolean
+    title?: boolean
+    isImageOnly?: boolean
+    authorName?: boolean
+    referenceUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    genreId?: boolean
+  }
+
+  export type TextInfoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicId" | "title" | "isImageOnly" | "authorName" | "referenceUrl" | "createdAt" | "updatedAt" | "genreId", ExtArgs["result"]["textInfo"]>
+  export type TextInfoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    content?: boolean | TextInfo$contentArgs<ExtArgs>
+    images?: boolean | TextInfo$imagesArgs<ExtArgs>
+    genre?: boolean | TextualGenreDefaultArgs<ExtArgs>
+    _count?: boolean | TextInfoCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TextInfoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    genre?: boolean | TextualGenreDefaultArgs<ExtArgs>
+  }
+  export type TextInfoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    genre?: boolean | TextualGenreDefaultArgs<ExtArgs>
+  }
+
+  export type $TextInfoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TextInfo"
+    objects: {
+      content: Prisma.$TextContentPayload<ExtArgs> | null
+      images: Prisma.$ImagePayload<ExtArgs>[]
+      genre: Prisma.$TextualGenrePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      publicId: string
+      title: string
+      isImageOnly: boolean
+      authorName: string
+      referenceUrl: string | null
+      createdAt: Date
+      updatedAt: Date
+      genreId: number
+    }, ExtArgs["result"]["textInfo"]>
+    composites: {}
+  }
+
+  type TextInfoGetPayload<S extends boolean | null | undefined | TextInfoDefaultArgs> = $Result.GetResult<Prisma.$TextInfoPayload, S>
+
+  type TextInfoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TextInfoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TextInfoCountAggregateInputType | true
+    }
+
+  export interface TextInfoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TextInfo'], meta: { name: 'TextInfo' } }
+    /**
+     * Find zero or one TextInfo that matches the filter.
+     * @param {TextInfoFindUniqueArgs} args - Arguments to find a TextInfo
+     * @example
+     * // Get one TextInfo
+     * const textInfo = await prisma.textInfo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TextInfoFindUniqueArgs>(args: SelectSubset<T, TextInfoFindUniqueArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TextInfo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TextInfoFindUniqueOrThrowArgs} args - Arguments to find a TextInfo
+     * @example
+     * // Get one TextInfo
+     * const textInfo = await prisma.textInfo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TextInfoFindUniqueOrThrowArgs>(args: SelectSubset<T, TextInfoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TextInfo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextInfoFindFirstArgs} args - Arguments to find a TextInfo
+     * @example
+     * // Get one TextInfo
+     * const textInfo = await prisma.textInfo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TextInfoFindFirstArgs>(args?: SelectSubset<T, TextInfoFindFirstArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TextInfo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextInfoFindFirstOrThrowArgs} args - Arguments to find a TextInfo
+     * @example
+     * // Get one TextInfo
+     * const textInfo = await prisma.textInfo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TextInfoFindFirstOrThrowArgs>(args?: SelectSubset<T, TextInfoFindFirstOrThrowArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TextInfos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextInfoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TextInfos
+     * const textInfos = await prisma.textInfo.findMany()
+     * 
+     * // Get first 10 TextInfos
+     * const textInfos = await prisma.textInfo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const textInfoWithIdOnly = await prisma.textInfo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TextInfoFindManyArgs>(args?: SelectSubset<T, TextInfoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TextInfo.
+     * @param {TextInfoCreateArgs} args - Arguments to create a TextInfo.
+     * @example
+     * // Create one TextInfo
+     * const TextInfo = await prisma.textInfo.create({
+     *   data: {
+     *     // ... data to create a TextInfo
+     *   }
+     * })
+     * 
+     */
+    create<T extends TextInfoCreateArgs>(args: SelectSubset<T, TextInfoCreateArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TextInfos.
+     * @param {TextInfoCreateManyArgs} args - Arguments to create many TextInfos.
+     * @example
+     * // Create many TextInfos
+     * const textInfo = await prisma.textInfo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TextInfoCreateManyArgs>(args?: SelectSubset<T, TextInfoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TextInfos and returns the data saved in the database.
+     * @param {TextInfoCreateManyAndReturnArgs} args - Arguments to create many TextInfos.
+     * @example
+     * // Create many TextInfos
+     * const textInfo = await prisma.textInfo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TextInfos and only return the `id`
+     * const textInfoWithIdOnly = await prisma.textInfo.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TextInfoCreateManyAndReturnArgs>(args?: SelectSubset<T, TextInfoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TextInfo.
+     * @param {TextInfoDeleteArgs} args - Arguments to delete one TextInfo.
+     * @example
+     * // Delete one TextInfo
+     * const TextInfo = await prisma.textInfo.delete({
+     *   where: {
+     *     // ... filter to delete one TextInfo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TextInfoDeleteArgs>(args: SelectSubset<T, TextInfoDeleteArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TextInfo.
+     * @param {TextInfoUpdateArgs} args - Arguments to update one TextInfo.
+     * @example
+     * // Update one TextInfo
+     * const textInfo = await prisma.textInfo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TextInfoUpdateArgs>(args: SelectSubset<T, TextInfoUpdateArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TextInfos.
+     * @param {TextInfoDeleteManyArgs} args - Arguments to filter TextInfos to delete.
+     * @example
+     * // Delete a few TextInfos
+     * const { count } = await prisma.textInfo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TextInfoDeleteManyArgs>(args?: SelectSubset<T, TextInfoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TextInfos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextInfoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TextInfos
+     * const textInfo = await prisma.textInfo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TextInfoUpdateManyArgs>(args: SelectSubset<T, TextInfoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TextInfos and returns the data updated in the database.
+     * @param {TextInfoUpdateManyAndReturnArgs} args - Arguments to update many TextInfos.
+     * @example
+     * // Update many TextInfos
+     * const textInfo = await prisma.textInfo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TextInfos and only return the `id`
+     * const textInfoWithIdOnly = await prisma.textInfo.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TextInfoUpdateManyAndReturnArgs>(args: SelectSubset<T, TextInfoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TextInfo.
+     * @param {TextInfoUpsertArgs} args - Arguments to update or create a TextInfo.
+     * @example
+     * // Update or create a TextInfo
+     * const textInfo = await prisma.textInfo.upsert({
+     *   create: {
+     *     // ... data to create a TextInfo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TextInfo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TextInfoUpsertArgs>(args: SelectSubset<T, TextInfoUpsertArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TextInfos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextInfoCountArgs} args - Arguments to filter TextInfos to count.
+     * @example
+     * // Count the number of TextInfos
+     * const count = await prisma.textInfo.count({
+     *   where: {
+     *     // ... the filter for the TextInfos we want to count
+     *   }
+     * })
+    **/
+    count<T extends TextInfoCountArgs>(
+      args?: Subset<T, TextInfoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TextInfoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TextInfo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextInfoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TextInfoAggregateArgs>(args: Subset<T, TextInfoAggregateArgs>): Prisma.PrismaPromise<GetTextInfoAggregateType<T>>
+
+    /**
+     * Group by TextInfo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextInfoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TextInfoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TextInfoGroupByArgs['orderBy'] }
+        : { orderBy?: TextInfoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TextInfoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTextInfoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TextInfo model
+   */
+  readonly fields: TextInfoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TextInfo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TextInfoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    content<T extends TextInfo$contentArgs<ExtArgs> = {}>(args?: Subset<T, TextInfo$contentArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    images<T extends TextInfo$imagesArgs<ExtArgs> = {}>(args?: Subset<T, TextInfo$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    genre<T extends TextualGenreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TextualGenreDefaultArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TextInfo model
+   */
+  interface TextInfoFieldRefs {
+    readonly id: FieldRef<"TextInfo", 'Int'>
+    readonly publicId: FieldRef<"TextInfo", 'String'>
+    readonly title: FieldRef<"TextInfo", 'String'>
+    readonly isImageOnly: FieldRef<"TextInfo", 'Boolean'>
+    readonly authorName: FieldRef<"TextInfo", 'String'>
+    readonly referenceUrl: FieldRef<"TextInfo", 'String'>
+    readonly createdAt: FieldRef<"TextInfo", 'DateTime'>
+    readonly updatedAt: FieldRef<"TextInfo", 'DateTime'>
+    readonly genreId: FieldRef<"TextInfo", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TextInfo findUnique
+   */
+  export type TextInfoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * Filter, which TextInfo to fetch.
+     */
+    where: TextInfoWhereUniqueInput
+  }
+
+  /**
+   * TextInfo findUniqueOrThrow
+   */
+  export type TextInfoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * Filter, which TextInfo to fetch.
+     */
+    where: TextInfoWhereUniqueInput
+  }
+
+  /**
+   * TextInfo findFirst
+   */
+  export type TextInfoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * Filter, which TextInfo to fetch.
+     */
+    where?: TextInfoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextInfos to fetch.
+     */
+    orderBy?: TextInfoOrderByWithRelationInput | TextInfoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TextInfos.
+     */
+    cursor?: TextInfoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextInfos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextInfos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TextInfos.
+     */
+    distinct?: TextInfoScalarFieldEnum | TextInfoScalarFieldEnum[]
+  }
+
+  /**
+   * TextInfo findFirstOrThrow
+   */
+  export type TextInfoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * Filter, which TextInfo to fetch.
+     */
+    where?: TextInfoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextInfos to fetch.
+     */
+    orderBy?: TextInfoOrderByWithRelationInput | TextInfoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TextInfos.
+     */
+    cursor?: TextInfoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextInfos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextInfos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TextInfos.
+     */
+    distinct?: TextInfoScalarFieldEnum | TextInfoScalarFieldEnum[]
+  }
+
+  /**
+   * TextInfo findMany
+   */
+  export type TextInfoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * Filter, which TextInfos to fetch.
+     */
+    where?: TextInfoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextInfos to fetch.
+     */
+    orderBy?: TextInfoOrderByWithRelationInput | TextInfoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TextInfos.
+     */
+    cursor?: TextInfoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextInfos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextInfos.
+     */
+    skip?: number
+    distinct?: TextInfoScalarFieldEnum | TextInfoScalarFieldEnum[]
+  }
+
+  /**
+   * TextInfo create
+   */
+  export type TextInfoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TextInfo.
+     */
+    data: XOR<TextInfoCreateInput, TextInfoUncheckedCreateInput>
+  }
+
+  /**
+   * TextInfo createMany
+   */
+  export type TextInfoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TextInfos.
+     */
+    data: TextInfoCreateManyInput | TextInfoCreateManyInput[]
+  }
+
+  /**
+   * TextInfo createManyAndReturn
+   */
+  export type TextInfoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * The data used to create many TextInfos.
+     */
+    data: TextInfoCreateManyInput | TextInfoCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TextInfo update
+   */
+  export type TextInfoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TextInfo.
+     */
+    data: XOR<TextInfoUpdateInput, TextInfoUncheckedUpdateInput>
+    /**
+     * Choose, which TextInfo to update.
+     */
+    where: TextInfoWhereUniqueInput
+  }
+
+  /**
+   * TextInfo updateMany
+   */
+  export type TextInfoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TextInfos.
+     */
+    data: XOR<TextInfoUpdateManyMutationInput, TextInfoUncheckedUpdateManyInput>
+    /**
+     * Filter which TextInfos to update
+     */
+    where?: TextInfoWhereInput
+    /**
+     * Limit how many TextInfos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TextInfo updateManyAndReturn
+   */
+  export type TextInfoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * The data used to update TextInfos.
+     */
+    data: XOR<TextInfoUpdateManyMutationInput, TextInfoUncheckedUpdateManyInput>
+    /**
+     * Filter which TextInfos to update
+     */
+    where?: TextInfoWhereInput
+    /**
+     * Limit how many TextInfos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TextInfo upsert
+   */
+  export type TextInfoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TextInfo to update in case it exists.
+     */
+    where: TextInfoWhereUniqueInput
+    /**
+     * In case the TextInfo found by the `where` argument doesn't exist, create a new TextInfo with this data.
+     */
+    create: XOR<TextInfoCreateInput, TextInfoUncheckedCreateInput>
+    /**
+     * In case the TextInfo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TextInfoUpdateInput, TextInfoUncheckedUpdateInput>
+  }
+
+  /**
+   * TextInfo delete
+   */
+  export type TextInfoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    /**
+     * Filter which TextInfo to delete.
+     */
+    where: TextInfoWhereUniqueInput
+  }
+
+  /**
+   * TextInfo deleteMany
+   */
+  export type TextInfoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TextInfos to delete
+     */
+    where?: TextInfoWhereInput
+    /**
+     * Limit how many TextInfos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TextInfo.content
+   */
+  export type TextInfo$contentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    where?: TextContentWhereInput
+  }
+
+  /**
+   * TextInfo.images
+   */
+  export type TextInfo$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * TextInfo without action
+   */
+  export type TextInfoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TextContent
+   */
+
+  export type AggregateTextContent = {
+    _count: TextContentCountAggregateOutputType | null
+    _avg: TextContentAvgAggregateOutputType | null
+    _sum: TextContentSumAggregateOutputType | null
+    _min: TextContentMinAggregateOutputType | null
+    _max: TextContentMaxAggregateOutputType | null
+  }
+
+  export type TextContentAvgAggregateOutputType = {
+    textInfoId: number | null
+  }
+
+  export type TextContentSumAggregateOutputType = {
+    textInfoId: number | null
+  }
+
+  export type TextContentMinAggregateOutputType = {
+    id: string | null
+    textInfoId: number | null
+    content: string | null
+  }
+
+  export type TextContentMaxAggregateOutputType = {
+    id: string | null
+    textInfoId: number | null
+    content: string | null
+  }
+
+  export type TextContentCountAggregateOutputType = {
+    id: number
+    textInfoId: number
+    content: number
+    _all: number
+  }
+
+
+  export type TextContentAvgAggregateInputType = {
+    textInfoId?: true
+  }
+
+  export type TextContentSumAggregateInputType = {
+    textInfoId?: true
+  }
+
+  export type TextContentMinAggregateInputType = {
+    id?: true
+    textInfoId?: true
+    content?: true
+  }
+
+  export type TextContentMaxAggregateInputType = {
+    id?: true
+    textInfoId?: true
+    content?: true
+  }
+
+  export type TextContentCountAggregateInputType = {
+    id?: true
+    textInfoId?: true
+    content?: true
+    _all?: true
+  }
+
+  export type TextContentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TextContent to aggregate.
+     */
+    where?: TextContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextContents to fetch.
+     */
+    orderBy?: TextContentOrderByWithRelationInput | TextContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TextContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextContents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TextContents
+    **/
+    _count?: true | TextContentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TextContentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TextContentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TextContentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TextContentMaxAggregateInputType
+  }
+
+  export type GetTextContentAggregateType<T extends TextContentAggregateArgs> = {
+        [P in keyof T & keyof AggregateTextContent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTextContent[P]>
+      : GetScalarType<T[P], AggregateTextContent[P]>
+  }
+
+
+
+
+  export type TextContentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TextContentWhereInput
+    orderBy?: TextContentOrderByWithAggregationInput | TextContentOrderByWithAggregationInput[]
+    by: TextContentScalarFieldEnum[] | TextContentScalarFieldEnum
+    having?: TextContentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TextContentCountAggregateInputType | true
+    _avg?: TextContentAvgAggregateInputType
+    _sum?: TextContentSumAggregateInputType
+    _min?: TextContentMinAggregateInputType
+    _max?: TextContentMaxAggregateInputType
+  }
+
+  export type TextContentGroupByOutputType = {
+    id: string
+    textInfoId: number
+    content: string
+    _count: TextContentCountAggregateOutputType | null
+    _avg: TextContentAvgAggregateOutputType | null
+    _sum: TextContentSumAggregateOutputType | null
+    _min: TextContentMinAggregateOutputType | null
+    _max: TextContentMaxAggregateOutputType | null
+  }
+
+  type GetTextContentGroupByPayload<T extends TextContentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TextContentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TextContentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TextContentGroupByOutputType[P]>
+            : GetScalarType<T[P], TextContentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TextContentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    textInfoId?: boolean
+    content?: boolean
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["textContent"]>
+
+  export type TextContentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    textInfoId?: boolean
+    content?: boolean
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["textContent"]>
+
+  export type TextContentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    textInfoId?: boolean
+    content?: boolean
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["textContent"]>
+
+  export type TextContentSelectScalar = {
+    id?: boolean
+    textInfoId?: boolean
+    content?: boolean
+  }
+
+  export type TextContentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "textInfoId" | "content", ExtArgs["result"]["textContent"]>
+  export type TextContentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }
+  export type TextContentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }
+  export type TextContentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }
+
+  export type $TextContentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TextContent"
+    objects: {
+      textInfo: Prisma.$TextInfoPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      textInfoId: number
+      content: string
+    }, ExtArgs["result"]["textContent"]>
+    composites: {}
+  }
+
+  type TextContentGetPayload<S extends boolean | null | undefined | TextContentDefaultArgs> = $Result.GetResult<Prisma.$TextContentPayload, S>
+
+  type TextContentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TextContentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TextContentCountAggregateInputType | true
+    }
+
+  export interface TextContentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TextContent'], meta: { name: 'TextContent' } }
+    /**
+     * Find zero or one TextContent that matches the filter.
+     * @param {TextContentFindUniqueArgs} args - Arguments to find a TextContent
+     * @example
+     * // Get one TextContent
+     * const textContent = await prisma.textContent.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TextContentFindUniqueArgs>(args: SelectSubset<T, TextContentFindUniqueArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TextContent that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TextContentFindUniqueOrThrowArgs} args - Arguments to find a TextContent
+     * @example
+     * // Get one TextContent
+     * const textContent = await prisma.textContent.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TextContentFindUniqueOrThrowArgs>(args: SelectSubset<T, TextContentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TextContent that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextContentFindFirstArgs} args - Arguments to find a TextContent
+     * @example
+     * // Get one TextContent
+     * const textContent = await prisma.textContent.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TextContentFindFirstArgs>(args?: SelectSubset<T, TextContentFindFirstArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TextContent that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextContentFindFirstOrThrowArgs} args - Arguments to find a TextContent
+     * @example
+     * // Get one TextContent
+     * const textContent = await prisma.textContent.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TextContentFindFirstOrThrowArgs>(args?: SelectSubset<T, TextContentFindFirstOrThrowArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TextContents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextContentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TextContents
+     * const textContents = await prisma.textContent.findMany()
+     * 
+     * // Get first 10 TextContents
+     * const textContents = await prisma.textContent.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const textContentWithIdOnly = await prisma.textContent.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TextContentFindManyArgs>(args?: SelectSubset<T, TextContentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TextContent.
+     * @param {TextContentCreateArgs} args - Arguments to create a TextContent.
+     * @example
+     * // Create one TextContent
+     * const TextContent = await prisma.textContent.create({
+     *   data: {
+     *     // ... data to create a TextContent
+     *   }
+     * })
+     * 
+     */
+    create<T extends TextContentCreateArgs>(args: SelectSubset<T, TextContentCreateArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TextContents.
+     * @param {TextContentCreateManyArgs} args - Arguments to create many TextContents.
+     * @example
+     * // Create many TextContents
+     * const textContent = await prisma.textContent.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TextContentCreateManyArgs>(args?: SelectSubset<T, TextContentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TextContents and returns the data saved in the database.
+     * @param {TextContentCreateManyAndReturnArgs} args - Arguments to create many TextContents.
+     * @example
+     * // Create many TextContents
+     * const textContent = await prisma.textContent.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TextContents and only return the `id`
+     * const textContentWithIdOnly = await prisma.textContent.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TextContentCreateManyAndReturnArgs>(args?: SelectSubset<T, TextContentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TextContent.
+     * @param {TextContentDeleteArgs} args - Arguments to delete one TextContent.
+     * @example
+     * // Delete one TextContent
+     * const TextContent = await prisma.textContent.delete({
+     *   where: {
+     *     // ... filter to delete one TextContent
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TextContentDeleteArgs>(args: SelectSubset<T, TextContentDeleteArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TextContent.
+     * @param {TextContentUpdateArgs} args - Arguments to update one TextContent.
+     * @example
+     * // Update one TextContent
+     * const textContent = await prisma.textContent.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TextContentUpdateArgs>(args: SelectSubset<T, TextContentUpdateArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TextContents.
+     * @param {TextContentDeleteManyArgs} args - Arguments to filter TextContents to delete.
+     * @example
+     * // Delete a few TextContents
+     * const { count } = await prisma.textContent.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TextContentDeleteManyArgs>(args?: SelectSubset<T, TextContentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TextContents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextContentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TextContents
+     * const textContent = await prisma.textContent.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TextContentUpdateManyArgs>(args: SelectSubset<T, TextContentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TextContents and returns the data updated in the database.
+     * @param {TextContentUpdateManyAndReturnArgs} args - Arguments to update many TextContents.
+     * @example
+     * // Update many TextContents
+     * const textContent = await prisma.textContent.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TextContents and only return the `id`
+     * const textContentWithIdOnly = await prisma.textContent.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TextContentUpdateManyAndReturnArgs>(args: SelectSubset<T, TextContentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TextContent.
+     * @param {TextContentUpsertArgs} args - Arguments to update or create a TextContent.
+     * @example
+     * // Update or create a TextContent
+     * const textContent = await prisma.textContent.upsert({
+     *   create: {
+     *     // ... data to create a TextContent
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TextContent we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TextContentUpsertArgs>(args: SelectSubset<T, TextContentUpsertArgs<ExtArgs>>): Prisma__TextContentClient<$Result.GetResult<Prisma.$TextContentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TextContents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextContentCountArgs} args - Arguments to filter TextContents to count.
+     * @example
+     * // Count the number of TextContents
+     * const count = await prisma.textContent.count({
+     *   where: {
+     *     // ... the filter for the TextContents we want to count
+     *   }
+     * })
+    **/
+    count<T extends TextContentCountArgs>(
+      args?: Subset<T, TextContentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TextContentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TextContent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextContentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TextContentAggregateArgs>(args: Subset<T, TextContentAggregateArgs>): Prisma.PrismaPromise<GetTextContentAggregateType<T>>
+
+    /**
+     * Group by TextContent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextContentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TextContentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TextContentGroupByArgs['orderBy'] }
+        : { orderBy?: TextContentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TextContentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTextContentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TextContent model
+   */
+  readonly fields: TextContentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TextContent.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TextContentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    textInfo<T extends TextInfoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TextInfoDefaultArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TextContent model
+   */
+  interface TextContentFieldRefs {
+    readonly id: FieldRef<"TextContent", 'String'>
+    readonly textInfoId: FieldRef<"TextContent", 'Int'>
+    readonly content: FieldRef<"TextContent", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TextContent findUnique
+   */
+  export type TextContentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * Filter, which TextContent to fetch.
+     */
+    where: TextContentWhereUniqueInput
+  }
+
+  /**
+   * TextContent findUniqueOrThrow
+   */
+  export type TextContentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * Filter, which TextContent to fetch.
+     */
+    where: TextContentWhereUniqueInput
+  }
+
+  /**
+   * TextContent findFirst
+   */
+  export type TextContentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * Filter, which TextContent to fetch.
+     */
+    where?: TextContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextContents to fetch.
+     */
+    orderBy?: TextContentOrderByWithRelationInput | TextContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TextContents.
+     */
+    cursor?: TextContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextContents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TextContents.
+     */
+    distinct?: TextContentScalarFieldEnum | TextContentScalarFieldEnum[]
+  }
+
+  /**
+   * TextContent findFirstOrThrow
+   */
+  export type TextContentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * Filter, which TextContent to fetch.
+     */
+    where?: TextContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextContents to fetch.
+     */
+    orderBy?: TextContentOrderByWithRelationInput | TextContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TextContents.
+     */
+    cursor?: TextContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextContents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TextContents.
+     */
+    distinct?: TextContentScalarFieldEnum | TextContentScalarFieldEnum[]
+  }
+
+  /**
+   * TextContent findMany
+   */
+  export type TextContentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * Filter, which TextContents to fetch.
+     */
+    where?: TextContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextContents to fetch.
+     */
+    orderBy?: TextContentOrderByWithRelationInput | TextContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TextContents.
+     */
+    cursor?: TextContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextContents.
+     */
+    skip?: number
+    distinct?: TextContentScalarFieldEnum | TextContentScalarFieldEnum[]
+  }
+
+  /**
+   * TextContent create
+   */
+  export type TextContentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TextContent.
+     */
+    data: XOR<TextContentCreateInput, TextContentUncheckedCreateInput>
+  }
+
+  /**
+   * TextContent createMany
+   */
+  export type TextContentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TextContents.
+     */
+    data: TextContentCreateManyInput | TextContentCreateManyInput[]
+  }
+
+  /**
+   * TextContent createManyAndReturn
+   */
+  export type TextContentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * The data used to create many TextContents.
+     */
+    data: TextContentCreateManyInput | TextContentCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TextContent update
+   */
+  export type TextContentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TextContent.
+     */
+    data: XOR<TextContentUpdateInput, TextContentUncheckedUpdateInput>
+    /**
+     * Choose, which TextContent to update.
+     */
+    where: TextContentWhereUniqueInput
+  }
+
+  /**
+   * TextContent updateMany
+   */
+  export type TextContentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TextContents.
+     */
+    data: XOR<TextContentUpdateManyMutationInput, TextContentUncheckedUpdateManyInput>
+    /**
+     * Filter which TextContents to update
+     */
+    where?: TextContentWhereInput
+    /**
+     * Limit how many TextContents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TextContent updateManyAndReturn
+   */
+  export type TextContentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * The data used to update TextContents.
+     */
+    data: XOR<TextContentUpdateManyMutationInput, TextContentUncheckedUpdateManyInput>
+    /**
+     * Filter which TextContents to update
+     */
+    where?: TextContentWhereInput
+    /**
+     * Limit how many TextContents to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TextContent upsert
+   */
+  export type TextContentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TextContent to update in case it exists.
+     */
+    where: TextContentWhereUniqueInput
+    /**
+     * In case the TextContent found by the `where` argument doesn't exist, create a new TextContent with this data.
+     */
+    create: XOR<TextContentCreateInput, TextContentUncheckedCreateInput>
+    /**
+     * In case the TextContent was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TextContentUpdateInput, TextContentUncheckedUpdateInput>
+  }
+
+  /**
+   * TextContent delete
+   */
+  export type TextContentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+    /**
+     * Filter which TextContent to delete.
+     */
+    where: TextContentWhereUniqueInput
+  }
+
+  /**
+   * TextContent deleteMany
+   */
+  export type TextContentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TextContents to delete
+     */
+    where?: TextContentWhereInput
+    /**
+     * Limit how many TextContents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TextContent without action
+   */
+  export type TextContentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextContent
+     */
+    select?: TextContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextContent
+     */
+    omit?: TextContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextContentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Image
+   */
+
+  export type AggregateImage = {
+    _count: ImageCountAggregateOutputType | null
+    _avg: ImageAvgAggregateOutputType | null
+    _sum: ImageSumAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
+  }
+
+  export type ImageAvgAggregateOutputType = {
+    textInfoId: number | null
+  }
+
+  export type ImageSumAggregateOutputType = {
+    textInfoId: number | null
+  }
+
+  export type ImageMinAggregateOutputType = {
+    id: string | null
+    textInfoId: number | null
+    url: string | null
+  }
+
+  export type ImageMaxAggregateOutputType = {
+    id: string | null
+    textInfoId: number | null
+    url: string | null
+  }
+
+  export type ImageCountAggregateOutputType = {
+    id: number
+    textInfoId: number
+    url: number
+    _all: number
+  }
+
+
+  export type ImageAvgAggregateInputType = {
+    textInfoId?: true
+  }
+
+  export type ImageSumAggregateInputType = {
+    textInfoId?: true
+  }
+
+  export type ImageMinAggregateInputType = {
+    id?: true
+    textInfoId?: true
+    url?: true
+  }
+
+  export type ImageMaxAggregateInputType = {
+    id?: true
+    textInfoId?: true
+    url?: true
+  }
+
+  export type ImageCountAggregateInputType = {
+    id?: true
+    textInfoId?: true
+    url?: true
+    _all?: true
+  }
+
+  export type ImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Image to aggregate.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Images
+    **/
+    _count?: true | ImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ImageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ImageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ImageMaxAggregateInputType
+  }
+
+  export type GetImageAggregateType<T extends ImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateImage[P]>
+      : GetScalarType<T[P], AggregateImage[P]>
+  }
+
+
+
+
+  export type ImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithAggregationInput | ImageOrderByWithAggregationInput[]
+    by: ImageScalarFieldEnum[] | ImageScalarFieldEnum
+    having?: ImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ImageCountAggregateInputType | true
+    _avg?: ImageAvgAggregateInputType
+    _sum?: ImageSumAggregateInputType
+    _min?: ImageMinAggregateInputType
+    _max?: ImageMaxAggregateInputType
+  }
+
+  export type ImageGroupByOutputType = {
+    id: string
+    textInfoId: number
+    url: string
+    _count: ImageCountAggregateOutputType | null
+    _avg: ImageAvgAggregateOutputType | null
+    _sum: ImageSumAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
+  }
+
+  type GetImageGroupByPayload<T extends ImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ImageGroupByOutputType[P]>
+            : GetScalarType<T[P], ImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    textInfoId?: boolean
+    url?: boolean
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    textInfoId?: boolean
+    url?: boolean
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    textInfoId?: boolean
+    url?: boolean
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectScalar = {
+    id?: boolean
+    textInfoId?: boolean
+    url?: boolean
+  }
+
+  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "textInfoId" | "url", ExtArgs["result"]["image"]>
+  export type ImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }
+  export type ImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }
+  export type ImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    textInfo?: boolean | TextInfoDefaultArgs<ExtArgs>
+  }
+
+  export type $ImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Image"
+    objects: {
+      textInfo: Prisma.$TextInfoPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      textInfoId: number
+      url: string
+    }, ExtArgs["result"]["image"]>
+    composites: {}
+  }
+
+  type ImageGetPayload<S extends boolean | null | undefined | ImageDefaultArgs> = $Result.GetResult<Prisma.$ImagePayload, S>
+
+  type ImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImageCountAggregateInputType | true
+    }
+
+  export interface ImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Image'], meta: { name: 'Image' } }
+    /**
+     * Find zero or one Image that matches the filter.
+     * @param {ImageFindUniqueArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ImageFindUniqueArgs>(args: SelectSubset<T, ImageFindUniqueArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Image that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ImageFindUniqueOrThrowArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ImageFindUniqueOrThrowArgs>(args: SelectSubset<T, ImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Image that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindFirstArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ImageFindFirstArgs>(args?: SelectSubset<T, ImageFindFirstArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Image that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindFirstOrThrowArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ImageFindFirstOrThrowArgs>(args?: SelectSubset<T, ImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Images
+     * const images = await prisma.image.findMany()
+     * 
+     * // Get first 10 Images
+     * const images = await prisma.image.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const imageWithIdOnly = await prisma.image.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ImageFindManyArgs>(args?: SelectSubset<T, ImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Image.
+     * @param {ImageCreateArgs} args - Arguments to create a Image.
+     * @example
+     * // Create one Image
+     * const Image = await prisma.image.create({
+     *   data: {
+     *     // ... data to create a Image
+     *   }
+     * })
+     * 
+     */
+    create<T extends ImageCreateArgs>(args: SelectSubset<T, ImageCreateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Images.
+     * @param {ImageCreateManyArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const image = await prisma.image.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ImageCreateManyArgs>(args?: SelectSubset<T, ImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Images and returns the data saved in the database.
+     * @param {ImageCreateManyAndReturnArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const image = await prisma.image.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ImageCreateManyAndReturnArgs>(args?: SelectSubset<T, ImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Image.
+     * @param {ImageDeleteArgs} args - Arguments to delete one Image.
+     * @example
+     * // Delete one Image
+     * const Image = await prisma.image.delete({
+     *   where: {
+     *     // ... filter to delete one Image
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ImageDeleteArgs>(args: SelectSubset<T, ImageDeleteArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Image.
+     * @param {ImageUpdateArgs} args - Arguments to update one Image.
+     * @example
+     * // Update one Image
+     * const image = await prisma.image.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ImageUpdateArgs>(args: SelectSubset<T, ImageUpdateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Images.
+     * @param {ImageDeleteManyArgs} args - Arguments to filter Images to delete.
+     * @example
+     * // Delete a few Images
+     * const { count } = await prisma.image.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ImageDeleteManyArgs>(args?: SelectSubset<T, ImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Images
+     * const image = await prisma.image.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ImageUpdateManyArgs>(args: SelectSubset<T, ImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images and returns the data updated in the database.
+     * @param {ImageUpdateManyAndReturnArgs} args - Arguments to update many Images.
+     * @example
+     * // Update many Images
+     * const image = await prisma.image.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ImageUpdateManyAndReturnArgs>(args: SelectSubset<T, ImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Image.
+     * @param {ImageUpsertArgs} args - Arguments to update or create a Image.
+     * @example
+     * // Update or create a Image
+     * const image = await prisma.image.upsert({
+     *   create: {
+     *     // ... data to create a Image
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Image we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ImageUpsertArgs>(args: SelectSubset<T, ImageUpsertArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageCountArgs} args - Arguments to filter Images to count.
+     * @example
+     * // Count the number of Images
+     * const count = await prisma.image.count({
+     *   where: {
+     *     // ... the filter for the Images we want to count
+     *   }
+     * })
+    **/
+    count<T extends ImageCountArgs>(
+      args?: Subset<T, ImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Image.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ImageAggregateArgs>(args: Subset<T, ImageAggregateArgs>): Prisma.PrismaPromise<GetImageAggregateType<T>>
+
+    /**
+     * Group by Image.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ImageGroupByArgs['orderBy'] }
+        : { orderBy?: ImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Image model
+   */
+  readonly fields: ImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Image.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    textInfo<T extends TextInfoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TextInfoDefaultArgs<ExtArgs>>): Prisma__TextInfoClient<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Image model
+   */
+  interface ImageFieldRefs {
+    readonly id: FieldRef<"Image", 'String'>
+    readonly textInfoId: FieldRef<"Image", 'Int'>
+    readonly url: FieldRef<"Image", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Image findUnique
+   */
+  export type ImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image findUniqueOrThrow
+   */
+  export type ImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image findFirst
+   */
+  export type ImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image findFirstOrThrow
+   */
+  export type ImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image findMany
+   */
+  export type ImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image create
+   */
+  export type ImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Image.
+     */
+    data: XOR<ImageCreateInput, ImageUncheckedCreateInput>
+  }
+
+  /**
+   * Image createMany
+   */
+  export type ImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Images.
+     */
+    data: ImageCreateManyInput | ImageCreateManyInput[]
+  }
+
+  /**
+   * Image createManyAndReturn
+   */
+  export type ImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Images.
+     */
+    data: ImageCreateManyInput | ImageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Image update
+   */
+  export type ImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Image.
+     */
+    data: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+    /**
+     * Choose, which Image to update.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image updateMany
+   */
+  export type ImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Image updateManyAndReturn
+   */
+  export type ImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Image upsert
+   */
+  export type ImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Image to update in case it exists.
+     */
+    where: ImageWhereUniqueInput
+    /**
+     * In case the Image found by the `where` argument doesn't exist, create a new Image with this data.
+     */
+    create: XOR<ImageCreateInput, ImageUncheckedCreateInput>
+    /**
+     * In case the Image was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+  }
+
+  /**
+   * Image delete
+   */
+  export type ImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter which Image to delete.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image deleteMany
+   */
+  export type ImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Images to delete
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Image without action
+   */
+  export type ImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TextualGenre
+   */
+
+  export type AggregateTextualGenre = {
+    _count: TextualGenreCountAggregateOutputType | null
+    _avg: TextualGenreAvgAggregateOutputType | null
+    _sum: TextualGenreSumAggregateOutputType | null
+    _min: TextualGenreMinAggregateOutputType | null
+    _max: TextualGenreMaxAggregateOutputType | null
+  }
+
+  export type TextualGenreAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TextualGenreSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TextualGenreMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    creatorName: string | null
+  }
+
+  export type TextualGenreMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    creatorName: string | null
+  }
+
+  export type TextualGenreCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    creatorName: number
+    _all: number
+  }
+
+
+  export type TextualGenreAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TextualGenreSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TextualGenreMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    creatorName?: true
+  }
+
+  export type TextualGenreMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    creatorName?: true
+  }
+
+  export type TextualGenreCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    creatorName?: true
+    _all?: true
+  }
+
+  export type TextualGenreAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TextualGenre to aggregate.
+     */
+    where?: TextualGenreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextualGenres to fetch.
+     */
+    orderBy?: TextualGenreOrderByWithRelationInput | TextualGenreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TextualGenreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextualGenres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextualGenres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TextualGenres
+    **/
+    _count?: true | TextualGenreCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TextualGenreAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TextualGenreSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TextualGenreMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TextualGenreMaxAggregateInputType
+  }
+
+  export type GetTextualGenreAggregateType<T extends TextualGenreAggregateArgs> = {
+        [P in keyof T & keyof AggregateTextualGenre]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTextualGenre[P]>
+      : GetScalarType<T[P], AggregateTextualGenre[P]>
+  }
+
+
+
+
+  export type TextualGenreGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TextualGenreWhereInput
+    orderBy?: TextualGenreOrderByWithAggregationInput | TextualGenreOrderByWithAggregationInput[]
+    by: TextualGenreScalarFieldEnum[] | TextualGenreScalarFieldEnum
+    having?: TextualGenreScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TextualGenreCountAggregateInputType | true
+    _avg?: TextualGenreAvgAggregateInputType
+    _sum?: TextualGenreSumAggregateInputType
+    _min?: TextualGenreMinAggregateInputType
+    _max?: TextualGenreMaxAggregateInputType
+  }
+
+  export type TextualGenreGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    creatorName: string
+    _count: TextualGenreCountAggregateOutputType | null
+    _avg: TextualGenreAvgAggregateOutputType | null
+    _sum: TextualGenreSumAggregateOutputType | null
+    _min: TextualGenreMinAggregateOutputType | null
+    _max: TextualGenreMaxAggregateOutputType | null
+  }
+
+  type GetTextualGenreGroupByPayload<T extends TextualGenreGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TextualGenreGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TextualGenreGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TextualGenreGroupByOutputType[P]>
+            : GetScalarType<T[P], TextualGenreGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TextualGenreSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creatorName?: boolean
+    texts?: boolean | TextualGenre$textsArgs<ExtArgs>
+    _count?: boolean | TextualGenreCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["textualGenre"]>
+
+  export type TextualGenreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creatorName?: boolean
+  }, ExtArgs["result"]["textualGenre"]>
+
+  export type TextualGenreSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creatorName?: boolean
+  }, ExtArgs["result"]["textualGenre"]>
+
+  export type TextualGenreSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creatorName?: boolean
+  }
+
+  export type TextualGenreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "creatorName", ExtArgs["result"]["textualGenre"]>
+  export type TextualGenreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    texts?: boolean | TextualGenre$textsArgs<ExtArgs>
+    _count?: boolean | TextualGenreCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TextualGenreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TextualGenreIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TextualGenrePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TextualGenre"
+    objects: {
+      texts: Prisma.$TextInfoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+      creatorName: string
+    }, ExtArgs["result"]["textualGenre"]>
+    composites: {}
+  }
+
+  type TextualGenreGetPayload<S extends boolean | null | undefined | TextualGenreDefaultArgs> = $Result.GetResult<Prisma.$TextualGenrePayload, S>
+
+  type TextualGenreCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TextualGenreFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TextualGenreCountAggregateInputType | true
+    }
+
+  export interface TextualGenreDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TextualGenre'], meta: { name: 'TextualGenre' } }
+    /**
+     * Find zero or one TextualGenre that matches the filter.
+     * @param {TextualGenreFindUniqueArgs} args - Arguments to find a TextualGenre
+     * @example
+     * // Get one TextualGenre
+     * const textualGenre = await prisma.textualGenre.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TextualGenreFindUniqueArgs>(args: SelectSubset<T, TextualGenreFindUniqueArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TextualGenre that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TextualGenreFindUniqueOrThrowArgs} args - Arguments to find a TextualGenre
+     * @example
+     * // Get one TextualGenre
+     * const textualGenre = await prisma.textualGenre.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TextualGenreFindUniqueOrThrowArgs>(args: SelectSubset<T, TextualGenreFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TextualGenre that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextualGenreFindFirstArgs} args - Arguments to find a TextualGenre
+     * @example
+     * // Get one TextualGenre
+     * const textualGenre = await prisma.textualGenre.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TextualGenreFindFirstArgs>(args?: SelectSubset<T, TextualGenreFindFirstArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TextualGenre that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextualGenreFindFirstOrThrowArgs} args - Arguments to find a TextualGenre
+     * @example
+     * // Get one TextualGenre
+     * const textualGenre = await prisma.textualGenre.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TextualGenreFindFirstOrThrowArgs>(args?: SelectSubset<T, TextualGenreFindFirstOrThrowArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TextualGenres that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextualGenreFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TextualGenres
+     * const textualGenres = await prisma.textualGenre.findMany()
+     * 
+     * // Get first 10 TextualGenres
+     * const textualGenres = await prisma.textualGenre.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const textualGenreWithIdOnly = await prisma.textualGenre.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TextualGenreFindManyArgs>(args?: SelectSubset<T, TextualGenreFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TextualGenre.
+     * @param {TextualGenreCreateArgs} args - Arguments to create a TextualGenre.
+     * @example
+     * // Create one TextualGenre
+     * const TextualGenre = await prisma.textualGenre.create({
+     *   data: {
+     *     // ... data to create a TextualGenre
+     *   }
+     * })
+     * 
+     */
+    create<T extends TextualGenreCreateArgs>(args: SelectSubset<T, TextualGenreCreateArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TextualGenres.
+     * @param {TextualGenreCreateManyArgs} args - Arguments to create many TextualGenres.
+     * @example
+     * // Create many TextualGenres
+     * const textualGenre = await prisma.textualGenre.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TextualGenreCreateManyArgs>(args?: SelectSubset<T, TextualGenreCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TextualGenres and returns the data saved in the database.
+     * @param {TextualGenreCreateManyAndReturnArgs} args - Arguments to create many TextualGenres.
+     * @example
+     * // Create many TextualGenres
+     * const textualGenre = await prisma.textualGenre.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TextualGenres and only return the `id`
+     * const textualGenreWithIdOnly = await prisma.textualGenre.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TextualGenreCreateManyAndReturnArgs>(args?: SelectSubset<T, TextualGenreCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TextualGenre.
+     * @param {TextualGenreDeleteArgs} args - Arguments to delete one TextualGenre.
+     * @example
+     * // Delete one TextualGenre
+     * const TextualGenre = await prisma.textualGenre.delete({
+     *   where: {
+     *     // ... filter to delete one TextualGenre
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TextualGenreDeleteArgs>(args: SelectSubset<T, TextualGenreDeleteArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TextualGenre.
+     * @param {TextualGenreUpdateArgs} args - Arguments to update one TextualGenre.
+     * @example
+     * // Update one TextualGenre
+     * const textualGenre = await prisma.textualGenre.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TextualGenreUpdateArgs>(args: SelectSubset<T, TextualGenreUpdateArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TextualGenres.
+     * @param {TextualGenreDeleteManyArgs} args - Arguments to filter TextualGenres to delete.
+     * @example
+     * // Delete a few TextualGenres
+     * const { count } = await prisma.textualGenre.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TextualGenreDeleteManyArgs>(args?: SelectSubset<T, TextualGenreDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TextualGenres.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextualGenreUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TextualGenres
+     * const textualGenre = await prisma.textualGenre.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TextualGenreUpdateManyArgs>(args: SelectSubset<T, TextualGenreUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TextualGenres and returns the data updated in the database.
+     * @param {TextualGenreUpdateManyAndReturnArgs} args - Arguments to update many TextualGenres.
+     * @example
+     * // Update many TextualGenres
+     * const textualGenre = await prisma.textualGenre.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TextualGenres and only return the `id`
+     * const textualGenreWithIdOnly = await prisma.textualGenre.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TextualGenreUpdateManyAndReturnArgs>(args: SelectSubset<T, TextualGenreUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TextualGenre.
+     * @param {TextualGenreUpsertArgs} args - Arguments to update or create a TextualGenre.
+     * @example
+     * // Update or create a TextualGenre
+     * const textualGenre = await prisma.textualGenre.upsert({
+     *   create: {
+     *     // ... data to create a TextualGenre
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TextualGenre we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TextualGenreUpsertArgs>(args: SelectSubset<T, TextualGenreUpsertArgs<ExtArgs>>): Prisma__TextualGenreClient<$Result.GetResult<Prisma.$TextualGenrePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TextualGenres.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextualGenreCountArgs} args - Arguments to filter TextualGenres to count.
+     * @example
+     * // Count the number of TextualGenres
+     * const count = await prisma.textualGenre.count({
+     *   where: {
+     *     // ... the filter for the TextualGenres we want to count
+     *   }
+     * })
+    **/
+    count<T extends TextualGenreCountArgs>(
+      args?: Subset<T, TextualGenreCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TextualGenreCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TextualGenre.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextualGenreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TextualGenreAggregateArgs>(args: Subset<T, TextualGenreAggregateArgs>): Prisma.PrismaPromise<GetTextualGenreAggregateType<T>>
+
+    /**
+     * Group by TextualGenre.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TextualGenreGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TextualGenreGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TextualGenreGroupByArgs['orderBy'] }
+        : { orderBy?: TextualGenreGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TextualGenreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTextualGenreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TextualGenre model
+   */
+  readonly fields: TextualGenreFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TextualGenre.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TextualGenreClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    texts<T extends TextualGenre$textsArgs<ExtArgs> = {}>(args?: Subset<T, TextualGenre$textsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TextInfoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TextualGenre model
+   */
+  interface TextualGenreFieldRefs {
+    readonly id: FieldRef<"TextualGenre", 'Int'>
+    readonly name: FieldRef<"TextualGenre", 'String'>
+    readonly createdAt: FieldRef<"TextualGenre", 'DateTime'>
+    readonly updatedAt: FieldRef<"TextualGenre", 'DateTime'>
+    readonly creatorName: FieldRef<"TextualGenre", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TextualGenre findUnique
+   */
+  export type TextualGenreFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * Filter, which TextualGenre to fetch.
+     */
+    where: TextualGenreWhereUniqueInput
+  }
+
+  /**
+   * TextualGenre findUniqueOrThrow
+   */
+  export type TextualGenreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * Filter, which TextualGenre to fetch.
+     */
+    where: TextualGenreWhereUniqueInput
+  }
+
+  /**
+   * TextualGenre findFirst
+   */
+  export type TextualGenreFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * Filter, which TextualGenre to fetch.
+     */
+    where?: TextualGenreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextualGenres to fetch.
+     */
+    orderBy?: TextualGenreOrderByWithRelationInput | TextualGenreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TextualGenres.
+     */
+    cursor?: TextualGenreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextualGenres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextualGenres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TextualGenres.
+     */
+    distinct?: TextualGenreScalarFieldEnum | TextualGenreScalarFieldEnum[]
+  }
+
+  /**
+   * TextualGenre findFirstOrThrow
+   */
+  export type TextualGenreFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * Filter, which TextualGenre to fetch.
+     */
+    where?: TextualGenreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextualGenres to fetch.
+     */
+    orderBy?: TextualGenreOrderByWithRelationInput | TextualGenreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TextualGenres.
+     */
+    cursor?: TextualGenreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextualGenres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextualGenres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TextualGenres.
+     */
+    distinct?: TextualGenreScalarFieldEnum | TextualGenreScalarFieldEnum[]
+  }
+
+  /**
+   * TextualGenre findMany
+   */
+  export type TextualGenreFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * Filter, which TextualGenres to fetch.
+     */
+    where?: TextualGenreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TextualGenres to fetch.
+     */
+    orderBy?: TextualGenreOrderByWithRelationInput | TextualGenreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TextualGenres.
+     */
+    cursor?: TextualGenreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TextualGenres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TextualGenres.
+     */
+    skip?: number
+    distinct?: TextualGenreScalarFieldEnum | TextualGenreScalarFieldEnum[]
+  }
+
+  /**
+   * TextualGenre create
+   */
+  export type TextualGenreCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TextualGenre.
+     */
+    data: XOR<TextualGenreCreateInput, TextualGenreUncheckedCreateInput>
+  }
+
+  /**
+   * TextualGenre createMany
+   */
+  export type TextualGenreCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TextualGenres.
+     */
+    data: TextualGenreCreateManyInput | TextualGenreCreateManyInput[]
+  }
+
+  /**
+   * TextualGenre createManyAndReturn
+   */
+  export type TextualGenreCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * The data used to create many TextualGenres.
+     */
+    data: TextualGenreCreateManyInput | TextualGenreCreateManyInput[]
+  }
+
+  /**
+   * TextualGenre update
+   */
+  export type TextualGenreUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TextualGenre.
+     */
+    data: XOR<TextualGenreUpdateInput, TextualGenreUncheckedUpdateInput>
+    /**
+     * Choose, which TextualGenre to update.
+     */
+    where: TextualGenreWhereUniqueInput
+  }
+
+  /**
+   * TextualGenre updateMany
+   */
+  export type TextualGenreUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TextualGenres.
+     */
+    data: XOR<TextualGenreUpdateManyMutationInput, TextualGenreUncheckedUpdateManyInput>
+    /**
+     * Filter which TextualGenres to update
+     */
+    where?: TextualGenreWhereInput
+    /**
+     * Limit how many TextualGenres to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TextualGenre updateManyAndReturn
+   */
+  export type TextualGenreUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * The data used to update TextualGenres.
+     */
+    data: XOR<TextualGenreUpdateManyMutationInput, TextualGenreUncheckedUpdateManyInput>
+    /**
+     * Filter which TextualGenres to update
+     */
+    where?: TextualGenreWhereInput
+    /**
+     * Limit how many TextualGenres to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TextualGenre upsert
+   */
+  export type TextualGenreUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TextualGenre to update in case it exists.
+     */
+    where: TextualGenreWhereUniqueInput
+    /**
+     * In case the TextualGenre found by the `where` argument doesn't exist, create a new TextualGenre with this data.
+     */
+    create: XOR<TextualGenreCreateInput, TextualGenreUncheckedCreateInput>
+    /**
+     * In case the TextualGenre was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TextualGenreUpdateInput, TextualGenreUncheckedUpdateInput>
+  }
+
+  /**
+   * TextualGenre delete
+   */
+  export type TextualGenreDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+    /**
+     * Filter which TextualGenre to delete.
+     */
+    where: TextualGenreWhereUniqueInput
+  }
+
+  /**
+   * TextualGenre deleteMany
+   */
+  export type TextualGenreDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TextualGenres to delete
+     */
+    where?: TextualGenreWhereInput
+    /**
+     * Limit how many TextualGenres to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TextualGenre.texts
+   */
+  export type TextualGenre$textsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextInfo
+     */
+    select?: TextInfoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextInfo
+     */
+    omit?: TextInfoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextInfoInclude<ExtArgs> | null
+    where?: TextInfoWhereInput
+    orderBy?: TextInfoOrderByWithRelationInput | TextInfoOrderByWithRelationInput[]
+    cursor?: TextInfoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TextInfoScalarFieldEnum | TextInfoScalarFieldEnum[]
+  }
+
+  /**
+   * TextualGenre without action
+   */
+  export type TextualGenreDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TextualGenre
+     */
+    select?: TextualGenreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TextualGenre
+     */
+    omit?: TextualGenreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TextualGenreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AdminActivityLog
+   */
+
+  export type AggregateAdminActivityLog = {
+    _count: AdminActivityLogCountAggregateOutputType | null
+    _avg: AdminActivityLogAvgAggregateOutputType | null
+    _sum: AdminActivityLogSumAggregateOutputType | null
+    _min: AdminActivityLogMinAggregateOutputType | null
+    _max: AdminActivityLogMaxAggregateOutputType | null
+  }
+
+  export type AdminActivityLogAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type AdminActivityLogSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type AdminActivityLogMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    action: string | null
+    createAt: Date | null
+  }
+
+  export type AdminActivityLogMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    action: string | null
+    createAt: Date | null
+  }
+
+  export type AdminActivityLogCountAggregateOutputType = {
+    id: number
+    userId: number
+    action: number
+    createAt: number
+    _all: number
+  }
+
+
+  export type AdminActivityLogAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type AdminActivityLogSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type AdminActivityLogMinAggregateInputType = {
+    id?: true
+    userId?: true
+    action?: true
+    createAt?: true
+  }
+
+  export type AdminActivityLogMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    action?: true
+    createAt?: true
+  }
+
+  export type AdminActivityLogCountAggregateInputType = {
+    id?: true
+    userId?: true
+    action?: true
+    createAt?: true
+    _all?: true
+  }
+
+  export type AdminActivityLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdminActivityLog to aggregate.
+     */
+    where?: AdminActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminActivityLogs to fetch.
+     */
+    orderBy?: AdminActivityLogOrderByWithRelationInput | AdminActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AdminActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminActivityLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AdminActivityLogs
+    **/
+    _count?: true | AdminActivityLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AdminActivityLogAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AdminActivityLogSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AdminActivityLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AdminActivityLogMaxAggregateInputType
+  }
+
+  export type GetAdminActivityLogAggregateType<T extends AdminActivityLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateAdminActivityLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAdminActivityLog[P]>
+      : GetScalarType<T[P], AggregateAdminActivityLog[P]>
+  }
+
+
+
+
+  export type AdminActivityLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminActivityLogWhereInput
+    orderBy?: AdminActivityLogOrderByWithAggregationInput | AdminActivityLogOrderByWithAggregationInput[]
+    by: AdminActivityLogScalarFieldEnum[] | AdminActivityLogScalarFieldEnum
+    having?: AdminActivityLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AdminActivityLogCountAggregateInputType | true
+    _avg?: AdminActivityLogAvgAggregateInputType
+    _sum?: AdminActivityLogSumAggregateInputType
+    _min?: AdminActivityLogMinAggregateInputType
+    _max?: AdminActivityLogMaxAggregateInputType
+  }
+
+  export type AdminActivityLogGroupByOutputType = {
+    id: number
+    userId: number
+    action: string
+    createAt: Date
+    _count: AdminActivityLogCountAggregateOutputType | null
+    _avg: AdminActivityLogAvgAggregateOutputType | null
+    _sum: AdminActivityLogSumAggregateOutputType | null
+    _min: AdminActivityLogMinAggregateOutputType | null
+    _max: AdminActivityLogMaxAggregateOutputType | null
+  }
+
+  type GetAdminActivityLogGroupByPayload<T extends AdminActivityLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AdminActivityLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AdminActivityLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AdminActivityLogGroupByOutputType[P]>
+            : GetScalarType<T[P], AdminActivityLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AdminActivityLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    action?: boolean
+    createAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminActivityLog"]>
+
+  export type AdminActivityLogSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    action?: boolean
+    createAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminActivityLog"]>
+
+  export type AdminActivityLogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    action?: boolean
+    createAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminActivityLog"]>
+
+  export type AdminActivityLogSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    action?: boolean
+    createAt?: boolean
+  }
+
+  export type AdminActivityLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "action" | "createAt", ExtArgs["result"]["adminActivityLog"]>
+  export type AdminActivityLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminActivityLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminActivityLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $AdminActivityLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AdminActivityLog"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      action: string
+      createAt: Date
+    }, ExtArgs["result"]["adminActivityLog"]>
+    composites: {}
+  }
+
+  type AdminActivityLogGetPayload<S extends boolean | null | undefined | AdminActivityLogDefaultArgs> = $Result.GetResult<Prisma.$AdminActivityLogPayload, S>
+
+  type AdminActivityLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AdminActivityLogFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AdminActivityLogCountAggregateInputType | true
+    }
+
+  export interface AdminActivityLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdminActivityLog'], meta: { name: 'AdminActivityLog' } }
+    /**
+     * Find zero or one AdminActivityLog that matches the filter.
+     * @param {AdminActivityLogFindUniqueArgs} args - Arguments to find a AdminActivityLog
+     * @example
+     * // Get one AdminActivityLog
+     * const adminActivityLog = await prisma.adminActivityLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AdminActivityLogFindUniqueArgs>(args: SelectSubset<T, AdminActivityLogFindUniqueArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AdminActivityLog that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AdminActivityLogFindUniqueOrThrowArgs} args - Arguments to find a AdminActivityLog
+     * @example
+     * // Get one AdminActivityLog
+     * const adminActivityLog = await prisma.adminActivityLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AdminActivityLogFindUniqueOrThrowArgs>(args: SelectSubset<T, AdminActivityLogFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdminActivityLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminActivityLogFindFirstArgs} args - Arguments to find a AdminActivityLog
+     * @example
+     * // Get one AdminActivityLog
+     * const adminActivityLog = await prisma.adminActivityLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AdminActivityLogFindFirstArgs>(args?: SelectSubset<T, AdminActivityLogFindFirstArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdminActivityLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminActivityLogFindFirstOrThrowArgs} args - Arguments to find a AdminActivityLog
+     * @example
+     * // Get one AdminActivityLog
+     * const adminActivityLog = await prisma.adminActivityLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AdminActivityLogFindFirstOrThrowArgs>(args?: SelectSubset<T, AdminActivityLogFindFirstOrThrowArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AdminActivityLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminActivityLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AdminActivityLogs
+     * const adminActivityLogs = await prisma.adminActivityLog.findMany()
+     * 
+     * // Get first 10 AdminActivityLogs
+     * const adminActivityLogs = await prisma.adminActivityLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const adminActivityLogWithIdOnly = await prisma.adminActivityLog.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AdminActivityLogFindManyArgs>(args?: SelectSubset<T, AdminActivityLogFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AdminActivityLog.
+     * @param {AdminActivityLogCreateArgs} args - Arguments to create a AdminActivityLog.
+     * @example
+     * // Create one AdminActivityLog
+     * const AdminActivityLog = await prisma.adminActivityLog.create({
+     *   data: {
+     *     // ... data to create a AdminActivityLog
+     *   }
+     * })
+     * 
+     */
+    create<T extends AdminActivityLogCreateArgs>(args: SelectSubset<T, AdminActivityLogCreateArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AdminActivityLogs.
+     * @param {AdminActivityLogCreateManyArgs} args - Arguments to create many AdminActivityLogs.
+     * @example
+     * // Create many AdminActivityLogs
+     * const adminActivityLog = await prisma.adminActivityLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AdminActivityLogCreateManyArgs>(args?: SelectSubset<T, AdminActivityLogCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AdminActivityLogs and returns the data saved in the database.
+     * @param {AdminActivityLogCreateManyAndReturnArgs} args - Arguments to create many AdminActivityLogs.
+     * @example
+     * // Create many AdminActivityLogs
+     * const adminActivityLog = await prisma.adminActivityLog.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AdminActivityLogs and only return the `id`
+     * const adminActivityLogWithIdOnly = await prisma.adminActivityLog.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AdminActivityLogCreateManyAndReturnArgs>(args?: SelectSubset<T, AdminActivityLogCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AdminActivityLog.
+     * @param {AdminActivityLogDeleteArgs} args - Arguments to delete one AdminActivityLog.
+     * @example
+     * // Delete one AdminActivityLog
+     * const AdminActivityLog = await prisma.adminActivityLog.delete({
+     *   where: {
+     *     // ... filter to delete one AdminActivityLog
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AdminActivityLogDeleteArgs>(args: SelectSubset<T, AdminActivityLogDeleteArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AdminActivityLog.
+     * @param {AdminActivityLogUpdateArgs} args - Arguments to update one AdminActivityLog.
+     * @example
+     * // Update one AdminActivityLog
+     * const adminActivityLog = await prisma.adminActivityLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AdminActivityLogUpdateArgs>(args: SelectSubset<T, AdminActivityLogUpdateArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AdminActivityLogs.
+     * @param {AdminActivityLogDeleteManyArgs} args - Arguments to filter AdminActivityLogs to delete.
+     * @example
+     * // Delete a few AdminActivityLogs
+     * const { count } = await prisma.adminActivityLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AdminActivityLogDeleteManyArgs>(args?: SelectSubset<T, AdminActivityLogDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminActivityLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminActivityLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AdminActivityLogs
+     * const adminActivityLog = await prisma.adminActivityLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AdminActivityLogUpdateManyArgs>(args: SelectSubset<T, AdminActivityLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminActivityLogs and returns the data updated in the database.
+     * @param {AdminActivityLogUpdateManyAndReturnArgs} args - Arguments to update many AdminActivityLogs.
+     * @example
+     * // Update many AdminActivityLogs
+     * const adminActivityLog = await prisma.adminActivityLog.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdminActivityLogs and only return the `id`
+     * const adminActivityLogWithIdOnly = await prisma.adminActivityLog.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdminActivityLogUpdateManyAndReturnArgs>(args: SelectSubset<T, AdminActivityLogUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AdminActivityLog.
+     * @param {AdminActivityLogUpsertArgs} args - Arguments to update or create a AdminActivityLog.
+     * @example
+     * // Update or create a AdminActivityLog
+     * const adminActivityLog = await prisma.adminActivityLog.upsert({
+     *   create: {
+     *     // ... data to create a AdminActivityLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AdminActivityLog we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AdminActivityLogUpsertArgs>(args: SelectSubset<T, AdminActivityLogUpsertArgs<ExtArgs>>): Prisma__AdminActivityLogClient<$Result.GetResult<Prisma.$AdminActivityLogPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AdminActivityLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminActivityLogCountArgs} args - Arguments to filter AdminActivityLogs to count.
+     * @example
+     * // Count the number of AdminActivityLogs
+     * const count = await prisma.adminActivityLog.count({
+     *   where: {
+     *     // ... the filter for the AdminActivityLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends AdminActivityLogCountArgs>(
+      args?: Subset<T, AdminActivityLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AdminActivityLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AdminActivityLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminActivityLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AdminActivityLogAggregateArgs>(args: Subset<T, AdminActivityLogAggregateArgs>): Prisma.PrismaPromise<GetAdminActivityLogAggregateType<T>>
+
+    /**
+     * Group by AdminActivityLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminActivityLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AdminActivityLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AdminActivityLogGroupByArgs['orderBy'] }
+        : { orderBy?: AdminActivityLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AdminActivityLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdminActivityLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AdminActivityLog model
+   */
+  readonly fields: AdminActivityLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AdminActivityLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AdminActivityLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AdminActivityLog model
+   */
+  interface AdminActivityLogFieldRefs {
+    readonly id: FieldRef<"AdminActivityLog", 'Int'>
+    readonly userId: FieldRef<"AdminActivityLog", 'Int'>
+    readonly action: FieldRef<"AdminActivityLog", 'String'>
+    readonly createAt: FieldRef<"AdminActivityLog", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AdminActivityLog findUnique
+   */
+  export type AdminActivityLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminActivityLog to fetch.
+     */
+    where: AdminActivityLogWhereUniqueInput
+  }
+
+  /**
+   * AdminActivityLog findUniqueOrThrow
+   */
+  export type AdminActivityLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminActivityLog to fetch.
+     */
+    where: AdminActivityLogWhereUniqueInput
+  }
+
+  /**
+   * AdminActivityLog findFirst
+   */
+  export type AdminActivityLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminActivityLog to fetch.
+     */
+    where?: AdminActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminActivityLogs to fetch.
+     */
+    orderBy?: AdminActivityLogOrderByWithRelationInput | AdminActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdminActivityLogs.
+     */
+    cursor?: AdminActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminActivityLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdminActivityLogs.
+     */
+    distinct?: AdminActivityLogScalarFieldEnum | AdminActivityLogScalarFieldEnum[]
+  }
+
+  /**
+   * AdminActivityLog findFirstOrThrow
+   */
+  export type AdminActivityLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminActivityLog to fetch.
+     */
+    where?: AdminActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminActivityLogs to fetch.
+     */
+    orderBy?: AdminActivityLogOrderByWithRelationInput | AdminActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdminActivityLogs.
+     */
+    cursor?: AdminActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminActivityLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdminActivityLogs.
+     */
+    distinct?: AdminActivityLogScalarFieldEnum | AdminActivityLogScalarFieldEnum[]
+  }
+
+  /**
+   * AdminActivityLog findMany
+   */
+  export type AdminActivityLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminActivityLogs to fetch.
+     */
+    where?: AdminActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminActivityLogs to fetch.
+     */
+    orderBy?: AdminActivityLogOrderByWithRelationInput | AdminActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AdminActivityLogs.
+     */
+    cursor?: AdminActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminActivityLogs.
+     */
+    skip?: number
+    distinct?: AdminActivityLogScalarFieldEnum | AdminActivityLogScalarFieldEnum[]
+  }
+
+  /**
+   * AdminActivityLog create
+   */
+  export type AdminActivityLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AdminActivityLog.
+     */
+    data: XOR<AdminActivityLogCreateInput, AdminActivityLogUncheckedCreateInput>
+  }
+
+  /**
+   * AdminActivityLog createMany
+   */
+  export type AdminActivityLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AdminActivityLogs.
+     */
+    data: AdminActivityLogCreateManyInput | AdminActivityLogCreateManyInput[]
+  }
+
+  /**
+   * AdminActivityLog createManyAndReturn
+   */
+  export type AdminActivityLogCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * The data used to create many AdminActivityLogs.
+     */
+    data: AdminActivityLogCreateManyInput | AdminActivityLogCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdminActivityLog update
+   */
+  export type AdminActivityLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AdminActivityLog.
+     */
+    data: XOR<AdminActivityLogUpdateInput, AdminActivityLogUncheckedUpdateInput>
+    /**
+     * Choose, which AdminActivityLog to update.
+     */
+    where: AdminActivityLogWhereUniqueInput
+  }
+
+  /**
+   * AdminActivityLog updateMany
+   */
+  export type AdminActivityLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AdminActivityLogs.
+     */
+    data: XOR<AdminActivityLogUpdateManyMutationInput, AdminActivityLogUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminActivityLogs to update
+     */
+    where?: AdminActivityLogWhereInput
+    /**
+     * Limit how many AdminActivityLogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminActivityLog updateManyAndReturn
+   */
+  export type AdminActivityLogUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * The data used to update AdminActivityLogs.
+     */
+    data: XOR<AdminActivityLogUpdateManyMutationInput, AdminActivityLogUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminActivityLogs to update
+     */
+    where?: AdminActivityLogWhereInput
+    /**
+     * Limit how many AdminActivityLogs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdminActivityLog upsert
+   */
+  export type AdminActivityLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AdminActivityLog to update in case it exists.
+     */
+    where: AdminActivityLogWhereUniqueInput
+    /**
+     * In case the AdminActivityLog found by the `where` argument doesn't exist, create a new AdminActivityLog with this data.
+     */
+    create: XOR<AdminActivityLogCreateInput, AdminActivityLogUncheckedCreateInput>
+    /**
+     * In case the AdminActivityLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AdminActivityLogUpdateInput, AdminActivityLogUncheckedUpdateInput>
+  }
+
+  /**
+   * AdminActivityLog delete
+   */
+  export type AdminActivityLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+    /**
+     * Filter which AdminActivityLog to delete.
+     */
+    where: AdminActivityLogWhereUniqueInput
+  }
+
+  /**
+   * AdminActivityLog deleteMany
+   */
+  export type AdminActivityLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdminActivityLogs to delete
+     */
+    where?: AdminActivityLogWhereInput
+    /**
+     * Limit how many AdminActivityLogs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminActivityLog without action
+   */
+  export type AdminActivityLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminActivityLog
+     */
+    select?: AdminActivityLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminActivityLog
+     */
+    omit?: AdminActivityLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminActivityLogInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4504,6 +10568,60 @@ export namespace Prisma {
   };
 
   export type AccountVerificationTokenScalarFieldEnum = (typeof AccountVerificationTokenScalarFieldEnum)[keyof typeof AccountVerificationTokenScalarFieldEnum]
+
+
+  export const TextInfoScalarFieldEnum: {
+    id: 'id',
+    publicId: 'publicId',
+    title: 'title',
+    isImageOnly: 'isImageOnly',
+    authorName: 'authorName',
+    referenceUrl: 'referenceUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    genreId: 'genreId'
+  };
+
+  export type TextInfoScalarFieldEnum = (typeof TextInfoScalarFieldEnum)[keyof typeof TextInfoScalarFieldEnum]
+
+
+  export const TextContentScalarFieldEnum: {
+    id: 'id',
+    textInfoId: 'textInfoId',
+    content: 'content'
+  };
+
+  export type TextContentScalarFieldEnum = (typeof TextContentScalarFieldEnum)[keyof typeof TextContentScalarFieldEnum]
+
+
+  export const ImageScalarFieldEnum: {
+    id: 'id',
+    textInfoId: 'textInfoId',
+    url: 'url'
+  };
+
+  export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+  export const TextualGenreScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    creatorName: 'creatorName'
+  };
+
+  export type TextualGenreScalarFieldEnum = (typeof TextualGenreScalarFieldEnum)[keyof typeof TextualGenreScalarFieldEnum]
+
+
+  export const AdminActivityLogScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    action: 'action',
+    createAt: 'createAt'
+  };
+
+  export type AdminActivityLogScalarFieldEnum = (typeof AdminActivityLogScalarFieldEnum)[keyof typeof AdminActivityLogScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4603,6 +10721,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
+    activityLogs?: AdminActivityLogListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4619,6 +10738,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
+    activityLogs?: AdminActivityLogOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4638,6 +10758,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
+    activityLogs?: AdminActivityLogListRelationFilter
   }, "id" | "publicId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -4808,6 +10929,292 @@ export namespace Prisma {
     expiresAt?: DateTimeWithAggregatesFilter<"AccountVerificationToken"> | Date | string
   }
 
+  export type TextInfoWhereInput = {
+    AND?: TextInfoWhereInput | TextInfoWhereInput[]
+    OR?: TextInfoWhereInput[]
+    NOT?: TextInfoWhereInput | TextInfoWhereInput[]
+    id?: IntFilter<"TextInfo"> | number
+    publicId?: StringFilter<"TextInfo"> | string
+    title?: StringFilter<"TextInfo"> | string
+    isImageOnly?: BoolFilter<"TextInfo"> | boolean
+    authorName?: StringFilter<"TextInfo"> | string
+    referenceUrl?: StringNullableFilter<"TextInfo"> | string | null
+    createdAt?: DateTimeFilter<"TextInfo"> | Date | string
+    updatedAt?: DateTimeFilter<"TextInfo"> | Date | string
+    genreId?: IntFilter<"TextInfo"> | number
+    content?: XOR<TextContentNullableScalarRelationFilter, TextContentWhereInput> | null
+    images?: ImageListRelationFilter
+    genre?: XOR<TextualGenreScalarRelationFilter, TextualGenreWhereInput>
+  }
+
+  export type TextInfoOrderByWithRelationInput = {
+    id?: SortOrder
+    publicId?: SortOrder
+    title?: SortOrder
+    isImageOnly?: SortOrder
+    authorName?: SortOrder
+    referenceUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    genreId?: SortOrder
+    content?: TextContentOrderByWithRelationInput
+    images?: ImageOrderByRelationAggregateInput
+    genre?: TextualGenreOrderByWithRelationInput
+  }
+
+  export type TextInfoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    publicId?: string
+    AND?: TextInfoWhereInput | TextInfoWhereInput[]
+    OR?: TextInfoWhereInput[]
+    NOT?: TextInfoWhereInput | TextInfoWhereInput[]
+    title?: StringFilter<"TextInfo"> | string
+    isImageOnly?: BoolFilter<"TextInfo"> | boolean
+    authorName?: StringFilter<"TextInfo"> | string
+    referenceUrl?: StringNullableFilter<"TextInfo"> | string | null
+    createdAt?: DateTimeFilter<"TextInfo"> | Date | string
+    updatedAt?: DateTimeFilter<"TextInfo"> | Date | string
+    genreId?: IntFilter<"TextInfo"> | number
+    content?: XOR<TextContentNullableScalarRelationFilter, TextContentWhereInput> | null
+    images?: ImageListRelationFilter
+    genre?: XOR<TextualGenreScalarRelationFilter, TextualGenreWhereInput>
+  }, "id" | "publicId">
+
+  export type TextInfoOrderByWithAggregationInput = {
+    id?: SortOrder
+    publicId?: SortOrder
+    title?: SortOrder
+    isImageOnly?: SortOrder
+    authorName?: SortOrder
+    referenceUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    genreId?: SortOrder
+    _count?: TextInfoCountOrderByAggregateInput
+    _avg?: TextInfoAvgOrderByAggregateInput
+    _max?: TextInfoMaxOrderByAggregateInput
+    _min?: TextInfoMinOrderByAggregateInput
+    _sum?: TextInfoSumOrderByAggregateInput
+  }
+
+  export type TextInfoScalarWhereWithAggregatesInput = {
+    AND?: TextInfoScalarWhereWithAggregatesInput | TextInfoScalarWhereWithAggregatesInput[]
+    OR?: TextInfoScalarWhereWithAggregatesInput[]
+    NOT?: TextInfoScalarWhereWithAggregatesInput | TextInfoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TextInfo"> | number
+    publicId?: StringWithAggregatesFilter<"TextInfo"> | string
+    title?: StringWithAggregatesFilter<"TextInfo"> | string
+    isImageOnly?: BoolWithAggregatesFilter<"TextInfo"> | boolean
+    authorName?: StringWithAggregatesFilter<"TextInfo"> | string
+    referenceUrl?: StringNullableWithAggregatesFilter<"TextInfo"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TextInfo"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TextInfo"> | Date | string
+    genreId?: IntWithAggregatesFilter<"TextInfo"> | number
+  }
+
+  export type TextContentWhereInput = {
+    AND?: TextContentWhereInput | TextContentWhereInput[]
+    OR?: TextContentWhereInput[]
+    NOT?: TextContentWhereInput | TextContentWhereInput[]
+    id?: StringFilter<"TextContent"> | string
+    textInfoId?: IntFilter<"TextContent"> | number
+    content?: StringFilter<"TextContent"> | string
+    textInfo?: XOR<TextInfoScalarRelationFilter, TextInfoWhereInput>
+  }
+
+  export type TextContentOrderByWithRelationInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    content?: SortOrder
+    textInfo?: TextInfoOrderByWithRelationInput
+  }
+
+  export type TextContentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    textInfoId?: number
+    AND?: TextContentWhereInput | TextContentWhereInput[]
+    OR?: TextContentWhereInput[]
+    NOT?: TextContentWhereInput | TextContentWhereInput[]
+    content?: StringFilter<"TextContent"> | string
+    textInfo?: XOR<TextInfoScalarRelationFilter, TextInfoWhereInput>
+  }, "id" | "textInfoId">
+
+  export type TextContentOrderByWithAggregationInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    content?: SortOrder
+    _count?: TextContentCountOrderByAggregateInput
+    _avg?: TextContentAvgOrderByAggregateInput
+    _max?: TextContentMaxOrderByAggregateInput
+    _min?: TextContentMinOrderByAggregateInput
+    _sum?: TextContentSumOrderByAggregateInput
+  }
+
+  export type TextContentScalarWhereWithAggregatesInput = {
+    AND?: TextContentScalarWhereWithAggregatesInput | TextContentScalarWhereWithAggregatesInput[]
+    OR?: TextContentScalarWhereWithAggregatesInput[]
+    NOT?: TextContentScalarWhereWithAggregatesInput | TextContentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TextContent"> | string
+    textInfoId?: IntWithAggregatesFilter<"TextContent"> | number
+    content?: StringWithAggregatesFilter<"TextContent"> | string
+  }
+
+  export type ImageWhereInput = {
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    id?: StringFilter<"Image"> | string
+    textInfoId?: IntFilter<"Image"> | number
+    url?: StringFilter<"Image"> | string
+    textInfo?: XOR<TextInfoScalarRelationFilter, TextInfoWhereInput>
+  }
+
+  export type ImageOrderByWithRelationInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    url?: SortOrder
+    textInfo?: TextInfoOrderByWithRelationInput
+  }
+
+  export type ImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    textInfoId?: IntFilter<"Image"> | number
+    url?: StringFilter<"Image"> | string
+    textInfo?: XOR<TextInfoScalarRelationFilter, TextInfoWhereInput>
+  }, "id">
+
+  export type ImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    url?: SortOrder
+    _count?: ImageCountOrderByAggregateInput
+    _avg?: ImageAvgOrderByAggregateInput
+    _max?: ImageMaxOrderByAggregateInput
+    _min?: ImageMinOrderByAggregateInput
+    _sum?: ImageSumOrderByAggregateInput
+  }
+
+  export type ImageScalarWhereWithAggregatesInput = {
+    AND?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    OR?: ImageScalarWhereWithAggregatesInput[]
+    NOT?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Image"> | string
+    textInfoId?: IntWithAggregatesFilter<"Image"> | number
+    url?: StringWithAggregatesFilter<"Image"> | string
+  }
+
+  export type TextualGenreWhereInput = {
+    AND?: TextualGenreWhereInput | TextualGenreWhereInput[]
+    OR?: TextualGenreWhereInput[]
+    NOT?: TextualGenreWhereInput | TextualGenreWhereInput[]
+    id?: IntFilter<"TextualGenre"> | number
+    name?: StringFilter<"TextualGenre"> | string
+    createdAt?: DateTimeFilter<"TextualGenre"> | Date | string
+    updatedAt?: DateTimeFilter<"TextualGenre"> | Date | string
+    creatorName?: StringFilter<"TextualGenre"> | string
+    texts?: TextInfoListRelationFilter
+  }
+
+  export type TextualGenreOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creatorName?: SortOrder
+    texts?: TextInfoOrderByRelationAggregateInput
+  }
+
+  export type TextualGenreWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: TextualGenreWhereInput | TextualGenreWhereInput[]
+    OR?: TextualGenreWhereInput[]
+    NOT?: TextualGenreWhereInput | TextualGenreWhereInput[]
+    createdAt?: DateTimeFilter<"TextualGenre"> | Date | string
+    updatedAt?: DateTimeFilter<"TextualGenre"> | Date | string
+    creatorName?: StringFilter<"TextualGenre"> | string
+    texts?: TextInfoListRelationFilter
+  }, "id" | "name">
+
+  export type TextualGenreOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creatorName?: SortOrder
+    _count?: TextualGenreCountOrderByAggregateInput
+    _avg?: TextualGenreAvgOrderByAggregateInput
+    _max?: TextualGenreMaxOrderByAggregateInput
+    _min?: TextualGenreMinOrderByAggregateInput
+    _sum?: TextualGenreSumOrderByAggregateInput
+  }
+
+  export type TextualGenreScalarWhereWithAggregatesInput = {
+    AND?: TextualGenreScalarWhereWithAggregatesInput | TextualGenreScalarWhereWithAggregatesInput[]
+    OR?: TextualGenreScalarWhereWithAggregatesInput[]
+    NOT?: TextualGenreScalarWhereWithAggregatesInput | TextualGenreScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TextualGenre"> | number
+    name?: StringWithAggregatesFilter<"TextualGenre"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"TextualGenre"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TextualGenre"> | Date | string
+    creatorName?: StringWithAggregatesFilter<"TextualGenre"> | string
+  }
+
+  export type AdminActivityLogWhereInput = {
+    AND?: AdminActivityLogWhereInput | AdminActivityLogWhereInput[]
+    OR?: AdminActivityLogWhereInput[]
+    NOT?: AdminActivityLogWhereInput | AdminActivityLogWhereInput[]
+    id?: IntFilter<"AdminActivityLog"> | number
+    userId?: IntFilter<"AdminActivityLog"> | number
+    action?: StringFilter<"AdminActivityLog"> | string
+    createAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type AdminActivityLogOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    action?: SortOrder
+    createAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type AdminActivityLogWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AdminActivityLogWhereInput | AdminActivityLogWhereInput[]
+    OR?: AdminActivityLogWhereInput[]
+    NOT?: AdminActivityLogWhereInput | AdminActivityLogWhereInput[]
+    userId?: IntFilter<"AdminActivityLog"> | number
+    action?: StringFilter<"AdminActivityLog"> | string
+    createAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type AdminActivityLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    action?: SortOrder
+    createAt?: SortOrder
+    _count?: AdminActivityLogCountOrderByAggregateInput
+    _avg?: AdminActivityLogAvgOrderByAggregateInput
+    _max?: AdminActivityLogMaxOrderByAggregateInput
+    _min?: AdminActivityLogMinOrderByAggregateInput
+    _sum?: AdminActivityLogSumOrderByAggregateInput
+  }
+
+  export type AdminActivityLogScalarWhereWithAggregatesInput = {
+    AND?: AdminActivityLogScalarWhereWithAggregatesInput | AdminActivityLogScalarWhereWithAggregatesInput[]
+    OR?: AdminActivityLogScalarWhereWithAggregatesInput[]
+    NOT?: AdminActivityLogScalarWhereWithAggregatesInput | AdminActivityLogScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"AdminActivityLog"> | number
+    userId?: IntWithAggregatesFilter<"AdminActivityLog"> | number
+    action?: StringWithAggregatesFilter<"AdminActivityLog"> | string
+    createAt?: DateTimeWithAggregatesFilter<"AdminActivityLog"> | Date | string
+  }
+
   export type UserCreateInput = {
     publicId?: string
     email: string
@@ -4821,6 +11228,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
+    activityLogs?: AdminActivityLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4837,6 +11245,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    activityLogs?: AdminActivityLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4852,6 +11261,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    activityLogs?: AdminActivityLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4868,6 +11278,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    activityLogs?: AdminActivityLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -5050,6 +11461,278 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TextInfoCreateInput = {
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content?: TextContentCreateNestedOneWithoutTextInfoInput
+    images?: ImageCreateNestedManyWithoutTextInfoInput
+    genre: TextualGenreCreateNestedOneWithoutTextsInput
+  }
+
+  export type TextInfoUncheckedCreateInput = {
+    id?: number
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    genreId: number
+    content?: TextContentUncheckedCreateNestedOneWithoutTextInfoInput
+    images?: ImageUncheckedCreateNestedManyWithoutTextInfoInput
+  }
+
+  export type TextInfoUpdateInput = {
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: TextContentUpdateOneWithoutTextInfoNestedInput
+    images?: ImageUpdateManyWithoutTextInfoNestedInput
+    genre?: TextualGenreUpdateOneRequiredWithoutTextsNestedInput
+  }
+
+  export type TextInfoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    genreId?: IntFieldUpdateOperationsInput | number
+    content?: TextContentUncheckedUpdateOneWithoutTextInfoNestedInput
+    images?: ImageUncheckedUpdateManyWithoutTextInfoNestedInput
+  }
+
+  export type TextInfoCreateManyInput = {
+    id?: number
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    genreId: number
+  }
+
+  export type TextInfoUpdateManyMutationInput = {
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TextInfoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    genreId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TextContentCreateInput = {
+    id?: string
+    content: string
+    textInfo: TextInfoCreateNestedOneWithoutContentInput
+  }
+
+  export type TextContentUncheckedCreateInput = {
+    id?: string
+    textInfoId: number
+    content: string
+  }
+
+  export type TextContentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    textInfo?: TextInfoUpdateOneRequiredWithoutContentNestedInput
+  }
+
+  export type TextContentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    textInfoId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextContentCreateManyInput = {
+    id?: string
+    textInfoId: number
+    content: string
+  }
+
+  export type TextContentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextContentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    textInfoId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImageCreateInput = {
+    id?: string
+    url: string
+    textInfo: TextInfoCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateInput = {
+    id?: string
+    textInfoId: number
+    url: string
+  }
+
+  export type ImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    textInfo?: TextInfoUpdateOneRequiredWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    textInfoId?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImageCreateManyInput = {
+    id?: string
+    textInfoId: number
+    url: string
+  }
+
+  export type ImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    textInfoId?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextualGenreCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatorName: string
+    texts?: TextInfoCreateNestedManyWithoutGenreInput
+  }
+
+  export type TextualGenreUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatorName: string
+    texts?: TextInfoUncheckedCreateNestedManyWithoutGenreInput
+  }
+
+  export type TextualGenreUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorName?: StringFieldUpdateOperationsInput | string
+    texts?: TextInfoUpdateManyWithoutGenreNestedInput
+  }
+
+  export type TextualGenreUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorName?: StringFieldUpdateOperationsInput | string
+    texts?: TextInfoUncheckedUpdateManyWithoutGenreNestedInput
+  }
+
+  export type TextualGenreCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatorName: string
+  }
+
+  export type TextualGenreUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextualGenreUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminActivityLogCreateInput = {
+    action: string
+    createAt?: Date | string
+    user: UserCreateNestedOneWithoutActivityLogsInput
+  }
+
+  export type AdminActivityLogUncheckedCreateInput = {
+    id?: number
+    userId: number
+    action: string
+    createAt?: Date | string
+  }
+
+  export type AdminActivityLogUpdateInput = {
+    action?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutActivityLogsNestedInput
+  }
+
+  export type AdminActivityLogUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    action?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminActivityLogCreateManyInput = {
+    id?: number
+    userId: number
+    action: string
+    createAt?: Date | string
+  }
+
+  export type AdminActivityLogUpdateManyMutationInput = {
+    action?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminActivityLogUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    action?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -5125,12 +11808,22 @@ export namespace Prisma {
     none?: AccountWhereInput
   }
 
+  export type AdminActivityLogListRelationFilter = {
+    every?: AdminActivityLogWhereInput
+    some?: AdminActivityLogWhereInput
+    none?: AdminActivityLogWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type AccountOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AdminActivityLogOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5401,6 +12094,202 @@ export namespace Prisma {
     expiresAt?: SortOrder
   }
 
+  export type TextContentNullableScalarRelationFilter = {
+    is?: TextContentWhereInput | null
+    isNot?: TextContentWhereInput | null
+  }
+
+  export type ImageListRelationFilter = {
+    every?: ImageWhereInput
+    some?: ImageWhereInput
+    none?: ImageWhereInput
+  }
+
+  export type TextualGenreScalarRelationFilter = {
+    is?: TextualGenreWhereInput
+    isNot?: TextualGenreWhereInput
+  }
+
+  export type ImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TextInfoCountOrderByAggregateInput = {
+    id?: SortOrder
+    publicId?: SortOrder
+    title?: SortOrder
+    isImageOnly?: SortOrder
+    authorName?: SortOrder
+    referenceUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    genreId?: SortOrder
+  }
+
+  export type TextInfoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    genreId?: SortOrder
+  }
+
+  export type TextInfoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    publicId?: SortOrder
+    title?: SortOrder
+    isImageOnly?: SortOrder
+    authorName?: SortOrder
+    referenceUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    genreId?: SortOrder
+  }
+
+  export type TextInfoMinOrderByAggregateInput = {
+    id?: SortOrder
+    publicId?: SortOrder
+    title?: SortOrder
+    isImageOnly?: SortOrder
+    authorName?: SortOrder
+    referenceUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    genreId?: SortOrder
+  }
+
+  export type TextInfoSumOrderByAggregateInput = {
+    id?: SortOrder
+    genreId?: SortOrder
+  }
+
+  export type TextInfoScalarRelationFilter = {
+    is?: TextInfoWhereInput
+    isNot?: TextInfoWhereInput
+  }
+
+  export type TextContentCountOrderByAggregateInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    content?: SortOrder
+  }
+
+  export type TextContentAvgOrderByAggregateInput = {
+    textInfoId?: SortOrder
+  }
+
+  export type TextContentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    content?: SortOrder
+  }
+
+  export type TextContentMinOrderByAggregateInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    content?: SortOrder
+  }
+
+  export type TextContentSumOrderByAggregateInput = {
+    textInfoId?: SortOrder
+  }
+
+  export type ImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    url?: SortOrder
+  }
+
+  export type ImageAvgOrderByAggregateInput = {
+    textInfoId?: SortOrder
+  }
+
+  export type ImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    url?: SortOrder
+  }
+
+  export type ImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    textInfoId?: SortOrder
+    url?: SortOrder
+  }
+
+  export type ImageSumOrderByAggregateInput = {
+    textInfoId?: SortOrder
+  }
+
+  export type TextInfoListRelationFilter = {
+    every?: TextInfoWhereInput
+    some?: TextInfoWhereInput
+    none?: TextInfoWhereInput
+  }
+
+  export type TextInfoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TextualGenreCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creatorName?: SortOrder
+  }
+
+  export type TextualGenreAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TextualGenreMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creatorName?: SortOrder
+  }
+
+  export type TextualGenreMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creatorName?: SortOrder
+  }
+
+  export type TextualGenreSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type AdminActivityLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    action?: SortOrder
+    createAt?: SortOrder
+  }
+
+  export type AdminActivityLogAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type AdminActivityLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    action?: SortOrder
+    createAt?: SortOrder
+  }
+
+  export type AdminActivityLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    action?: SortOrder
+    createAt?: SortOrder
+  }
+
+  export type AdminActivityLogSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -5408,11 +12297,25 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
+  export type AdminActivityLogCreateNestedManyWithoutUserInput = {
+    create?: XOR<AdminActivityLogCreateWithoutUserInput, AdminActivityLogUncheckedCreateWithoutUserInput> | AdminActivityLogCreateWithoutUserInput[] | AdminActivityLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AdminActivityLogCreateOrConnectWithoutUserInput | AdminActivityLogCreateOrConnectWithoutUserInput[]
+    createMany?: AdminActivityLogCreateManyUserInputEnvelope
+    connect?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type AdminActivityLogUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AdminActivityLogCreateWithoutUserInput, AdminActivityLogUncheckedCreateWithoutUserInput> | AdminActivityLogCreateWithoutUserInput[] | AdminActivityLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AdminActivityLogCreateOrConnectWithoutUserInput | AdminActivityLogCreateOrConnectWithoutUserInput[]
+    createMany?: AdminActivityLogCreateManyUserInputEnvelope
+    connect?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5453,6 +12356,20 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
+  export type AdminActivityLogUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AdminActivityLogCreateWithoutUserInput, AdminActivityLogUncheckedCreateWithoutUserInput> | AdminActivityLogCreateWithoutUserInput[] | AdminActivityLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AdminActivityLogCreateOrConnectWithoutUserInput | AdminActivityLogCreateOrConnectWithoutUserInput[]
+    upsert?: AdminActivityLogUpsertWithWhereUniqueWithoutUserInput | AdminActivityLogUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AdminActivityLogCreateManyUserInputEnvelope
+    set?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    disconnect?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    delete?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    connect?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    update?: AdminActivityLogUpdateWithWhereUniqueWithoutUserInput | AdminActivityLogUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AdminActivityLogUpdateManyWithWhereWithoutUserInput | AdminActivityLogUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AdminActivityLogScalarWhereInput | AdminActivityLogScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -5475,6 +12392,20 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
+  export type AdminActivityLogUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AdminActivityLogCreateWithoutUserInput, AdminActivityLogUncheckedCreateWithoutUserInput> | AdminActivityLogCreateWithoutUserInput[] | AdminActivityLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AdminActivityLogCreateOrConnectWithoutUserInput | AdminActivityLogCreateOrConnectWithoutUserInput[]
+    upsert?: AdminActivityLogUpsertWithWhereUniqueWithoutUserInput | AdminActivityLogUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AdminActivityLogCreateManyUserInputEnvelope
+    set?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    disconnect?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    delete?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    connect?: AdminActivityLogWhereUniqueInput | AdminActivityLogWhereUniqueInput[]
+    update?: AdminActivityLogUpdateWithWhereUniqueWithoutUserInput | AdminActivityLogUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AdminActivityLogUpdateManyWithWhereWithoutUserInput | AdminActivityLogUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AdminActivityLogScalarWhereInput | AdminActivityLogScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutAccountsInput = {
     create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
@@ -5495,6 +12426,178 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAccountsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
+  }
+
+  export type TextContentCreateNestedOneWithoutTextInfoInput = {
+    create?: XOR<TextContentCreateWithoutTextInfoInput, TextContentUncheckedCreateWithoutTextInfoInput>
+    connectOrCreate?: TextContentCreateOrConnectWithoutTextInfoInput
+    connect?: TextContentWhereUniqueInput
+  }
+
+  export type ImageCreateNestedManyWithoutTextInfoInput = {
+    create?: XOR<ImageCreateWithoutTextInfoInput, ImageUncheckedCreateWithoutTextInfoInput> | ImageCreateWithoutTextInfoInput[] | ImageUncheckedCreateWithoutTextInfoInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTextInfoInput | ImageCreateOrConnectWithoutTextInfoInput[]
+    createMany?: ImageCreateManyTextInfoInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type TextualGenreCreateNestedOneWithoutTextsInput = {
+    create?: XOR<TextualGenreCreateWithoutTextsInput, TextualGenreUncheckedCreateWithoutTextsInput>
+    connectOrCreate?: TextualGenreCreateOrConnectWithoutTextsInput
+    connect?: TextualGenreWhereUniqueInput
+  }
+
+  export type TextContentUncheckedCreateNestedOneWithoutTextInfoInput = {
+    create?: XOR<TextContentCreateWithoutTextInfoInput, TextContentUncheckedCreateWithoutTextInfoInput>
+    connectOrCreate?: TextContentCreateOrConnectWithoutTextInfoInput
+    connect?: TextContentWhereUniqueInput
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutTextInfoInput = {
+    create?: XOR<ImageCreateWithoutTextInfoInput, ImageUncheckedCreateWithoutTextInfoInput> | ImageCreateWithoutTextInfoInput[] | ImageUncheckedCreateWithoutTextInfoInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTextInfoInput | ImageCreateOrConnectWithoutTextInfoInput[]
+    createMany?: ImageCreateManyTextInfoInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type TextContentUpdateOneWithoutTextInfoNestedInput = {
+    create?: XOR<TextContentCreateWithoutTextInfoInput, TextContentUncheckedCreateWithoutTextInfoInput>
+    connectOrCreate?: TextContentCreateOrConnectWithoutTextInfoInput
+    upsert?: TextContentUpsertWithoutTextInfoInput
+    disconnect?: TextContentWhereInput | boolean
+    delete?: TextContentWhereInput | boolean
+    connect?: TextContentWhereUniqueInput
+    update?: XOR<XOR<TextContentUpdateToOneWithWhereWithoutTextInfoInput, TextContentUpdateWithoutTextInfoInput>, TextContentUncheckedUpdateWithoutTextInfoInput>
+  }
+
+  export type ImageUpdateManyWithoutTextInfoNestedInput = {
+    create?: XOR<ImageCreateWithoutTextInfoInput, ImageUncheckedCreateWithoutTextInfoInput> | ImageCreateWithoutTextInfoInput[] | ImageUncheckedCreateWithoutTextInfoInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTextInfoInput | ImageCreateOrConnectWithoutTextInfoInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutTextInfoInput | ImageUpsertWithWhereUniqueWithoutTextInfoInput[]
+    createMany?: ImageCreateManyTextInfoInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutTextInfoInput | ImageUpdateWithWhereUniqueWithoutTextInfoInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutTextInfoInput | ImageUpdateManyWithWhereWithoutTextInfoInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type TextualGenreUpdateOneRequiredWithoutTextsNestedInput = {
+    create?: XOR<TextualGenreCreateWithoutTextsInput, TextualGenreUncheckedCreateWithoutTextsInput>
+    connectOrCreate?: TextualGenreCreateOrConnectWithoutTextsInput
+    upsert?: TextualGenreUpsertWithoutTextsInput
+    connect?: TextualGenreWhereUniqueInput
+    update?: XOR<XOR<TextualGenreUpdateToOneWithWhereWithoutTextsInput, TextualGenreUpdateWithoutTextsInput>, TextualGenreUncheckedUpdateWithoutTextsInput>
+  }
+
+  export type TextContentUncheckedUpdateOneWithoutTextInfoNestedInput = {
+    create?: XOR<TextContentCreateWithoutTextInfoInput, TextContentUncheckedCreateWithoutTextInfoInput>
+    connectOrCreate?: TextContentCreateOrConnectWithoutTextInfoInput
+    upsert?: TextContentUpsertWithoutTextInfoInput
+    disconnect?: TextContentWhereInput | boolean
+    delete?: TextContentWhereInput | boolean
+    connect?: TextContentWhereUniqueInput
+    update?: XOR<XOR<TextContentUpdateToOneWithWhereWithoutTextInfoInput, TextContentUpdateWithoutTextInfoInput>, TextContentUncheckedUpdateWithoutTextInfoInput>
+  }
+
+  export type ImageUncheckedUpdateManyWithoutTextInfoNestedInput = {
+    create?: XOR<ImageCreateWithoutTextInfoInput, ImageUncheckedCreateWithoutTextInfoInput> | ImageCreateWithoutTextInfoInput[] | ImageUncheckedCreateWithoutTextInfoInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTextInfoInput | ImageCreateOrConnectWithoutTextInfoInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutTextInfoInput | ImageUpsertWithWhereUniqueWithoutTextInfoInput[]
+    createMany?: ImageCreateManyTextInfoInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutTextInfoInput | ImageUpdateWithWhereUniqueWithoutTextInfoInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutTextInfoInput | ImageUpdateManyWithWhereWithoutTextInfoInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type TextInfoCreateNestedOneWithoutContentInput = {
+    create?: XOR<TextInfoCreateWithoutContentInput, TextInfoUncheckedCreateWithoutContentInput>
+    connectOrCreate?: TextInfoCreateOrConnectWithoutContentInput
+    connect?: TextInfoWhereUniqueInput
+  }
+
+  export type TextInfoUpdateOneRequiredWithoutContentNestedInput = {
+    create?: XOR<TextInfoCreateWithoutContentInput, TextInfoUncheckedCreateWithoutContentInput>
+    connectOrCreate?: TextInfoCreateOrConnectWithoutContentInput
+    upsert?: TextInfoUpsertWithoutContentInput
+    connect?: TextInfoWhereUniqueInput
+    update?: XOR<XOR<TextInfoUpdateToOneWithWhereWithoutContentInput, TextInfoUpdateWithoutContentInput>, TextInfoUncheckedUpdateWithoutContentInput>
+  }
+
+  export type TextInfoCreateNestedOneWithoutImagesInput = {
+    create?: XOR<TextInfoCreateWithoutImagesInput, TextInfoUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: TextInfoCreateOrConnectWithoutImagesInput
+    connect?: TextInfoWhereUniqueInput
+  }
+
+  export type TextInfoUpdateOneRequiredWithoutImagesNestedInput = {
+    create?: XOR<TextInfoCreateWithoutImagesInput, TextInfoUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: TextInfoCreateOrConnectWithoutImagesInput
+    upsert?: TextInfoUpsertWithoutImagesInput
+    connect?: TextInfoWhereUniqueInput
+    update?: XOR<XOR<TextInfoUpdateToOneWithWhereWithoutImagesInput, TextInfoUpdateWithoutImagesInput>, TextInfoUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type TextInfoCreateNestedManyWithoutGenreInput = {
+    create?: XOR<TextInfoCreateWithoutGenreInput, TextInfoUncheckedCreateWithoutGenreInput> | TextInfoCreateWithoutGenreInput[] | TextInfoUncheckedCreateWithoutGenreInput[]
+    connectOrCreate?: TextInfoCreateOrConnectWithoutGenreInput | TextInfoCreateOrConnectWithoutGenreInput[]
+    createMany?: TextInfoCreateManyGenreInputEnvelope
+    connect?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+  }
+
+  export type TextInfoUncheckedCreateNestedManyWithoutGenreInput = {
+    create?: XOR<TextInfoCreateWithoutGenreInput, TextInfoUncheckedCreateWithoutGenreInput> | TextInfoCreateWithoutGenreInput[] | TextInfoUncheckedCreateWithoutGenreInput[]
+    connectOrCreate?: TextInfoCreateOrConnectWithoutGenreInput | TextInfoCreateOrConnectWithoutGenreInput[]
+    createMany?: TextInfoCreateManyGenreInputEnvelope
+    connect?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+  }
+
+  export type TextInfoUpdateManyWithoutGenreNestedInput = {
+    create?: XOR<TextInfoCreateWithoutGenreInput, TextInfoUncheckedCreateWithoutGenreInput> | TextInfoCreateWithoutGenreInput[] | TextInfoUncheckedCreateWithoutGenreInput[]
+    connectOrCreate?: TextInfoCreateOrConnectWithoutGenreInput | TextInfoCreateOrConnectWithoutGenreInput[]
+    upsert?: TextInfoUpsertWithWhereUniqueWithoutGenreInput | TextInfoUpsertWithWhereUniqueWithoutGenreInput[]
+    createMany?: TextInfoCreateManyGenreInputEnvelope
+    set?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    disconnect?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    delete?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    connect?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    update?: TextInfoUpdateWithWhereUniqueWithoutGenreInput | TextInfoUpdateWithWhereUniqueWithoutGenreInput[]
+    updateMany?: TextInfoUpdateManyWithWhereWithoutGenreInput | TextInfoUpdateManyWithWhereWithoutGenreInput[]
+    deleteMany?: TextInfoScalarWhereInput | TextInfoScalarWhereInput[]
+  }
+
+  export type TextInfoUncheckedUpdateManyWithoutGenreNestedInput = {
+    create?: XOR<TextInfoCreateWithoutGenreInput, TextInfoUncheckedCreateWithoutGenreInput> | TextInfoCreateWithoutGenreInput[] | TextInfoUncheckedCreateWithoutGenreInput[]
+    connectOrCreate?: TextInfoCreateOrConnectWithoutGenreInput | TextInfoCreateOrConnectWithoutGenreInput[]
+    upsert?: TextInfoUpsertWithWhereUniqueWithoutGenreInput | TextInfoUpsertWithWhereUniqueWithoutGenreInput[]
+    createMany?: TextInfoCreateManyGenreInputEnvelope
+    set?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    disconnect?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    delete?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    connect?: TextInfoWhereUniqueInput | TextInfoWhereUniqueInput[]
+    update?: TextInfoUpdateWithWhereUniqueWithoutGenreInput | TextInfoUpdateWithWhereUniqueWithoutGenreInput[]
+    updateMany?: TextInfoUpdateManyWithWhereWithoutGenreInput | TextInfoUpdateManyWithWhereWithoutGenreInput[]
+    deleteMany?: TextInfoScalarWhereInput | TextInfoScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutActivityLogsInput = {
+    create?: XOR<UserCreateWithoutActivityLogsInput, UserUncheckedCreateWithoutActivityLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutActivityLogsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutActivityLogsNestedInput = {
+    create?: XOR<UserCreateWithoutActivityLogsInput, UserUncheckedCreateWithoutActivityLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutActivityLogsInput
+    upsert?: UserUpsertWithoutActivityLogsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutActivityLogsInput, UserUpdateWithoutActivityLogsInput>, UserUncheckedUpdateWithoutActivityLogsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5754,6 +12857,26 @@ export namespace Prisma {
     data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
   }
 
+  export type AdminActivityLogCreateWithoutUserInput = {
+    action: string
+    createAt?: Date | string
+  }
+
+  export type AdminActivityLogUncheckedCreateWithoutUserInput = {
+    id?: number
+    action: string
+    createAt?: Date | string
+  }
+
+  export type AdminActivityLogCreateOrConnectWithoutUserInput = {
+    where: AdminActivityLogWhereUniqueInput
+    create: XOR<AdminActivityLogCreateWithoutUserInput, AdminActivityLogUncheckedCreateWithoutUserInput>
+  }
+
+  export type AdminActivityLogCreateManyUserInputEnvelope = {
+    data: AdminActivityLogCreateManyUserInput | AdminActivityLogCreateManyUserInput[]
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -5786,6 +12909,32 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
+  export type AdminActivityLogUpsertWithWhereUniqueWithoutUserInput = {
+    where: AdminActivityLogWhereUniqueInput
+    update: XOR<AdminActivityLogUpdateWithoutUserInput, AdminActivityLogUncheckedUpdateWithoutUserInput>
+    create: XOR<AdminActivityLogCreateWithoutUserInput, AdminActivityLogUncheckedCreateWithoutUserInput>
+  }
+
+  export type AdminActivityLogUpdateWithWhereUniqueWithoutUserInput = {
+    where: AdminActivityLogWhereUniqueInput
+    data: XOR<AdminActivityLogUpdateWithoutUserInput, AdminActivityLogUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AdminActivityLogUpdateManyWithWhereWithoutUserInput = {
+    where: AdminActivityLogScalarWhereInput
+    data: XOR<AdminActivityLogUpdateManyMutationInput, AdminActivityLogUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AdminActivityLogScalarWhereInput = {
+    AND?: AdminActivityLogScalarWhereInput | AdminActivityLogScalarWhereInput[]
+    OR?: AdminActivityLogScalarWhereInput[]
+    NOT?: AdminActivityLogScalarWhereInput | AdminActivityLogScalarWhereInput[]
+    id?: IntFilter<"AdminActivityLog"> | number
+    userId?: IntFilter<"AdminActivityLog"> | number
+    action?: StringFilter<"AdminActivityLog"> | string
+    createAt?: DateTimeFilter<"AdminActivityLog"> | Date | string
+  }
+
   export type UserCreateWithoutAccountsInput = {
     publicId?: string
     email: string
@@ -5798,6 +12947,7 @@ export namespace Prisma {
     isCollaborator?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    activityLogs?: AdminActivityLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -5813,6 +12963,7 @@ export namespace Prisma {
     isCollaborator?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    activityLogs?: AdminActivityLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -5843,6 +12994,7 @@ export namespace Prisma {
     isCollaborator?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activityLogs?: AdminActivityLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -5858,6 +13010,408 @@ export namespace Prisma {
     isCollaborator?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activityLogs?: AdminActivityLogUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type TextContentCreateWithoutTextInfoInput = {
+    id?: string
+    content: string
+  }
+
+  export type TextContentUncheckedCreateWithoutTextInfoInput = {
+    id?: string
+    content: string
+  }
+
+  export type TextContentCreateOrConnectWithoutTextInfoInput = {
+    where: TextContentWhereUniqueInput
+    create: XOR<TextContentCreateWithoutTextInfoInput, TextContentUncheckedCreateWithoutTextInfoInput>
+  }
+
+  export type ImageCreateWithoutTextInfoInput = {
+    id?: string
+    url: string
+  }
+
+  export type ImageUncheckedCreateWithoutTextInfoInput = {
+    id?: string
+    url: string
+  }
+
+  export type ImageCreateOrConnectWithoutTextInfoInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutTextInfoInput, ImageUncheckedCreateWithoutTextInfoInput>
+  }
+
+  export type ImageCreateManyTextInfoInputEnvelope = {
+    data: ImageCreateManyTextInfoInput | ImageCreateManyTextInfoInput[]
+  }
+
+  export type TextualGenreCreateWithoutTextsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatorName: string
+  }
+
+  export type TextualGenreUncheckedCreateWithoutTextsInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatorName: string
+  }
+
+  export type TextualGenreCreateOrConnectWithoutTextsInput = {
+    where: TextualGenreWhereUniqueInput
+    create: XOR<TextualGenreCreateWithoutTextsInput, TextualGenreUncheckedCreateWithoutTextsInput>
+  }
+
+  export type TextContentUpsertWithoutTextInfoInput = {
+    update: XOR<TextContentUpdateWithoutTextInfoInput, TextContentUncheckedUpdateWithoutTextInfoInput>
+    create: XOR<TextContentCreateWithoutTextInfoInput, TextContentUncheckedCreateWithoutTextInfoInput>
+    where?: TextContentWhereInput
+  }
+
+  export type TextContentUpdateToOneWithWhereWithoutTextInfoInput = {
+    where?: TextContentWhereInput
+    data: XOR<TextContentUpdateWithoutTextInfoInput, TextContentUncheckedUpdateWithoutTextInfoInput>
+  }
+
+  export type TextContentUpdateWithoutTextInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextContentUncheckedUpdateWithoutTextInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutTextInfoInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutTextInfoInput, ImageUncheckedUpdateWithoutTextInfoInput>
+    create: XOR<ImageCreateWithoutTextInfoInput, ImageUncheckedCreateWithoutTextInfoInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutTextInfoInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutTextInfoInput, ImageUncheckedUpdateWithoutTextInfoInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutTextInfoInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutTextInfoInput>
+  }
+
+  export type ImageScalarWhereInput = {
+    AND?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    OR?: ImageScalarWhereInput[]
+    NOT?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    id?: StringFilter<"Image"> | string
+    textInfoId?: IntFilter<"Image"> | number
+    url?: StringFilter<"Image"> | string
+  }
+
+  export type TextualGenreUpsertWithoutTextsInput = {
+    update: XOR<TextualGenreUpdateWithoutTextsInput, TextualGenreUncheckedUpdateWithoutTextsInput>
+    create: XOR<TextualGenreCreateWithoutTextsInput, TextualGenreUncheckedCreateWithoutTextsInput>
+    where?: TextualGenreWhereInput
+  }
+
+  export type TextualGenreUpdateToOneWithWhereWithoutTextsInput = {
+    where?: TextualGenreWhereInput
+    data: XOR<TextualGenreUpdateWithoutTextsInput, TextualGenreUncheckedUpdateWithoutTextsInput>
+  }
+
+  export type TextualGenreUpdateWithoutTextsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextualGenreUncheckedUpdateWithoutTextsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextInfoCreateWithoutContentInput = {
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutTextInfoInput
+    genre: TextualGenreCreateNestedOneWithoutTextsInput
+  }
+
+  export type TextInfoUncheckedCreateWithoutContentInput = {
+    id?: number
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    genreId: number
+    images?: ImageUncheckedCreateNestedManyWithoutTextInfoInput
+  }
+
+  export type TextInfoCreateOrConnectWithoutContentInput = {
+    where: TextInfoWhereUniqueInput
+    create: XOR<TextInfoCreateWithoutContentInput, TextInfoUncheckedCreateWithoutContentInput>
+  }
+
+  export type TextInfoUpsertWithoutContentInput = {
+    update: XOR<TextInfoUpdateWithoutContentInput, TextInfoUncheckedUpdateWithoutContentInput>
+    create: XOR<TextInfoCreateWithoutContentInput, TextInfoUncheckedCreateWithoutContentInput>
+    where?: TextInfoWhereInput
+  }
+
+  export type TextInfoUpdateToOneWithWhereWithoutContentInput = {
+    where?: TextInfoWhereInput
+    data: XOR<TextInfoUpdateWithoutContentInput, TextInfoUncheckedUpdateWithoutContentInput>
+  }
+
+  export type TextInfoUpdateWithoutContentInput = {
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutTextInfoNestedInput
+    genre?: TextualGenreUpdateOneRequiredWithoutTextsNestedInput
+  }
+
+  export type TextInfoUncheckedUpdateWithoutContentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    genreId?: IntFieldUpdateOperationsInput | number
+    images?: ImageUncheckedUpdateManyWithoutTextInfoNestedInput
+  }
+
+  export type TextInfoCreateWithoutImagesInput = {
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content?: TextContentCreateNestedOneWithoutTextInfoInput
+    genre: TextualGenreCreateNestedOneWithoutTextsInput
+  }
+
+  export type TextInfoUncheckedCreateWithoutImagesInput = {
+    id?: number
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    genreId: number
+    content?: TextContentUncheckedCreateNestedOneWithoutTextInfoInput
+  }
+
+  export type TextInfoCreateOrConnectWithoutImagesInput = {
+    where: TextInfoWhereUniqueInput
+    create: XOR<TextInfoCreateWithoutImagesInput, TextInfoUncheckedCreateWithoutImagesInput>
+  }
+
+  export type TextInfoUpsertWithoutImagesInput = {
+    update: XOR<TextInfoUpdateWithoutImagesInput, TextInfoUncheckedUpdateWithoutImagesInput>
+    create: XOR<TextInfoCreateWithoutImagesInput, TextInfoUncheckedCreateWithoutImagesInput>
+    where?: TextInfoWhereInput
+  }
+
+  export type TextInfoUpdateToOneWithWhereWithoutImagesInput = {
+    where?: TextInfoWhereInput
+    data: XOR<TextInfoUpdateWithoutImagesInput, TextInfoUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type TextInfoUpdateWithoutImagesInput = {
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: TextContentUpdateOneWithoutTextInfoNestedInput
+    genre?: TextualGenreUpdateOneRequiredWithoutTextsNestedInput
+  }
+
+  export type TextInfoUncheckedUpdateWithoutImagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    genreId?: IntFieldUpdateOperationsInput | number
+    content?: TextContentUncheckedUpdateOneWithoutTextInfoNestedInput
+  }
+
+  export type TextInfoCreateWithoutGenreInput = {
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content?: TextContentCreateNestedOneWithoutTextInfoInput
+    images?: ImageCreateNestedManyWithoutTextInfoInput
+  }
+
+  export type TextInfoUncheckedCreateWithoutGenreInput = {
+    id?: number
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content?: TextContentUncheckedCreateNestedOneWithoutTextInfoInput
+    images?: ImageUncheckedCreateNestedManyWithoutTextInfoInput
+  }
+
+  export type TextInfoCreateOrConnectWithoutGenreInput = {
+    where: TextInfoWhereUniqueInput
+    create: XOR<TextInfoCreateWithoutGenreInput, TextInfoUncheckedCreateWithoutGenreInput>
+  }
+
+  export type TextInfoCreateManyGenreInputEnvelope = {
+    data: TextInfoCreateManyGenreInput | TextInfoCreateManyGenreInput[]
+  }
+
+  export type TextInfoUpsertWithWhereUniqueWithoutGenreInput = {
+    where: TextInfoWhereUniqueInput
+    update: XOR<TextInfoUpdateWithoutGenreInput, TextInfoUncheckedUpdateWithoutGenreInput>
+    create: XOR<TextInfoCreateWithoutGenreInput, TextInfoUncheckedCreateWithoutGenreInput>
+  }
+
+  export type TextInfoUpdateWithWhereUniqueWithoutGenreInput = {
+    where: TextInfoWhereUniqueInput
+    data: XOR<TextInfoUpdateWithoutGenreInput, TextInfoUncheckedUpdateWithoutGenreInput>
+  }
+
+  export type TextInfoUpdateManyWithWhereWithoutGenreInput = {
+    where: TextInfoScalarWhereInput
+    data: XOR<TextInfoUpdateManyMutationInput, TextInfoUncheckedUpdateManyWithoutGenreInput>
+  }
+
+  export type TextInfoScalarWhereInput = {
+    AND?: TextInfoScalarWhereInput | TextInfoScalarWhereInput[]
+    OR?: TextInfoScalarWhereInput[]
+    NOT?: TextInfoScalarWhereInput | TextInfoScalarWhereInput[]
+    id?: IntFilter<"TextInfo"> | number
+    publicId?: StringFilter<"TextInfo"> | string
+    title?: StringFilter<"TextInfo"> | string
+    isImageOnly?: BoolFilter<"TextInfo"> | boolean
+    authorName?: StringFilter<"TextInfo"> | string
+    referenceUrl?: StringNullableFilter<"TextInfo"> | string | null
+    createdAt?: DateTimeFilter<"TextInfo"> | Date | string
+    updatedAt?: DateTimeFilter<"TextInfo"> | Date | string
+    genreId?: IntFilter<"TextInfo"> | number
+  }
+
+  export type UserCreateWithoutActivityLogsInput = {
+    publicId?: string
+    email: string
+    firstName: string
+    lastName: string
+    image?: string | null
+    status?: $Enums.UserStatus
+    role?: $Enums.UserRoles
+    isSuperAdmin?: boolean
+    isCollaborator?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutActivityLogsInput = {
+    id?: number
+    publicId?: string
+    email: string
+    firstName: string
+    lastName: string
+    image?: string | null
+    status?: $Enums.UserStatus
+    role?: $Enums.UserRoles
+    isSuperAdmin?: boolean
+    isCollaborator?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutActivityLogsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutActivityLogsInput, UserUncheckedCreateWithoutActivityLogsInput>
+  }
+
+  export type UserUpsertWithoutActivityLogsInput = {
+    update: XOR<UserUpdateWithoutActivityLogsInput, UserUncheckedUpdateWithoutActivityLogsInput>
+    create: XOR<UserCreateWithoutActivityLogsInput, UserUncheckedCreateWithoutActivityLogsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutActivityLogsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutActivityLogsInput, UserUncheckedUpdateWithoutActivityLogsInput>
+  }
+
+  export type UserUpdateWithoutActivityLogsInput = {
+    publicId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    role?: EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
+    isSuperAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborator?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutActivityLogsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    publicId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    role?: EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
+    isSuperAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborator?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -5870,6 +13424,12 @@ export namespace Prisma {
     expiresAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type AdminActivityLogCreateManyUserInput = {
+    id?: number
+    action: string
+    createAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -5903,6 +13463,90 @@ export namespace Prisma {
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminActivityLogUpdateWithoutUserInput = {
+    action?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminActivityLogUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    action?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminActivityLogUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    action?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageCreateManyTextInfoInput = {
+    id?: string
+    url: string
+  }
+
+  export type ImageUpdateWithoutTextInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImageUncheckedUpdateWithoutTextInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImageUncheckedUpdateManyWithoutTextInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TextInfoCreateManyGenreInput = {
+    id?: number
+    publicId?: string
+    title: string
+    isImageOnly?: boolean
+    authorName: string
+    referenceUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TextInfoUpdateWithoutGenreInput = {
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: TextContentUpdateOneWithoutTextInfoNestedInput
+    images?: ImageUpdateManyWithoutTextInfoNestedInput
+  }
+
+  export type TextInfoUncheckedUpdateWithoutGenreInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: TextContentUncheckedUpdateOneWithoutTextInfoNestedInput
+    images?: ImageUncheckedUpdateManyWithoutTextInfoNestedInput
+  }
+
+  export type TextInfoUncheckedUpdateManyWithoutGenreInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    publicId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    isImageOnly?: BoolFieldUpdateOperationsInput | boolean
+    authorName?: StringFieldUpdateOperationsInput | string
+    referenceUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

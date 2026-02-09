@@ -124,6 +124,45 @@ exports.Prisma.AccountVerificationTokenScalarFieldEnum = {
   expiresAt: 'expiresAt'
 };
 
+exports.Prisma.TextInfoScalarFieldEnum = {
+  id: 'id',
+  publicId: 'publicId',
+  title: 'title',
+  isImageOnly: 'isImageOnly',
+  authorName: 'authorName',
+  referenceUrl: 'referenceUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  genreId: 'genreId'
+};
+
+exports.Prisma.TextContentScalarFieldEnum = {
+  id: 'id',
+  textInfoId: 'textInfoId',
+  content: 'content'
+};
+
+exports.Prisma.ImageScalarFieldEnum = {
+  id: 'id',
+  textInfoId: 'textInfoId',
+  url: 'url'
+};
+
+exports.Prisma.TextualGenreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  creatorName: 'creatorName'
+};
+
+exports.Prisma.AdminActivityLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  action: 'action',
+  createAt: 'createAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -155,7 +194,12 @@ exports.AuthProvider = exports.$Enums.AuthProvider = {
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
-  AccountVerificationToken: 'AccountVerificationToken'
+  AccountVerificationToken: 'AccountVerificationToken',
+  TextInfo: 'TextInfo',
+  TextContent: 'TextContent',
+  Image: 'Image',
+  TextualGenre: 'TextualGenre',
+  AdminActivityLog: 'AdminActivityLog'
 };
 /**
  * Create the Client
@@ -165,10 +209,10 @@ const config = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "sqlite",
-  "inlineSchema": "datasource db {\n  provider = \"sqlite\"\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\n// model User {\n//   id       Int    @id @default(autoincrement())\n//   publicId String @unique @default(uuid())\n\n//   email          String     @unique\n//   firstName      String\n//   lastName       String\n//   password       String\n//   image          String?\n//   status         UserStatus @default(PENDING)\n//   role           UserRoles  @default(USUARIO)\n//   createdAt      DateTime   @default(now())\n//   updatedAt      DateTime   @updatedAt\n//   isSuperAdmin   Boolean    @default(false)\n//   isCollaborator Boolean    @default(false)\n// }\n\nmodel User {\n  id             Int        @id @default(autoincrement())\n  publicId       String     @unique @default(uuid())\n  email          String     @unique\n  firstName      String\n  lastName       String\n  image          String?\n  status         UserStatus @default(PENDING)\n  role           UserRoles  @default(USUARIO)\n  isSuperAdmin   Boolean    @default(false)\n  isCollaborator Boolean    @default(false)\n  createdAt      DateTime   @default(now())\n  updatedAt      DateTime   @updatedAt\n\n  accounts Account[]\n}\n\nenum UserStatus {\n  ACTIVE\n  INACTIVE\n  PENDING\n  BLOCKED\n}\n\nenum UserRoles {\n  PROFESSOR\n  DESENVOLVEDOR\n  ADMINISTRADOR\n  USUARIO\n}\n\nenum AuthProvider {\n  CREDENTIALS\n  GOOGLE\n}\n\nmodel Account {\n  id                Int          @id @default(autoincrement())\n  userId            Int\n  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)\n  provider          AuthProvider\n  providerAccountId String\n  password          String?\n  accessToken       String?\n  refreshToken      String?\n  expiresAt         DateTime?\n  createdAt         DateTime     @default(now())\n  updatedAt         DateTime     @updatedAt\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel AccountVerificationToken {\n  id        String   @id @default(uuid())\n  userId    String\n  createdAt DateTime @default(now())\n  expiresAt DateTime\n}\n"
+  "inlineSchema": "datasource db {\n  provider = \"sqlite\"\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\nmodel User {\n  id             Int        @id @default(autoincrement())\n  publicId       String     @unique @default(uuid())\n  email          String     @unique\n  firstName      String\n  lastName       String\n  image          String?\n  status         UserStatus @default(PENDING)\n  role           UserRoles  @default(USUARIO)\n  isSuperAdmin   Boolean    @default(false)\n  isCollaborator Boolean    @default(false)\n  createdAt      DateTime   @default(now())\n  updatedAt      DateTime   @updatedAt\n\n  accounts     Account[]\n  activityLogs AdminActivityLog[]\n}\n\nenum UserStatus {\n  ACTIVE\n  INACTIVE\n  PENDING\n  BLOCKED\n}\n\nenum UserRoles {\n  PROFESSOR\n  DESENVOLVEDOR\n  ADMINISTRADOR\n  USUARIO\n}\n\nenum AuthProvider {\n  CREDENTIALS\n  GOOGLE\n}\n\nmodel Account {\n  id                Int          @id @default(autoincrement())\n  userId            Int\n  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)\n  provider          AuthProvider\n  providerAccountId String\n  password          String?\n  accessToken       String?\n  refreshToken      String?\n  expiresAt         DateTime?\n  createdAt         DateTime     @default(now())\n  updatedAt         DateTime     @updatedAt\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel AccountVerificationToken {\n  id        String   @id @default(uuid())\n  userId    String\n  createdAt DateTime @default(now())\n  expiresAt DateTime\n}\n\nmodel TextInfo {\n  id           Int      @id @default(autoincrement())\n  publicId     String   @unique @default(uuid())\n  title        String\n  isImageOnly  Boolean  @default(false)\n  authorName   String\n  referenceUrl String?\n  createdAt    DateTime @default(now())\n  updatedAt    DateTime @updatedAt\n\n  content TextContent?\n  images  Image[]\n\n  genreId Int\n  genre   TextualGenre @relation(fields: [genreId], references: [id])\n}\n\nmodel TextContent {\n  id         String   @id @default(cuid())\n  textInfoId Int      @unique\n  textInfo   TextInfo @relation(fields: [textInfoId], references: [id], onDelete: Cascade)\n  content    String\n}\n\nmodel Image {\n  id         String   @id @default(cuid())\n  textInfoId Int\n  textInfo   TextInfo @relation(fields: [textInfoId], references: [id], onDelete: Cascade)\n  url        String\n}\n\nmodel TextualGenre {\n  id          Int        @id @default(autoincrement())\n  name        String     @unique\n  texts       TextInfo[]\n  createdAt   DateTime   @default(now())\n  updatedAt   DateTime   @updatedAt\n  creatorName String\n}\n\nmodel AdminActivityLog {\n  id       Int      @id @default(autoincrement())\n  userId   Int\n  user     User     @relation(fields: [userId], references: [id])\n  action   String\n  createAt DateTime @default(now())\n}\n"
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"publicId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"UserStatus\"},{\"name\":\"role\",\"kind\":\"enum\",\"type\":\"UserRoles\"},{\"name\":\"isSuperAdmin\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isCollaborator\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"accounts\",\"kind\":\"object\",\"type\":\"Account\",\"relationName\":\"AccountToUser\"}],\"dbName\":null},\"Account\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AccountToUser\"},{\"name\":\"provider\",\"kind\":\"enum\",\"type\":\"AuthProvider\"},{\"name\":\"providerAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accessToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"AccountVerificationToken\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"publicId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"UserStatus\"},{\"name\":\"role\",\"kind\":\"enum\",\"type\":\"UserRoles\"},{\"name\":\"isSuperAdmin\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isCollaborator\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"accounts\",\"kind\":\"object\",\"type\":\"Account\",\"relationName\":\"AccountToUser\"},{\"name\":\"activityLogs\",\"kind\":\"object\",\"type\":\"AdminActivityLog\",\"relationName\":\"AdminActivityLogToUser\"}],\"dbName\":null},\"Account\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AccountToUser\"},{\"name\":\"provider\",\"kind\":\"enum\",\"type\":\"AuthProvider\"},{\"name\":\"providerAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accessToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"AccountVerificationToken\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"TextInfo\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"publicId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isImageOnly\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"authorName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"referenceUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"content\",\"kind\":\"object\",\"type\":\"TextContent\",\"relationName\":\"TextContentToTextInfo\"},{\"name\":\"images\",\"kind\":\"object\",\"type\":\"Image\",\"relationName\":\"ImageToTextInfo\"},{\"name\":\"genreId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"genre\",\"kind\":\"object\",\"type\":\"TextualGenre\",\"relationName\":\"TextInfoToTextualGenre\"}],\"dbName\":null},\"TextContent\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"textInfoId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"textInfo\",\"kind\":\"object\",\"type\":\"TextInfo\",\"relationName\":\"TextContentToTextInfo\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Image\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"textInfoId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"textInfo\",\"kind\":\"object\",\"type\":\"TextInfo\",\"relationName\":\"ImageToTextInfo\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"TextualGenre\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"texts\",\"kind\":\"object\",\"type\":\"TextInfo\",\"relationName\":\"TextInfoToTextualGenre\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"creatorName\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"AdminActivityLog\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AdminActivityLogToUser\"},{\"name\":\"action\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.compilerWasm = {
   getRuntime: async () => require('./query_compiler_bg.js'),

@@ -7,23 +7,6 @@ generator client {
   output   = "../src/generated/prisma"
 }
 
-// model User {
-//   id       Int    @id @default(autoincrement())
-//   publicId String @unique @default(uuid())
-
-//   email          String     @unique
-//   firstName      String
-//   lastName       String
-//   password       String
-//   image          String?
-//   status         UserStatus @default(PENDING)
-//   role           UserRoles  @default(USUARIO)
-//   createdAt      DateTime   @default(now())
-//   updatedAt      DateTime   @updatedAt
-//   isSuperAdmin   Boolean    @default(false)
-//   isCollaborator Boolean    @default(false)
-// }
-
 model User {
   id             Int        @id @default(autoincrement())
   publicId       String     @unique @default(uuid())
@@ -38,7 +21,8 @@ model User {
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 
-  accounts Account[]
+  accounts     Account[]
+  activityLogs AdminActivityLog[]
 }
 
 enum UserStatus {
@@ -81,4 +65,52 @@ model AccountVerificationToken {
   userId    String
   createdAt DateTime @default(now())
   expiresAt DateTime
+}
+
+model TextInfo {
+  id           Int      @id @default(autoincrement())
+  publicId     String   @unique @default(uuid())
+  title        String
+  isImageOnly  Boolean  @default(false)
+  authorName   String
+  referenceUrl String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  content TextContent?
+  images  Image[]
+
+  genreId Int
+  genre   TextualGenre @relation(fields: [genreId], references: [id])
+}
+
+model TextContent {
+  id         String   @id @default(cuid())
+  textInfoId Int      @unique
+  textInfo   TextInfo @relation(fields: [textInfoId], references: [id], onDelete: Cascade)
+  content    String
+}
+
+model Image {
+  id         String   @id @default(cuid())
+  textInfoId Int
+  textInfo   TextInfo @relation(fields: [textInfoId], references: [id], onDelete: Cascade)
+  url        String
+}
+
+model TextualGenre {
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
+  texts       TextInfo[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  creatorName String
+}
+
+model AdminActivityLog {
+  id       Int      @id @default(autoincrement())
+  userId   Int
+  user     User     @relation(fields: [userId], references: [id])
+  action   String
+  createAt DateTime @default(now())
 }

@@ -152,6 +152,45 @@ exports.Prisma.AccountVerificationTokenScalarFieldEnum = {
   expiresAt: 'expiresAt'
 };
 
+exports.Prisma.TextInfoScalarFieldEnum = {
+  id: 'id',
+  publicId: 'publicId',
+  title: 'title',
+  isImageOnly: 'isImageOnly',
+  authorName: 'authorName',
+  referenceUrl: 'referenceUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  genreId: 'genreId'
+};
+
+exports.Prisma.TextContentScalarFieldEnum = {
+  id: 'id',
+  textInfoId: 'textInfoId',
+  content: 'content'
+};
+
+exports.Prisma.ImageScalarFieldEnum = {
+  id: 'id',
+  textInfoId: 'textInfoId',
+  url: 'url'
+};
+
+exports.Prisma.TextualGenreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  creatorName: 'creatorName'
+};
+
+exports.Prisma.AdminActivityLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  action: 'action',
+  createAt: 'createAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -183,7 +222,12 @@ exports.AuthProvider = exports.$Enums.AuthProvider = {
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
-  AccountVerificationToken: 'AccountVerificationToken'
+  AccountVerificationToken: 'AccountVerificationToken',
+  TextInfo: 'TextInfo',
+  TextContent: 'TextContent',
+  Image: 'Image',
+  TextualGenre: 'TextualGenre',
+  AdminActivityLog: 'AdminActivityLog'
 };
 
 /**

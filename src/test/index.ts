@@ -1,12 +1,11 @@
-// import { mailer } from "@/modules/smtp/smtp.service.js";
+function capitalizeName(name: string) {
+  return name
+    .toLowerCase()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
-// const result = await mailer.sendMail({
-//     from: '"Facilita Linguagens" <seuemail@gmail.com>',
-//     to: 'mdevsystemsk000@gmail.com',
-//     subject: 'Confirme sua conta no Facilita Linguagens 🚀',
-//     html: '<p>Seu email de verificação</p>'
-// });
-
-// console.log(result)
-
-console.log('Test OK')
+// uso
+const name = capitalizeName("lucas silva"); 
+console.log(name); // Output: "Lucas Silva"
