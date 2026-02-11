@@ -2,7 +2,6 @@ import { Router } from "express";
 
 const GenreRoutes = Router();
 
-
 // ciar um novo gênero
 GenreRoutes.post('/', (req, res) => {
     try {

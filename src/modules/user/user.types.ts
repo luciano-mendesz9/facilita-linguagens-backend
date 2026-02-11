@@ -1,6 +1,6 @@
 export type CreateUserProps = {
     email: string; 
-    firsName: string; 
+    firstName: string; 
     lastName: string; 
     hashPassword: string;
 }

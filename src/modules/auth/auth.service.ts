@@ -46,7 +46,7 @@ class AuthService {
 
             const user = await this.userService.createUser({
                 email: data.email,
-                firsName: data.firstName,
+                firstName: data.firstName,
                 lastName: data.lastName,
                 hashPassword,
             });
@@ -250,7 +250,6 @@ class AuthService {
             return null;
         }
     }
-
 
     async validateAccount(token: string) {
         try {

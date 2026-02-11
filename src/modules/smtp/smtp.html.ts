@@ -1,6 +1,7 @@
 import { CLIENT_DOMAIN } from "@/config/env.js";
 
 export const verificationEmailHTMLTemplate = ({ token, name }: { token: string, name: string }) => {
+
     const link = `${CLIENT_DOMAIN}/validation?token=${token}`;
     return `
 <!DOCTYPE html>

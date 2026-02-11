@@ -52,7 +52,7 @@ class UserService {
             const newUser = await prisma.user.create({
                 data: {
                     email: data.email,
-                    firstName: data.firsName,
+                    firstName: data.firstName,
                     lastName: data.lastName,
                 }
             });
