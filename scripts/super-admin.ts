@@ -1,3 +1,4 @@
+import { IS_PRODUCTION } from './../src/config/env';
 import bcrypt from 'bcrypt';
 import readline from 'readline';
 import UserService from '../src/modules/user/user.service';
@@ -14,6 +15,7 @@ function question(query: string): Promise<string> {
 }
 
 async function createSuperAdmin() {
+    if(!IS_PRODUCTION) return rl.close();
     const userService = new UserService();
 
     const email = await question("Email: ");
