@@ -33,7 +33,29 @@ UserRoutes.get('/enums/status', (req, res) => {
     return res.status(200).json(ENUM_USER_STATUS);
 })
 
-UserRoutes.get('/admins', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+UserRoutes.get('/', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const email = req.query.email as string;
+
+        if (!email) {
+            return res.status(403).json({ error: 'E-mail required' });
+        }
+
+        const user = await userService.getUserByEmail(email);
+
+        return res.status(user ? 200 : 404).json(user ? { ...user, id: undefined } : null);
+
+    } catch (error) {
+        console.error('Error get user:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+UserRoutes.get('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
+
+});
+
+UserRoutes.get('/collaborators', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
     try {
 
         const adminId = req.query.id as string | undefined;
