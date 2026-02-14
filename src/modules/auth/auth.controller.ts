@@ -3,6 +3,7 @@ import AuthService, { ProvidersAuthType, UserSocialAuthType } from './auth.servi
 import { verificationClientHTMLTemplate } from './auth.html.js';
 import { authMiddleware, AuthRequest } from '@/middleware/authMiddleware.js';
 import UserService from '../user/user.service.js';
+import { CLIENT_DOMAIN } from '@/config/env.js';
 
 const AuthRoutes = Router();
 
@@ -146,6 +147,28 @@ AuthRoutes.post('/me', authMiddleware, async (req: AuthRequest, res: Response) =
     }
 
     return res.status(200).json(data);
+
+  } catch (error) {
+    console.error('Erro ao buscar usuário', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+})
+
+AuthRoutes.get('/bind', async (req: Request, res: Response) => {
+  try {
+    const publicUserId = req.query.id as string;
+    console.log({publicUserId})
+
+    if (!publicUserId) {
+      res.redirect(`http://localhost:3000/login`);
+      return;
+    }
+
+    await userService.updateUserByPublicId(publicUserId, {
+      status: 'ACTIVE'
+    })
+
+   return res.redirect(`http://localhost:3000/login`);
 
   } catch (error) {
     console.error('Erro ao buscar usuário', error);
