@@ -299,6 +299,7 @@ class AuthService {
 
     verifyToken(token: string) {
         try {
+            console.log('Entrado no verifca')
             const decoded = jwt.verify(token, JWT_SECRET) as TokenPayloadProps;
             return decoded;
         } catch (error) {

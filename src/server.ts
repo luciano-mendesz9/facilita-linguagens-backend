@@ -16,8 +16,8 @@ import UserPermissions from './config/permissions.js';
 
 const app = express();
 
-app.use(express.json());
 app.use(cookieParser());
+app.use(express.json());
 
 app.use(cors({
   origin: IS_PRODUCTION ? `https://${CLIENT_DOMAIN}` : 'http://localhost:3000',
@@ -161,7 +161,8 @@ app.use('/auth', AuthRoutes);
 // Rotas Users
 app.use('/users', UserRoutes);
 
-app.listen(PORT, async () => {
+
+async function bootstrap() {
   console.log('Sincronizando permissões...');
 
   for (const key of Object.values(UserPermissions)) {
@@ -173,8 +174,10 @@ app.listen(PORT, async () => {
   }
 
   console.log('Permissões sincronizadas com sucesso!');
-  console.log(
-    `Server is running on port ${PORT} -> http://localhost:${PORT}\n`
-  );
-});
 
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+bootstrap();

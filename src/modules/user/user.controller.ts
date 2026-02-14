@@ -51,9 +51,6 @@ UserRoutes.get('/', authMiddleware, adminMiddleware, async (req: AuthRequest, re
     }
 });
 
-UserRoutes.get('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
-
-});
 
 UserRoutes.get('/collaborators', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
     try {
