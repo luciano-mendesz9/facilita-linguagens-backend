@@ -79,8 +79,13 @@ UserRoutes.post('/collaborators', authMiddleware, adminMiddleware, async (req: A
 
         const body: {
             isCreateAccount: boolean;
-            email: string;
-            password?: string;
+            user: {
+                email: string;
+                firstName: string;
+                lastName: string;
+                password?: string;
+            },
+
             config: {
                 permissions: string[];
                 isSuperAdmin: boolean;
@@ -88,7 +93,7 @@ UserRoutes.post('/collaborators', authMiddleware, adminMiddleware, async (req: A
             }
         } = req.body;
 
-        if (!body.email || !body.config) {
+        if (!body.config || !body.user) {
             throw new Error('Data required');
         }
 
@@ -101,15 +106,15 @@ UserRoutes.post('/collaborators', authMiddleware, adminMiddleware, async (req: A
         }
 
         if (body.isCreateAccount) {
-            if (!body.password) {
+            if (!body.user.password) {
                 throw new Error('Password required');
             }
 
             const data = await auth.signUp({
-                email: body.email,
-                firstName: '',
-                lastName: '',
-                password: body.password
+                email: body.user.email,
+                firstName: body.user.firstName,
+                lastName: body.user.lastName,
+                password: body.user.password
             })
 
             if (!data) {
@@ -124,15 +129,15 @@ UserRoutes.post('/collaborators', authMiddleware, adminMiddleware, async (req: A
 
             await mailer.sendMail({
                 from: '"Facilita Linguagens" <seuemail@gmail.com>',
-                to: body.email,
+                to: body.user.email,
                 subject: 'Vínculo Administrativo Facilita Linguagens 🚀',
-                html: alertCreateAdminHTMLTemplate({ name: 'Amigo/a', publicUserId: data.user.publicId })
+                html: alertCreateAdminHTMLTemplate({ name: data.user.firstName, publicUserId: data.user.publicId })
             })
 
             return res.status(201).json({ ...data.user, id: undefined });
         }
 
-        const user = await userService.getUserByEmail(body.email);
+        const user = await userService.getUserByEmail(body.user.email);
 
         if (!user) {
             throw new Error('User not found')
@@ -151,7 +156,7 @@ UserRoutes.post('/collaborators', authMiddleware, adminMiddleware, async (req: A
 
         await mailer.sendMail({
             from: '"Facilita Linguagens" <seuemail@gmail.com>',
-            to: body.email,
+            to: body.user.email,
             subject: 'Vínculo Administrativo Facilita Linguagens 🚀',
             html: alertCreateAdminHTMLTemplate({ name: userUpdated.firstName, publicUserId: userUpdated.publicId })
         })
