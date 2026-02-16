@@ -40,6 +40,11 @@ AuthRoutes.get("/validation", async (req, res) => {
 });
 
 
+AuthRoutes.post('/logout', (req: Request, res: Response) => {
+  res.clearCookie('auth_token');
+  res.status(200).json({message: 'Logout deito com sucesso'})
+})
+
 AuthRoutes.post('/sign-up', async (req: Request, res: Response) => {
   try {
 
