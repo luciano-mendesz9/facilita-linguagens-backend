@@ -15,7 +15,7 @@ npm run dev
 
 #### Criar `SUPER_ADMIN` no banco de dados:
 ```bash
-npm run "create super-admin"
+npm run "create-super-admin"
 ```
 
 

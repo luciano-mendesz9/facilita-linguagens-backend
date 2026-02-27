@@ -181,7 +181,8 @@ exports.Prisma.TextualGenreScalarFieldEnum = {
   name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  creatorName: 'creatorName'
+  creatorName: 'creatorName',
+  color: 'color'
 };
 
 exports.Prisma.AdminActivityLogScalarFieldEnum = {

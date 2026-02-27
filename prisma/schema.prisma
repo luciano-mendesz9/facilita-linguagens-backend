@@ -106,6 +106,7 @@ model TextualGenre {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   creatorName String
+  color       String
 }
 
 model AdminActivityLog {
