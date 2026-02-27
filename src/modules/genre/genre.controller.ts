@@ -15,10 +15,11 @@ GenreRoutes.post('/', authMiddleware, adminMiddleware, async (req: AuthRequest, 
             color: string
         } = req.body
 
-        const isValidHexColor = /^#([0-9A-F]{3}){1,2}$/i.test(body.color);
+        const color = body.color.split('')[0] === '#' ? body.color : `#${body.color}`;
+        const isValidHexColor = /^#([0-9A-F]{3}){1,2}$/i.test(color);
 
         if (!isValidHexColor) {
-            throw new Error('Invalid color');
+            return res.status(401).json({ error: 'Invalid Color' })
         }
 
         const nomeFormatado =
@@ -28,9 +29,9 @@ GenreRoutes.post('/', authMiddleware, adminMiddleware, async (req: AuthRequest, 
         const resultado = await genreService.createGenre({
             name: nomeFormatado,
             creatorName: body.creatorName,
-            color: body.color
-
-        })
+            color: color
+        });
+        
         if (!resultado) {
             throw new Error("error ao criar genero")
         }

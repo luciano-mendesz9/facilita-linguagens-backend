@@ -162,7 +162,7 @@ app.use('/auth', AuthRoutes);
 // Rotas Users
 app.use('/users', UserRoutes);
 
-app.use('/genres',GenreRoutes);
+app.use('/attachments/genres',GenreRoutes);
 
 
 async function bootstrap() {

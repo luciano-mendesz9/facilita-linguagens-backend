@@ -6,4 +6,4 @@ dist
 prisma/migrations
 prisma/dev.db
 
-src/generated/*
+./src/generated
