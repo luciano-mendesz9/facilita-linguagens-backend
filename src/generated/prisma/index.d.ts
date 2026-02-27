@@ -8608,6 +8608,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     creatorName: string | null
+    color: string | null
   }
 
   export type TextualGenreMaxAggregateOutputType = {
@@ -8616,6 +8617,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     creatorName: string | null
+    color: string | null
   }
 
   export type TextualGenreCountAggregateOutputType = {
@@ -8624,6 +8626,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     creatorName: number
+    color: number
     _all: number
   }
 
@@ -8642,6 +8645,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     creatorName?: true
+    color?: true
   }
 
   export type TextualGenreMaxAggregateInputType = {
@@ -8650,6 +8654,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     creatorName?: true
+    color?: true
   }
 
   export type TextualGenreCountAggregateInputType = {
@@ -8658,6 +8663,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     creatorName?: true
+    color?: true
     _all?: true
   }
 
@@ -8753,6 +8759,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     creatorName: string
+    color: string
     _count: TextualGenreCountAggregateOutputType | null
     _avg: TextualGenreAvgAggregateOutputType | null
     _sum: TextualGenreSumAggregateOutputType | null
@@ -8780,6 +8787,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     creatorName?: boolean
+    color?: boolean
     texts?: boolean | TextualGenre$textsArgs<ExtArgs>
     _count?: boolean | TextualGenreCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["textualGenre"]>
@@ -8790,6 +8798,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     creatorName?: boolean
+    color?: boolean
   }, ExtArgs["result"]["textualGenre"]>
 
   export type TextualGenreSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8798,6 +8807,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     creatorName?: boolean
+    color?: boolean
   }, ExtArgs["result"]["textualGenre"]>
 
   export type TextualGenreSelectScalar = {
@@ -8806,9 +8816,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     creatorName?: boolean
+    color?: boolean
   }
 
-  export type TextualGenreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "creatorName", ExtArgs["result"]["textualGenre"]>
+  export type TextualGenreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "creatorName" | "color", ExtArgs["result"]["textualGenre"]>
   export type TextualGenreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     texts?: boolean | TextualGenre$textsArgs<ExtArgs>
     _count?: boolean | TextualGenreCountOutputTypeDefaultArgs<ExtArgs>
@@ -8827,6 +8838,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       creatorName: string
+      color: string
     }, ExtArgs["result"]["textualGenre"]>
     composites: {}
   }
@@ -9256,6 +9268,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"TextualGenre", 'DateTime'>
     readonly updatedAt: FieldRef<"TextualGenre", 'DateTime'>
     readonly creatorName: FieldRef<"TextualGenre", 'String'>
+    readonly color: FieldRef<"TextualGenre", 'String'>
   }
     
 
@@ -12984,7 +12997,8 @@ export namespace Prisma {
     name: 'name',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    creatorName: 'creatorName'
+    creatorName: 'creatorName',
+    color: 'color'
   };
 
   export type TextualGenreScalarFieldEnum = (typeof TextualGenreScalarFieldEnum)[keyof typeof TextualGenreScalarFieldEnum]
@@ -13510,6 +13524,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TextualGenre"> | Date | string
     updatedAt?: DateTimeFilter<"TextualGenre"> | Date | string
     creatorName?: StringFilter<"TextualGenre"> | string
+    color?: StringFilter<"TextualGenre"> | string
     texts?: TextInfoListRelationFilter
   }
 
@@ -13519,6 +13534,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     creatorName?: SortOrder
+    color?: SortOrder
     texts?: TextInfoOrderByRelationAggregateInput
   }
 
@@ -13531,6 +13547,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TextualGenre"> | Date | string
     updatedAt?: DateTimeFilter<"TextualGenre"> | Date | string
     creatorName?: StringFilter<"TextualGenre"> | string
+    color?: StringFilter<"TextualGenre"> | string
     texts?: TextInfoListRelationFilter
   }, "id" | "name">
 
@@ -13540,6 +13557,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     creatorName?: SortOrder
+    color?: SortOrder
     _count?: TextualGenreCountOrderByAggregateInput
     _avg?: TextualGenreAvgOrderByAggregateInput
     _max?: TextualGenreMaxOrderByAggregateInput
@@ -13556,6 +13574,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"TextualGenre"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"TextualGenre"> | Date | string
     creatorName?: StringWithAggregatesFilter<"TextualGenre"> | string
+    color?: StringWithAggregatesFilter<"TextualGenre"> | string
   }
 
   export type AdminActivityLogWhereInput = {
@@ -14123,6 +14142,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     creatorName: string
+    color: string
     texts?: TextInfoCreateNestedManyWithoutGenreInput
   }
 
@@ -14132,6 +14152,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     creatorName: string
+    color: string
     texts?: TextInfoUncheckedCreateNestedManyWithoutGenreInput
   }
 
@@ -14140,6 +14161,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creatorName?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     texts?: TextInfoUpdateManyWithoutGenreNestedInput
   }
 
@@ -14149,6 +14171,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creatorName?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     texts?: TextInfoUncheckedUpdateManyWithoutGenreNestedInput
   }
 
@@ -14158,6 +14181,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     creatorName: string
+    color: string
   }
 
   export type TextualGenreUpdateManyMutationInput = {
@@ -14165,6 +14189,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creatorName?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type TextualGenreUncheckedUpdateManyInput = {
@@ -14173,6 +14198,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creatorName?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type AdminActivityLogCreateInput = {
@@ -14800,6 +14826,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     creatorName?: SortOrder
+    color?: SortOrder
   }
 
   export type TextualGenreAvgOrderByAggregateInput = {
@@ -14812,6 +14839,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     creatorName?: SortOrder
+    color?: SortOrder
   }
 
   export type TextualGenreMinOrderByAggregateInput = {
@@ -14820,6 +14848,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     creatorName?: SortOrder
+    color?: SortOrder
   }
 
   export type TextualGenreSumOrderByAggregateInput = {
@@ -15834,6 +15863,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     creatorName: string
+    color: string
   }
 
   export type TextualGenreUncheckedCreateWithoutTextsInput = {
@@ -15842,6 +15872,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     creatorName: string
+    color: string
   }
 
   export type TextualGenreCreateOrConnectWithoutTextsInput = {
@@ -15911,6 +15942,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creatorName?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type TextualGenreUncheckedUpdateWithoutTextsInput = {
@@ -15919,6 +15951,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creatorName?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type TextInfoCreateWithoutContentInput = {

@@ -13,6 +13,7 @@ import AuthRoutes from './modules/auth/auth.controller.js';
 import UserRoutes from './modules/user/user.controller.js';
 import { prisma } from './lib/prisma.js';
 import UserPermissions from './config/permissions.js';
+import GenreRoutes from './modules/genre/genre.controller.js';
 
 const app = express();
 
@@ -160,6 +161,8 @@ app.use('/auth', AuthRoutes);
 
 // Rotas Users
 app.use('/users', UserRoutes);
+
+app.use('/genres',GenreRoutes);
 
 
 async function bootstrap() {
