@@ -2,6 +2,11 @@
 
 #### Para iniciar o `primsa`:
 ```bash
+npm install # esse comando instala as dependencias
+```
+
+#### Para iniciar o `primsa`:
+```bash
 npx prisma generate # esse comando serve para gerar o client
 ```
 ```bash
@@ -17,5 +22,6 @@ npm run dev
 ```bash
 npm run "create-super-admin"
 ```
+
 
 
