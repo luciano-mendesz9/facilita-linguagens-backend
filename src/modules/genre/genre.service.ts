@@ -63,25 +63,76 @@ class GenreService {
 
     // deleta um gênero
     async deleteGenre(deleteGenreId: number) {
-        try {
-            const deletedGenre = await prisma.textualGenre.delete({
-                where: { id: deleteGenreId }
-            });
-            return deletedGenre;
-        } catch (error) {
-            console.error("error a deletar genero", error)
-            return null
+        // verifica se existe gênero
+        const genre = await prisma.textualGenre.findUnique({
+            where: { id: deleteGenreId }
+        });
+
+        if (!genre) {
+            return { deleted: false, notFound: true };
         }
+
+        // verifica se existe texto vinculado
+        const textCount = await prisma.textInfo.count({
+            where: { genreId: deleteGenreId }
+        });
+
+        if (textCount > 0) {
+            return {
+                deleted: false,
+                blocked: true,
+                reason: 'HAS_TEXT',
+                textCount
+            };
+        }
+
+        await prisma.textualGenre.delete({
+            where: { id: deleteGenreId }
+        });
+
+        return { deleted: true };
     }
 
     async deleteManyGenres(ids: number[]) {
-        return prisma.textualGenre.deleteMany({
-            where: {
-                id: {
-                    in: ids
-                }
-            }
+
+        // busca gêneros existentes
+        const existingGenres = await prisma.textualGenre.findMany({
+            where: { id: { in: ids } },
+            select: { id: true }
         });
+
+        const existingIds = existingGenres.map(g => g.id);
+
+        // verifica quais possuem textos
+        const genresWithTexts = await prisma.textInfo.groupBy({
+            by: ['genreId'],
+            where: {
+                genreId: { in: ids }
+            },
+            _count: true
+        });
+
+        const blockedIds = genresWithTexts.map(g => g.genreId);
+
+        const deletableIds = existingIds.filter(id => !blockedIds.includes(id));
+
+        let deletedCount = 0;
+
+        if (deletableIds.length > 0) {
+            const result = await prisma.textualGenre.deleteMany({
+                where: {
+                    id: { in: deletableIds }
+                }
+            });
+
+            deletedCount = result.count;
+        }
+
+        return {
+            deletedCount,
+            blockedIds,
+            notFoundIds: ids.filter(id => !existingIds.includes(id))
+        };
     }
 }
 
