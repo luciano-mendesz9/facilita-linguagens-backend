@@ -68,56 +68,110 @@ GenreRoutes.get("/", authMiddleware, async (req: AuthRequest, res: Response) => 
     }
 });
 
-GenreRoutes.delete(
-    '/:id?',
-    authMiddleware,
-    adminMiddleware,
-    async (req: AuthRequest, res: Response) => {
-        try {
-            const { id } = req.params;
-            const { ids } = req.body;
+// GenreRoutes.delete(
+//     '/:id?',
+//     authMiddleware,
+//     adminMiddleware,
+//     async (req: AuthRequest, res: Response) => {
+//         try {
+//             const { id } = req.params;
+//             const { ids } = req.body;
 
-            if (Array.isArray(ids) && ids.length > 0) {
-                const parsedIds = ids.map((id: any) => Number(id)).filter((id: number) => !isNaN(id));
+//             if (Array.isArray(ids) && ids.length > 0) {
+//                 const parsedIds = ids.map((id: any) => Number(id)).filter((id: number) => !isNaN(id));
 
-                if (parsedIds.length === 0) {
-                    return res.status(400).json({ message: 'IDs inválidos' });
-                }
+//                 if (parsedIds.length === 0) {
+//                     return res.status(400).json({ message: 'IDs inválidos' });
+//                 }
 
-                const result = await genreService.deleteManyGenres(ids);
+//                 const result = await genreService.deleteManyGenres(ids);
 
-                return res.status(200).json({
-                    message: 'Gêneros deletados com sucesso',
-                    deletedCount: result.count
-                });
-            }
+//                 return res.status(200).json({
+//                     message: 'Gêneros deletados com sucesso',
+//                     deletedCount: result.count
+//                 });
+//             }
 
-            if (id) {
-                const genreId = Number(id);
+//             if (id) {
+//                 const genreId = Number(id);
 
-                if (isNaN(genreId)) {
-                    return res.status(400).json({ message: 'ID inválido' });
-                }
+//                 if (isNaN(genreId)) {
+//                     return res.status(400).json({ message: 'ID inválido' });
+//                 }
 
-                const deletedGenre = await genreService.deleteGenre(genreId);
+//                 const deletedGenre = await genreService.deleteGenre(genreId);
 
-                if (!deletedGenre) {
-                    return res.status(404).json({ message: 'Gênero não encontrado' });
-                }
+//                 if (!deletedGenre) {
+//                     return res.status(404).json({ message: 'Gênero não encontrado' });
+//                 }
 
-                return res.status(200).json({
-                    message: 'Gênero deletado com sucesso'
-                });
-            }
+//                 return res.status(200).json({
+//                     message: 'Gênero deletado com sucesso'
+//                 });
+//             }
 
-            return res.status(400).json({
-                message: 'Nenhum ID informado para deleção'
-            });
+//             return res.status(400).json({
+//                 message: 'Nenhum ID informado para deleção'
+//             });
 
-        } catch (error) {
-            console.error('Error deleting genre:', error);
-            return res.status(500).json({ message: 'Internal server error' });
+//         } catch (error) {
+//             console.error('Error deleting genre:', error);
+//             return res.status(500).json({ message: 'Internal server error' });
+//         }
+//     }
+// );
+
+GenreRoutes.delete('/:id', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const genreId = Number(req.params.id);
+
+        if (isNaN(genreId)) {
+            return res.status(400).json({ message: 'ID inválido' });
         }
+
+        const deletedGenre = await genreService.deleteGenre(genreId);
+
+        if (!deletedGenre) {
+            return res.status(404).json({ message: 'Gênero não encontrado' });
+        }
+
+        return res.status(200).json({
+            message: 'Gênero deletado com sucesso'
+        });
+
+    } catch (error) {
+        console.error('Error deleting genre:', error);
+        return res.status(500).json({ message: 'Internal server error' });
     }
-);
+});
+
+GenreRoutes.delete('/', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const { ids } = req.body;
+
+        if (!Array.isArray(ids) || ids.length === 0) {
+            return res.status(400).json({ message: 'Envie um array de IDs' });
+        }
+
+        const parsedIds = ids
+            .map((id: any) => Number(id))
+            .filter((id: number) => !isNaN(id));
+
+        if (parsedIds.length === 0) {
+            return res.status(400).json({ message: 'IDs inválidos' });
+        }
+
+        const result = await genreService.deleteManyGenres(parsedIds);
+
+        return res.status(200).json({
+            message: 'Gêneros deletados com sucesso',
+            deletedCount: result.count
+        });
+
+    } catch (error) {
+        console.error('Error deleting genres:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 export default GenreRoutes;
