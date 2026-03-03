@@ -4,13 +4,30 @@ class GenreService {
 
     // pega todos os gêneros
     async getAllGenres() {
-
+        try {
+            const genres = await prisma.textualGenre.findMany({
+            });
+            return genres;
+        } catch (error) {
+            console.error("error a pegar os generos", error)
+            return null
+        }
+        
     }
 
     // pega um gênero por ID
-    async getGenreById(id: string) {
-
+    async getGenreById(genreId: number) {
+        try {
+            const genre = await prisma.textualGenre.findUnique({
+                where: { id: genreId }
+            });
+            return genre;
+        } catch (error) {
+            console.error("error a pegar o genero por id", error)
+            return null
+        }
     }
+
 
     // cria um novo gênero
     async createGenre(data: CreateGenreProps) {
@@ -21,22 +38,40 @@ class GenreService {
                     creatorName: data.creatorName,
                     color: data.color
                 }
-            }); 
-           return NewGenre
+            });
+            return NewGenre
         } catch (error) {
-         console.error("error a criar novo genero", error)
-        return null
-    }
+            console.error("error a criar novo genero", error)
+            return null
+        }
 
     }
 
     // atualiza um gênero existente
-    async updateGenre(id: string, data: any) {
-
+    async updateGenre(genreId: number, data: any) {
+        try {
+            const updateGenre = await prisma.textualGenre.update({
+                where: { id: genreId },
+                data,
+            })
+            return updateGenre;
+        } catch (error) {
+            console.error("error a atualizar genero", error)
+            return null
+        }
     }
 
     // deleta um gênero
-    async deleteGenre(id: string) {
+    async deleteGenre(deleteGenreId: number) {
+        try {
+            const deletedGenre = await prisma.textualGenre.delete({
+                where: { id: deleteGenreId }
+            });
+            return deletedGenre;
+        } catch (error) {
+         console.error("error a deletar genero", error)
+         return null   
+        }
 
     }
 }
