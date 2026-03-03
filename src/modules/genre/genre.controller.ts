@@ -31,7 +31,7 @@ GenreRoutes.post('/', authMiddleware, adminMiddleware, async (req: AuthRequest, 
             creatorName: body.creatorName,
             color: color
         });
-        
+
         if (!resultado) {
             throw new Error("error ao criar genero")
         }
@@ -44,5 +44,49 @@ GenreRoutes.post('/', authMiddleware, adminMiddleware, async (req: AuthRequest, 
     }
 });
 
+GenreRoutes.get("/", authMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const genreId = req.query.id
+            ? Number(req.query.id)
+            : undefined;
+
+        if (genreId && isNaN(genreId)) {
+            return res.status(400).json({ message: "Invalid id" });
+        }
+
+        if (genreId) {
+            const genre = await genreService.getGenreById(genreId);
+
+            if (!genre) { return res.status(404).json({ message: "Gênero(s) não encontrado(s)" }); }
+
+            return res.status(200).json(genre);
+        }
+        const genres = await genreService.getAllGenres();
+        return res.status(200).json(genres);
+    } catch (error) {
+        console.error("Error getting genres:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+GenreRoutes.delete('/:id', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const genreId = Number(req.params.id);
+        if (isNaN(genreId)) {
+            return res.status(400).json({ message: "id invalido" });
+        }
+        const deletedGenre = await genreService.deleteGenre(genreId);
+
+        if (!deletedGenre) {
+            return res.status(404).json({ message: 'Genero não encontrado' });
+        }
+
+        return res.status(200).json({ message: 'Genero deletado com sucesso' });
+
+    } catch (error) {
+        console.error('Error deleting genre:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+})
 
 export default GenreRoutes;
