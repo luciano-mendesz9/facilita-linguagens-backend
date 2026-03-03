@@ -12,7 +12,7 @@ class GenreService {
             console.error("error a pegar os generos", error)
             return null
         }
-        
+
     }
 
     // pega um gênero por ID
@@ -69,10 +69,19 @@ class GenreService {
             });
             return deletedGenre;
         } catch (error) {
-         console.error("error a deletar genero", error)
-         return null   
+            console.error("error a deletar genero", error)
+            return null
         }
+    }
 
+    async deleteManyGenres(ids: number[]) {
+        return prisma.textualGenre.deleteMany({
+            where: {
+                id: {
+                    in: ids
+                }
+            }
+        });
     }
 }
 
