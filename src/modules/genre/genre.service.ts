@@ -6,6 +6,9 @@ class GenreService {
     async getAllGenres() {
         try {
             const genres = await prisma.textualGenre.findMany({
+                orderBy: {
+                    name: 'asc'
+                }
             });
             return genres;
         } catch (error) {
