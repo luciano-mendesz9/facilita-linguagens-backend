@@ -51,7 +51,7 @@ class GenreService {
     }
 
     // atualiza um gênero existente
-    async updateGenre(genreId: number, data: any) {
+    async updateGenre(genreId: number, data: {name?: string, color?: string}) {
         try {
             const updateGenre = await prisma.textualGenre.update({
                 where: { id: genreId },

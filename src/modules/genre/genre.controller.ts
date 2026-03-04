@@ -43,6 +43,63 @@ GenreRoutes.post('/', authMiddleware, adminMiddleware, async (req: AuthRequest, 
     }
 });
 
+GenreRoutes.put('/:id', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const genreId = Number(req.params.id);
+
+        if (isNaN(genreId)) {
+            return res.status(400).json({ message: 'ID inválido' });
+        }
+        const body: {
+            name?: string,
+            color?: string
+        } = req.body
+        if (!body.name && !body.color) {
+            return res.status(400).json({ message: 'Envie pelo menos um campo para atualizar' });
+        }
+        let updateData: { name?: string, color?: string } = {};
+
+        
+        
+        // Validação e formatação do nome
+        if (body.name) {
+            const nomeFormatado =
+                body.name.charAt(0).toUpperCase() +
+                body.name.slice(1).toLowerCase();
+
+            updateData.name = nomeFormatado;
+        }
+
+        // Validação da cor
+        if (body.color) {
+            const color = body.color.startsWith('#')
+                ? body.color
+                : `#${body.color}`;
+
+            const isValidHexColor = /^#([0-9A-F]{3}){1,2}$/i.test(color);
+
+            if (!isValidHexColor) {
+                return res.status(400).json({ message: 'Invalid Color' });
+            }
+
+            updateData.color = color;
+        }
+
+        const result = await genreService.updateGenre(genreId, updateData);
+
+        if (!result) {
+            return res.status(404).json({ message: 'Gênero não encontrado' });
+        }
+
+        return res.status(200).json(result);
+
+
+    } catch (error) {
+        console.error('Error updating genre:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 GenreRoutes.get("/", authMiddleware, async (req: AuthRequest, res: Response) => {
     try {
         const genreId = req.query.id
