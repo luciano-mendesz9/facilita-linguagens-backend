@@ -12,3 +12,5 @@ export const EMAIL_PORT = process.env.EMAIL_PORT || 100
 export const EMAIL_USER = process.env.EMAIL_USER || "exemple@domain.com"
 export const EMAIL_PASS = process.env.EMAIL_PASS || "passwordapp"
 
+export const NEXT_PUBLIC_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'supabsae-apikey';
+export const NEXT_PUBLIC_SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'supabsae-apikey';

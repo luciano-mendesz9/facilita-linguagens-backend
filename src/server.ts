@@ -14,6 +14,8 @@ import UserRoutes from './modules/user/user.controller.js';
 import { prisma } from './lib/prisma.js';
 import UserPermissions from './config/permissions.js';
 import GenreRoutes from './modules/genre/genre.controller.js';
+import LoadImagesRoutes from './modules/load-images/load-image.controller.js';
+import TextRoutes from './modules/text/text.controller.js';
 
 const app = express();
 
@@ -162,11 +164,13 @@ app.use('/auth', AuthRoutes);
 // Rotas Users
 app.use('/users', UserRoutes);
 
-app.use('/attachments/genres',GenreRoutes);
+app.use('/attachments/texts', TextRoutes);
+app.use('/attachments/genres', GenreRoutes);
+app.use('/attachments/images', LoadImagesRoutes);
 
 
 async function bootstrap() {
-  console.log('Sincronizando permissões...');
+  console.log('Sincronizando lista permissões...');
 
   for (const key of Object.values(UserPermissions)) {
     await prisma.permission.upsert({
@@ -176,7 +180,7 @@ async function bootstrap() {
     });
   }
 
-  console.log('Permissões sincronizadas com sucesso!');
+  console.log('Lista de Permissões sincronizadas com sucesso!');
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
