@@ -23,7 +23,7 @@ model User {
 
   accounts     Account[]
   activityLogs AdminActivityLog[]
-  permissions UserPermission[]
+  permissions  UserPermission[]
 }
 
 enum UserStatus {
@@ -69,17 +69,18 @@ model AccountVerificationToken {
 }
 
 model TextInfo {
-  id           Int      @id @default(autoincrement())
-  publicId     String   @unique @default(uuid())
-  title        String
-  isImageOnly  Boolean  @default(false)
-  authorName   String
-  referenceUrl String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id              Int      @id @default(autoincrement())
+  publicId        String   @unique @default(uuid())
+  title           String
+  isImageOnly     Boolean  @default(false)
+  authorName      String
+  referenceUrl    String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  creatorPublicId String
 
   content TextContent?
-  images  Image[]
+  images  TextImage[]
 
   genreId Int
   genre   TextualGenre @relation(fields: [genreId], references: [id])
@@ -92,11 +93,17 @@ model TextContent {
   content    String
 }
 
-model Image {
+model TextImage {
   id         String   @id @default(cuid())
   textInfoId Int
   textInfo   TextInfo @relation(fields: [textInfoId], references: [id], onDelete: Cascade)
   url        String
+}
+
+model Image {
+  id       String   @id @default(cuid())
+  url      String
+  uploadAt DateTime @default(now())
 }
 
 model TextualGenre {
@@ -110,16 +117,16 @@ model TextualGenre {
 }
 
 model AdminActivityLog {
-  id       Int      @id @default(autoincrement())
-  userId   Int
-  user     User     @relation(fields: [userId], references: [id])
-  action   String
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  action    String
   createdAt DateTime @default(now())
 }
 
 model Permission {
-  id    Int    @id @default(autoincrement())
-  key   String @unique
+  id    Int              @id @default(autoincrement())
+  key   String           @unique
   users UserPermission[]
 }
 
