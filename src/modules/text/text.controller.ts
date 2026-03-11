@@ -72,4 +72,40 @@ TextRoutes.post(
     }
 )
 
+TextRoutes.get(
+    "/",
+    authMiddleware,
+    async (req: AuthRequest, res: Response) => {
+        try {
+
+            const id = req.query.id
+
+            if (id) {
+
+                const text = await textService.getTextInfoById(id as string)
+
+                return res.status(200).json(text)
+            }
+
+            const texts = await textService.getManyTextInfo()
+
+            return res.status(200).json(texts)
+
+        } catch (error: any) {
+
+            if (error.message) {
+                return res.status(400).json({
+                    error: error.message
+                })
+            }
+
+            console.error(error)
+
+            return res.status(500).json({
+                error: "Erro interno"
+            })
+        }
+    }
+)
+
 export default TextRoutes

@@ -122,6 +122,64 @@ class TextService {
             }
         }
     }
+    async getManyTextInfo() {
+
+    const texts = await prisma.textInfo.findMany({
+        include: {
+            genre: {
+                select: {
+                    name: true,
+                    color: true
+                }
+            }
+        },
+        orderBy: {
+            title: "asc"
+        }
+    })
+
+    return texts.map(text => ({
+        title: text.title,
+        publicId: text.publicId,
+        createdAt: text.createdAt,
+        genre: text.genre,
+        creatorPublicId: text.creatorPublicId
+    }))
+}
+    async getTextInfoById(publicId: string) {
+
+    const text = await prisma.textInfo.findUnique({
+        where: {
+            publicId
+        },
+        include: {
+            genre: {
+                select: {
+                    name: true,
+                    color: true
+                }
+            },
+            content: true,
+            images: true
+        }
+    })
+
+    if (!text) {
+        throw new Error("Texto não encontrado")
+    }
+
+    return {
+        title: text.title,
+        authorName: text.authorName,
+        referenceUrl: text.referenceUrl,
+        isImageOnly: text.isImageOnly,
+        createdAt: text.createdAt,
+        genre: text.genre,
+        creatorPublicId: text.creatorPublicId,
+        content: text.content?.content,
+        images: text.images
+    }
+}
 }
 
 export default TextService
