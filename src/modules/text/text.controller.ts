@@ -114,10 +114,10 @@ TextRoutes.get(
     }
 )
 
-TextRoutes.get('/details', async (req: AuthRequest, res: Response) => {
+TextRoutes.get('/:id/details', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
     try {
 
-        const textInfoId = req.query.id as string;
+        const textInfoId = req.params.id as string;
 
         if (!textInfoId) {
             return res.status(400).json({

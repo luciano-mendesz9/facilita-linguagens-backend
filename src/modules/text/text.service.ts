@@ -245,9 +245,9 @@ class TextService {
             return data;
 
         } catch {
-            return null
+            return null;
         }
     }
 }
 
-export default TextService
+export default TextService;
