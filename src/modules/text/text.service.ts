@@ -224,8 +224,6 @@ class TextService {
 
             const textContent = await this.getContentText(publicId);
 
-            console.log(textInfo.images);
-
             const data = {
                 publicId: publicId,
                 title: textInfo.title,
