@@ -87,6 +87,12 @@ TextRoutes.get(
                 return res.status(200).json(text)
             }
 
+            const user = await userService.getUserByPublicId(req.user?.publicUserId as string);
+
+            if (!user?.isCollaborator) {
+                return res.status(403).json([]);
+            }
+
             const texts = await textService.getManyTextInfo()
 
             return res.status(200).json(texts)
@@ -107,5 +113,43 @@ TextRoutes.get(
         }
     }
 )
+
+TextRoutes.get('/details', async (req: AuthRequest, res: Response) => {
+    try {
+
+        const textInfoId = req.query.id as string;
+
+        if (!textInfoId) {
+            return res.status(400).json({
+                error: "Id é obrigatório"
+            })
+        }
+
+
+        const data = await textService.getDetailsText(textInfoId);
+
+        if (!data) {
+            return res.status(404).json({
+                error: "Texto não encontrado"
+            })
+        }
+
+        return res.status(200).json(data);
+
+    } catch (error: any) {
+
+        if (error.message) {
+            return res.status(400).json({
+                error: error.message
+            })
+        }
+
+        console.error(error)
+
+        return res.status(500).json({
+            error: "Erro interno"
+        })
+    }
+})
 
 export default TextRoutes
