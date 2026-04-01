@@ -16,6 +16,7 @@ import UserPermissions from './config/permissions.js';
 import GenreRoutes from './modules/genre/genre.controller.js';
 import LoadImagesRoutes from './modules/load-images/load-image.controller.js';
 import TextRoutes from './modules/text/text.controller.js';
+import QuestionsRoutes from './modules/text/question.controller.js';
 
 const app = express();
 
@@ -165,6 +166,7 @@ app.use('/auth', AuthRoutes);
 app.use('/users', UserRoutes);
 
 app.use('/attachments/texts', TextRoutes);
+app.use('/attachments/texts', QuestionsRoutes);
 app.use('/attachments/genres', GenreRoutes);
 app.use('/attachments/images', LoadImagesRoutes);
 

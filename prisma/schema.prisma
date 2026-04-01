@@ -84,6 +84,8 @@ model TextInfo {
 
   genreId Int
   genre   TextualGenre @relation(fields: [genreId], references: [id])
+
+  questions TextQuestion[]
 }
 
 model TextContent {
@@ -114,6 +116,27 @@ model TextualGenre {
   updatedAt   DateTime   @updatedAt
   creatorName String
   color       String
+}
+
+model TextQuestion {
+  id        String @id @default(cuid())
+  statement String
+
+  textInfoId String
+  textInfo   TextInfo @relation(fields: [textInfoId], references: [publicId])
+
+  alternatives QuestionAlternative[] 
+}
+
+model QuestionAlternative {
+  id          String  @id @default(cuid())
+  alternative String
+  isCorrect   Boolean @default(false)
+
+  questionId String
+  question   TextQuestion @relation(fields: [questionId], references: [id])
+
+  @@unique([questionId, isCorrect])
 }
 
 model AdminActivityLog {
