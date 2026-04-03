@@ -11,10 +11,10 @@ const upload = multer({
     storage: multer.memoryStorage(),
     limits: {
         fileSize: 4 * 1024 * 1024
-    } 
+    }
 })
 
-LoadImagesRoutes.post("/upload", authMiddleware, upload.single("image"),
+LoadImagesRoutes.post("/upload/supabase", authMiddleware, upload.single("image"),
     async (req: AuthRequest, res: Response) => {
 
         try {
@@ -41,6 +41,55 @@ LoadImagesRoutes.post("/upload", authMiddleware, upload.single("image"),
             }
 
             console.error(error)
+
+            return res.status(500).json({
+                error: "Erro ao fazer upload da imagem"
+            })
+
+        }
+
+    }
+)
+
+LoadImagesRoutes.post(
+    "/upload/cloudinary",
+    authMiddleware,
+    upload.single("image"),
+    async (req: AuthRequest, res: Response) => {
+
+        try {
+
+            const { folder } = req.body;
+
+            // ❌ sem arquivo
+            if (!req.file) {
+                return res.status(400).json({
+                    error: "Nenhuma imagem enviada"
+                })
+            }
+
+            // ❌ não é imagem
+            if (!req.file.mimetype.startsWith("image/")) {
+                return res.status(400).json({
+                    error: "Arquivo precisa ser uma imagem"
+                })
+            }
+
+            const result = await loadImageService.CloudinaryUploadImage({
+                file: req.file,
+                folder
+            })
+
+            return res.status(201).json(result)
+
+        } catch (error: any) {
+
+            // ❌ limite do multer
+            if (error.code === "LIMIT_FILE_SIZE") {
+                return res.status(400).json({
+                    error: "Imagem maior que 4MB"
+                })
+            }
 
             return res.status(500).json({
                 error: "Erro ao fazer upload da imagem"

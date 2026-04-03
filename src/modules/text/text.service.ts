@@ -36,7 +36,7 @@ class TextService {
             throw new Error("Gênero não encontrado")
         }
 
-        console.log(data)
+        //console.log(data)
 
         if (!isImageOnly && !content) {
             throw new Error("Texto precisa de conteúdo")
@@ -83,10 +83,12 @@ class TextService {
 
                 try {
 
-                    const upload = await loadImageService.SupabaseUploadImage({
-                        bucket: "image-texts",
-                        file
-                    })
+                    // const upload = await loadImageService.SupabaseUploadImage({
+                    //     bucket: "image-texts",
+                    //     file
+                    // })
+
+                    const upload = await loadImageService.CloudinaryUploadImage({ file, folder: "text-images" })
 
                     if (!upload?.url) {
                         imageErrors++

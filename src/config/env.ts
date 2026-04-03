@@ -14,3 +14,8 @@ export const EMAIL_PASS = process.env.EMAIL_PASS || "passwordapp"
 
 export const NEXT_PUBLIC_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'supabsae-apikey';
 export const NEXT_PUBLIC_SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'supabsae-apikey';
+
+export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'cloud_name';
+export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY || 'api_key';
+export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET || 'api_secret';
+
