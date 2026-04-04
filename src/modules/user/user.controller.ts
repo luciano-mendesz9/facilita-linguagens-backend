@@ -37,7 +37,7 @@ UserRoutes.get('/enums/status', (req, res) => {
     return res.status(200).json(ENUM_USER_STATUS);
 })
 
-UserRoutes.get('/', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+UserRoutes.get('/search/by-email', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
     try {
         const email = req.query.email as string;
 
@@ -54,6 +54,57 @@ UserRoutes.get('/', authMiddleware, adminMiddleware, async (req: AuthRequest, re
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+UserRoutes.get('/search/by-id', authMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const userId = req.query.id as string;
+        if (!userId) {
+            return res.status(403).json({ error: 'User ID required' });
+        }
+        const user = await userService.getUserByPublicId(userId);
+
+        const data = user ? { ...user, id: undefined, role: undefined, isSuperAdmin: undefined, isCollaborator: undefined, updatedAt: undefined, status: undefined } : null;
+
+        return res.status(user ? 200 : 404).json(data);
+    } catch (error) {
+        console.error('Error get user:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+UserRoutes.get('/', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
+    try {
+        const userId = req.query.id as string | undefined;
+
+        // 🔹 Buscar usuário único
+        if (userId) {
+            const user = await userService.getUserByPublicId(userId);
+
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+            }
+
+            return res.status(200).json(user);
+        }
+
+        // 🔹 Cursor pagination
+        const cursor = req.query.cursor as string | undefined;
+        const limit = Number(req.query.limit) || 50;
+
+        const users = await userService.getAllUsers({
+            cursor,
+            limit,
+        });
+
+        return res.status(200).json(users);
+
+    } catch (error) {
+        console.error('Error get user:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+);
+
 
 
 UserRoutes.get('/collaborators', authMiddleware, adminMiddleware, async (req: AuthRequest, res: Response) => {
