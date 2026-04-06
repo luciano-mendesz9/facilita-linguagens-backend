@@ -136,7 +136,6 @@ model QuestionAlternative {
   questionId String
   question   TextQuestion @relation(fields: [questionId], references: [id])
 
-  @@unique([questionId, isCorrect])
 }
 
 model AdminActivityLog {
